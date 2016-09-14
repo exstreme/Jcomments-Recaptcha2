@@ -1,0 +1,225 @@
+/**
+ * JComments - Joomla Comment System
+ *
+ * @version 3.0
+ * @package JComments
+ * @author Sergey M. Litvinov (smart@joomlatune.ru)
+ * @copyright (C) 2006-2013 by Sergey M. Litvinov (http://www.joomlatune.ru)
+ * @license GNU/GPL: http://www.gnu.org/copyleft/gpl.html
+ */
+
+.icon-remove {
+    background: url(../images/icon-16-delete.png) no-repeat;
+    width: 16px;
+    height: 16px;
+    display: block;
+}
+
+/* Controls */
+#settings-form #j-main-container {
+    background-color: #ffffff;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+}
+
+#settings-form #permissions .control-group {
+    margin-bottom: 5px !important;
+}
+
+#settings-form #permissions legend + .control-group {
+    margin-top: 5px !important;
+}
+
+
+.tab-content {
+    padding: 0 8px;
+}
+
+.controls fieldset.radio {
+    border: 0;
+}
+
+.controls fieldset.radio label {
+    display: inline !important;
+    float: left !important;
+    min-width: 50px;
+    max-width: 40%;
+    border: none;
+    width: auto;
+    clear: none;
+    text-align: left;
+    margin: 5px 0;
+}
+
+.controls fieldset.radio input {
+    display: inline !important;
+    float: left !important;
+    clear: none;
+    width: auto;
+    margin: 5px 5px 5px 0;
+}
+
+/* Input append/prepend */
+.input-append input[class*="span"],
+.input-append .uneditable-input[class*="span"],
+.input-prepend input[class*="span"],
+.input-prepend .uneditable-input[class*="span"],
+.row-fluid input[class*="span"],
+.row-fluid select[class*="span"],
+.row-fluid textarea[class*="span"],
+.row-fluid .uneditable-input[class*="span"],
+.row-fluid .input-prepend [class*="span"],
+.row-fluid .input-append [class*="span"] {
+    display: inline-block;
+}
+
+.input-append,
+.input-prepend {
+    margin-bottom: 5px;
+    font-size: 0;
+    white-space: nowrap;
+}
+
+.input-append input,
+.input-append select,
+.input-append .uneditable-input,
+.input-prepend input,
+.input-prepend select,
+.input-prepend .uneditable-input {
+    position: relative;
+    margin-bottom: 0;
+    *margin-left: 0;
+    font-size: 13px;
+    vertical-align: top;
+    -webkit-border-radius: 0 3px 3px 0;
+    -moz-border-radius: 0 3px 3px 0;
+    border-radius: 0 3px 3px 0;
+}
+
+.input-append input:focus,
+.input-append select:focus,
+.input-append .uneditable-input:focus,
+.input-prepend input:focus,
+.input-prepend select:focus,
+.input-prepend .uneditable-input:focus {
+    z-index: 2;
+}
+
+.input-append .add-on,
+.input-prepend .add-on {
+    display: inline-block;
+    width: auto;
+    height: 18px;
+    min-width: 16px;
+    padding: 4px 5px;
+    font-size: 13px;
+    font-weight: normal;
+    line-height: 18px;
+    text-align: center;
+    text-shadow: 0 1px 0 #fff;
+    background-color: #eee;
+    border: 1px solid #ccc;
+}
+
+.input-append .active,
+.input-prepend .active {
+    background-color: #a9dba9;
+    border-color: #46a546;
+}
+
+.input-prepend .add-on,
+.input-prepend .btn {
+    margin-right: -1px;
+}
+
+.row-fluid {
+    width: 100%;
+    *zoom: 1;
+}
+
+.row-fluid:before,
+.row-fluid:after {
+    display: table;
+    content: "";
+    line-height: 0;
+}
+
+.row-fluid:after {
+    clear: both;
+}
+
+.row-fluid [class*="span"] {
+    display: block;
+    width: 100%;
+    min-height: 30px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    float: left;
+    margin-left: 2.1276595744681%;
+    *margin-left: 2.0744680851064%;
+}
+
+.row-fluid [class*="span"]:first-child {
+    margin-left: 0;
+}
+
+.row-fluid .span12 {
+    width: 100%;
+    *width: 99.946808510638%;
+}
+
+.row-fluid .span11 {
+    width: 91.489361702128%;
+    *width: 91.436170212766%;
+}
+
+.row-fluid .span10 {
+    width: 82.978723404255%;
+    *width: 82.925531914894%;
+}
+
+.row-fluid .span9 {
+    width: 74.468085106383%;
+    *width: 74.414893617021%;
+}
+
+.row-fluid .span8 {
+    width: 65.957446808511%;
+    *width: 65.904255319149%;
+}
+
+.row-fluid .span7 {
+    width: 57.446808510638%;
+    *width: 57.393617021277%;
+}
+
+.row-fluid .span6 {
+    width: 48.936170212766%;
+    *width: 48.882978723404%;
+}
+
+.row-fluid .span5 {
+    width: 40.425531914894%;
+    *width: 40.372340425532%;
+}
+
+.row-fluid .span4 {
+    width: 31.914893617021%;
+    *width: 31.86170212766%;
+}
+
+.row-fluid .span3 {
+    width: 23.404255319149%;
+    *width: 23.351063829787%;
+}
+
+.row-fluid .span2 {
+    width: 14.893617021277%;
+    *width: 14.840425531915%;
+}
+
+.row-fluid .span1 {
+    width: 6.3829787234043%;
+    *width: 6.3297872340426%;
+}

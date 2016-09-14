@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset name="details">
+		<field 
+			name="id" 
+			type="text" 
+			default="0"
+			readonly="true" 
+			class="readonly"
+			label="JGLOBAL_FIELD_ID_LABEL" 
+			description="JGLOBAL_FIELD_ID_DESC" />
+
+		<field 
+			name="name" 
+			type="text" 
+			class="inputbox"
+			size="40" 
+			label="A_CUSTOM_BBCODE_NAME"
+			description="" 
+			filter="string"
+			required="true" />
+
+		<field 
+			name="published" 
+			type="list"
+			label="JSTATUS" 
+			description=""
+			class="inputbox" 
+			size="1" 
+			default="1"
+		>
+			<option value="1">JPUBLISHED</option>
+			<option value="0">JUNPUBLISHED</option>
+		</field>
+
+		<field 
+			name="checked_out" 
+			type="hidden" 
+			filter="unset" />
+
+		<field 
+			name="checked_out_time" 
+			type="hidden" 
+			filter="unset" />
+	</fieldset>
+
+	<fieldset name="simple">
+		<field 
+			name="simple_pattern" 
+			type="textarea" 
+			class="inputbox span4"
+			rows="3" 
+			cols="50" 
+			filter="raw"
+			label="A_CUSTOM_BBCODE_PATTERN" 
+			description="A_CUSTOM_BBCODE_SIMPLE_PATTERN_DESC" 
+			required="false" />
+
+		<field 
+			name="simple_replacement_html" 
+			type="textarea" 
+			class="inputbox span4"
+			rows="3" 
+			cols="50" 
+			filter="raw"
+			label="A_CUSTOM_BBCODE_HTML" 
+			description="A_CUSTOM_BBCODE_SIMPLE_REPLACEMENT_HTML_DESC" 
+			required="false" />
+
+		<field 
+			name="simple_replacement_text" 
+			type="textarea" 
+			class="inputbox span4"
+			rows="3" 
+			cols="50" 
+			filter="raw"
+			label="A_CUSTOM_BBCODE_PLAIN_TEXT" 
+			description="A_CUSTOM_BBCODE_SIMPLE_REPLACEMENT_TEXT_DESC" 
+			required="false" />
+
+	</fieldset>
+
+	<fieldset name="advanced">
+		<field 
+			name="pattern" 
+			type="textarea" 
+			class="inputbox span4"
+			rows="3" 
+			cols="50" 
+			filter="raw"
+			label="A_CUSTOM_BBCODE_PATTERN" 
+			description="" 
+			required="false" />
+
+		<field 
+			name="replacement_html" 
+			type="textarea" 
+			class="inputbox span4"
+			rows="3" 
+			cols="50" 
+			filter="raw"
+			label="A_CUSTOM_BBCODE_HTML" 
+			description="" 
+			required="false" />
+
+		<field 
+			name="replacement_text" 
+			type="textarea" 
+			class="inputbox span4"
+			rows="3" 
+			cols="50" 
+			filter="raw"
+			label="A_CUSTOM_BBCODE_PLAIN_TEXT" 
+			description="" 
+			required="false" />
+
+	</fieldset>
+
+
+	<fieldset name="button">
+		<field 
+			name="button_title" 
+			type="text" 
+			default=""
+			label="A_CUSTOM_BBCODE_BUTTON_TITLE" 
+			description="A_CUSTOM_BBCODE_BUTTON_TITLE_DESC" />
+
+		<field 
+			name="button_prompt" 
+			type="text" 
+			default=""
+			label="A_CUSTOM_BBCODE_BUTTON_HELP_LINE" 
+			description="A_CUSTOM_BBCODE_BUTTON_HELP_LINE_DESC" />
+
+		<field 
+			name="button_image" 
+			type="text" 
+			default=""
+			label="A_CUSTOM_BBCODE_BUTTON_ICON" 
+			description="A_CUSTOM_BBCODE_BUTTON_ICON_DESC" />
+
+		<field 
+			name="button_css" 
+			type="text" 
+			default=""
+			label="A_CUSTOM_BBCODE_BUTTON_CSS_CLASS" 
+			description="A_CUSTOM_BBCODE_BUTTON_CSS_CLASS_DESC" />
+
+		<field 
+			name="button_open_tag" 
+			type="text" 
+			default=""
+			label="A_CUSTOM_BBCODE_BUTTON_OPEN_TAG" 
+			description="A_CUSTOM_BBCODE_BUTTON_OPEN_TAG_DESC" />
+
+		<field 
+			name="button_close_tag" 
+			type="text" 
+			default=""
+			label="A_CUSTOM_BBCODE_BUTTON_CLOSE_TAG" 
+			description="A_CUSTOM_BBCODE_BUTTON_CLOSE_TAG_DESC" />
+
+		<field 
+			name="button_enabled" 
+			type="list"
+			label="A_CUSTOM_BBCODE_BUTTON_ENABLE" 
+			description=""
+			class="inputbox" 
+			size="1" 
+			default="0"
+		>
+			<option value="1">JENABLED</option>
+			<option value="0">JDISABLED</option>
+		</field>
+	</fieldset>
+
+	<fieldset name="acl">
+		<field name="button_acl" type="hidden" />
+	</fieldset>
+</form>

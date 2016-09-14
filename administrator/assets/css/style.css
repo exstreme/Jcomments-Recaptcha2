@@ -1,0 +1,192 @@
+/**
+ * JComments - Joomla Comment System
+ *
+ * @version 3.0
+ * @package JComments
+ * @author Sergey M. Litvinov (smart@joomlatune.ru)
+ * @copyright (C) 2006-2013 by Sergey M. Litvinov (http://www.joomlatune.ru)
+ * @license GNU/GPL: http://www.gnu.org/copyleft/gpl.html
+ */
+
+#settings-form label {
+    max-width: 150px;
+}
+
+#settings-form #permissions label {
+    max-width: initial;
+}
+
+#settings-form select#lang {
+    margin: 5px;
+    float: inherit;
+}
+
+#settings-form #permissions .controls {
+    margin-left: 0 !important;
+}
+
+/* Modal */
+#jcomments-modal-header {
+}
+
+#jcomments-modal-container {
+    text-align: center;
+    width: 400px;
+    margin: 0 auto;
+    padding: 10px 0;
+}
+
+/* Usergroups */
+#custombbcode-form #jcomments-usergroups .control-group {
+    margin-bottom: 0;
+}
+
+/* Progressbar */
+.jcomments-progressbar {
+    margin: 0 auto;
+    position: relative;
+    text-align: left;
+    overflow: hidden;
+    height: 2em;
+    border: 1px solid #aaaaaa;
+    border-radius: 4px;
+}
+
+.jcomments-progressbar-label {
+    position: absolute;
+    left: 50%;
+    top: 4px;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 #fff;
+}
+
+.jcomments-progressbar-value {
+    border: 1px solid #aaaaaa;
+    background-color: #cccccc;
+    margin: -1px;
+    height: 100%;
+    text-align: right;
+    padding: 0.3em 0.3em 0 0;
+}
+
+/* Sample */
+.jcomments-sample {
+    border: 1px solid #ccc;
+    padding: 0;
+    margin: 5px 0;
+    -moz-border-radius: 4px 4px 0 0;
+    border-radius: 4px;
+}
+
+.jcomments-sample .jcomments-sample-heading {
+    padding: 4px;
+    border-bottom: 1px solid #ccc;
+    background-color: #e9e9e9;
+}
+
+.jcomments-sample .jcomments-sample-text {
+    padding: 4px;
+}
+
+span.gi {
+    color: #d7d7d7;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+/* About */
+#jcomments-about {
+    margin: 10px auto;
+    padding: 8px;
+    width: 700px;
+    min-height: 48px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+#jcomments-about .extension-copyright {
+    color: #777;
+    display: block;
+    margin-top: 12px;
+}
+
+#jcomments-about .extension-name {
+    color: #FF9900;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#jcomments-about .extension-date {
+    color: #FF9900;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+#jcomments-about .header {
+    margin: 10px 0;
+    color: #FF9900;
+    background: inherit;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#jcomments-about ul {
+    padding: 0 0 0 20px;
+    margin: 0 0 10px 0;
+}
+
+#jcomments-about table {
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+#jcomments-about table td {
+    vertical-align: top;
+}
+
+/* Filter */
+fieldset#filter-bar {
+    min-height: 35px;
+    border: 0;
+    border-bottom: 1px solid #d5d5d5;
+}
+
+.fltlft {
+    float: left
+}
+
+.fltrt {
+    float: right
+}
+
+td.left,
+th.left {
+    text-align: left;
+}
+
+td.center,
+th.center,
+.center {
+    text-align: center;
+    float: none;
+}
+
+td.center img,
+th.center img {
+    float: none;
+}
+
+td.right, th.right {
+    text-align: right;
+}
+
+.nowrap {
+    white-space: nowrap;
+}

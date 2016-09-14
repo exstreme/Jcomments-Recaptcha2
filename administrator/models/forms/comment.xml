@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset name="details" addrulepath="administrator/components/com_jcomments/models/rules">
+		<field 
+			name="id" 
+			type="text" 
+			default="0"
+			readonly="true" 
+			class="inputbox readonly"
+			label="JGLOBAL_FIELD_ID_LABEL" 
+			description="JGLOBAL_FIELD_ID_DESC" />
+
+		<field 
+			name="title" 
+			type="text" 
+			class="inputbox span9"
+			size="40" 
+			label="A_COMMENT_TITLE"
+			description="" 
+			filter="string" />
+
+		<field 
+			name="comment" 
+			type="textarea" 
+			class="inputbox span9"
+			rows="10" 
+			cols="30" 
+			filter="raw"
+			label="A_COMMENT_TEXT"
+			description=""
+			required="true" />
+
+		<field 
+			name="date" 
+			type="calendar"
+			readonly="true"
+			class="inputbox readonly"
+			size="22"
+			label="A_COMMENT_DATE"
+			description=""
+			format="%Y-%m-%d %H:%M:%S" 
+			filter="user_utc" 
+			labelclass="control-label" />
+
+		<field 
+			name="userid" 
+			type="user"
+			size="40"
+			class="inputbox"
+			label="A_COMMENT_NAME" 
+			description="" 
+			labelclass="control-label" />
+
+		<field 
+			name="name" 
+			type="text" 
+			class="inputbox"
+			size="40"
+			label="A_COMMENT_NAME" 
+			description="" />
+
+		<field 
+			name="email" 
+			type="email" 
+			class="inputbox"
+			size="40" 
+			label="A_COMMENT_EMAIL"
+			description="" 
+			validate="email" />
+
+		<field 
+			name="homepage" 
+			type="url" 
+			class="inputbox"
+			size="40"
+			label="A_COMMENT_HOMEPAGE"
+			description=""
+			validate="url"
+			required="false" />
+
+		<field 
+			name="published" 
+			type="list"
+			label="JSTATUS" 
+			description=""
+			class="inputbox" 
+			size="1" 
+			default="1"
+		>
+			<option value="1">JPUBLISHED</option>
+			<option value="0">JUNPUBLISHED</option>
+		</field>
+
+		<field 
+			name="checked_out" 
+			type="hidden" 
+			filter="unset" />
+
+		<field 
+			name="checked_out_time" 
+			type="hidden" 
+			filter="unset" />
+	</fieldset>
+</form>

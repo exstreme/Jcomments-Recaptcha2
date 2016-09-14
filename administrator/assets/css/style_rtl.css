@@ -1,0 +1,23 @@
+/**
+ * JComments - Joomla Comment System
+ *
+ * @version 3.0
+ * @package JComments
+ * @author Sergey M. Litvinov (smart@joomlatune.ru)
+ * @copyright (C) 2006-2013 by Sergey M. Litvinov (http://www.joomlatune.ru)
+ * @license GNU/GPL: http://www.gnu.org/copyleft/gpl.html
+ */
+
+#jc .jcomments-box ul {padding: 0 20px 0 0;}
+#jc .jcomments-box .componentname,
+#jc .jcomments-box .componentdate,
+#jc .jcomments-box .installheader {font-family: Tahoma, Arial, Helvetica, sans-serif;}
+
+#jcomments-settings table.admintable tr {text-align: right}
+
+table.admintable tr {text-align: right;}
+
+.fltlft {float: right !important}
+.fltrt {float: left !important}
+
+td.left, th.left {text-align: right;}

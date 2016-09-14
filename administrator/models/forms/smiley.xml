@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset addfieldpath="/administrator/components/com_jcomments/models/fields">
+        <field
+                name="code"
+                type="text"
+                class="inputbox"
+                size="40"
+                label="A_SMILIES_FIELD_CODE_LABEL"
+                description="A_SMILIES_FIELD_CODE_DESC"
+                required="true"/>
+
+        <field
+                name="name"
+                type="text"
+                class="inputbox"
+                size="40"
+                label="A_SMILIES_FIELD_NAME_LABEL"
+                description="A_SMILIES_FIELD_NAME_DESC"/>
+
+        <field
+                name="image"
+                type="smileyimage"
+                directory="components/com_jcomments/images/smilies"
+                hide_none="1"
+                label="A_SMILIES_FIELD_IMAGE_LABEL"
+                size="40"
+                description="A_SMILIES_FIELD_IMAGE_DESC"
+                required="true"/>
+
+        <field
+                name="published"
+                type="list"
+                label="JSTATUS"
+                description=""
+                class="inputbox"
+                size="1"
+                default="1"
+                >
+            <option value="1">JPUBLISHED</option>
+            <option value="0">JUNPUBLISHED</option>
+        </field>
+
+        <field
+                name="ordering"
+                type="smileyorder"
+                class="inputbox"
+                label="JFIELD_ORDERING_LABEL"
+                description="JFIELD_ORDERING_DESC"/>
+
+        <field
+                name="id"
+                type="text"
+                default="0"
+                readonly="true"
+                class="readonly"
+                label="JGLOBAL_FIELD_ID_LABEL"
+                description="JGLOBAL_FIELD_ID_DESC"/>
+
+        <field
+                name="checked_out"
+                type="hidden"
+                filter="unset"/>
+
+        <field
+                name="checked_out_time"
+                type="hidden"
+                filter="unset"/>
+    </fieldset>
+</form>

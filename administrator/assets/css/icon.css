@@ -1,0 +1,88 @@
+/**
+ * JComments - Joomla Comment System
+ *
+ * @version 3.0
+ * @package JComments
+ * @author Sergey M. Litvinov (smart@joomlatune.ru)
+ * @copyright (C) 2006-2013 by Sergey M. Litvinov (http://www.joomlatune.ru)
+ * @license GNU/GPL: http://www.gnu.org/copyleft/gpl.html
+ */
+
+/** menu icons **/
+.icon-16-jcomments-about {
+    background-image: url(../images/icon-16-jcomments.png);
+}
+
+.icon-16-jcomments-comments {
+    background-image: url(../images/icon-16-comments.png);
+}
+
+.icon-16-jcomments-import {
+    background-image: url(../images/icon-16-import.png);
+}
+
+.icon-16-jcomments-smilies {
+    background-image: url(../images/icon-16-smilies.png);
+}
+
+.icon-16-jcomments-settings {
+    background-image: url(../images/icon-16-settings.png);
+}
+
+.icon-16-jcomments-subscriptions {
+    background-image: url(../images/icon-16-subscriptions.png);
+}
+
+.icon-16-jcomments-custombbcodes {
+    background-image: url(../images/icon-16-custombbcodes.png);
+}
+
+.icon-16-jcomments-blacklist {
+    background-image: url(../images/icon-16-blacklist.png);
+}
+
+.icon-16-jcomments-mailq {
+    background-image: url(../images/icon-16-mailq.png);
+}
+
+/** toolbar icons **/
+.icon-32-refresh {
+    background-image: url(../images/icon-32-refresh.png);
+}
+
+/** header icons **/
+.icon-48-jcomments-about {
+    background-image: url(../images/icon-48-jcomments.png);
+}
+
+.icon-48-jcomments-comments {
+    background-image: url(../images/icon-48-jcomments.png);
+}
+
+.icon-48-jcomments-import {
+    background-image: url(../images/icon-48-import.png);
+}
+
+.icon-48-jcomments-smilies {
+    background-image: url(../images/icon-48-smilies.png);
+}
+
+.icon-48-jcomments-settings {
+    background-image: url(../images/icon-48-settings.png);
+}
+
+.icon-48-jcomments-subscriptions {
+    background-image: url(../images/icon-48-subscriptions.png);
+}
+
+.icon-48-jcomments-custombbcodes {
+    background-image: url(../images/icon-48-custombbcodes.png);
+}
+
+.icon-48-jcomments-blacklist {
+    background-image: url(../images/icon-48-blacklist.png);
+}
+
+.icon-48-jcomments-mailq {
+    background-image: url(../images/icon-48-mailq.png);
+}

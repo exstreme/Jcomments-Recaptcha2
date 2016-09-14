@@ -1,0 +1,58 @@
+/* Content plugin styles */
+.jcomments-links {text-align: right;}
+.comments-link, .readmore-link{padding: 0 14px 5px 5px;margin: 0 5px 5px 14px;background-image: url(images/jc_blog_rtl.gif);}
+.comments-link {background-position: right -27px;}
+.readmore-link {background-position: right 3px;}
+/* Common styles */
+#jc h4 {text-align: right;}
+#comments {text-align: right;}
+#comments a[rel*=external] {background-position: center left !important;padding: 0 0 0 10px !important;}
+/* RSS and Refresh*/
+#comments .rss, #comments .refresh, #comments .subscribe {padding: 0 14px 0 0;border: none;}
+#comments .rss {background: url(images/jc_rss_rtl.gif) no-repeat center right !important}
+#comments .refresh {background-position: center right !important;}
+#comments .subscribe {background-position: center right !important;}
+#comments h4 .rss, #comments h4 .refresh {padding: 0 10px 0 0;margin: 0 5px 0 0;display: inline-block !important;}
+/* List footer */
+#comments-list-footer {margin: 0 20px 10px 0 !important;}
+/* Show/hide form */
+#comments-form-link .showform {margin: 5px 22px 0 0;padding: 0 14px 5px 0;}
+/* Comment */
+#comments .comment-avatar {float: right}
+#comments .avatar-indent {padding: 0 40px 0 0}
+#comments .toolbar a, #comments .toolbar a:hover {float: right; margin: 0 0 0 2px;}
+
+/* Date and Time*/	
+#comments .comment-date {padding: 0 12px 0 0;background-position: center right !important;overflow: hidden;display: inline-block;}
+/* Quote, Code and Hidden block styles */
+#comments .quote, #comments blockquote, #comments .code, #comments code, #comments pre {margin: 5px 10px 5px 0;}
+#comments blockquote, #comments .hidden, #comments code, #comments pre {text-align: right;}
+/* Quote and Reply to buttons panel */
+#comments .comments-buttons {float: right;}
+#comments p {margin: 5px 0 5px 5px;}
+/* Comments list */
+#comments .comments-list {margin-right: 20px; margin-left: 0}
+/* Comment form */
+div.comments-policy {text-align: right;margin: 5px 20px 5px 0; margin-right: 20px !important;margin-left: 0 !important;}
+#comments-inline-edit #comments-form-error {margin-right: 5px !important;margin-left: 5px;}
+#comments-form, #comments-form p, #comments-report-form, #comments-report-form p, #comments-form span, #comments-form .counter {text-align: right;font-family: Tahoma, Verdana , Arial, Sans-Serif;}
+#comments-form p, #comments-form #comments-form-buttons, #comments-form #comments-form-error, #comments-form #comments-form-captcha-holder {margin-right: 20px !important;font-family: Tahoma, Verdana , Arial, Sans-Serif;}
+#comments-form .grippie {background-position: left -10px !important;}
+#comments-form .grippie span, #comments-form .btn, #comments-report-form .btn {float: right;}
+#comments-form textarea{font-family: Tahoma, Verdana , Arial, Sans-Serif;}
+#comments-form-message {padding: 5px 25px 5px 5px; background-position: right 50% !important;}
+#comments-form span.captcha {padding: 0 12px 0 0; background-position: right 50% !important;}
+#comments-footer {text-align: left;}
+#comments-footer a {float: left;}
+
+/* Vote */
+#jc span.comments-vote {float: left;}
+#jc span.comments-vote a{float: right; margin: 0 0 0 3px;}
+#jc span.comments-vote .busy{float: left;}
+#jc span.vote-good,#jc span.vote-poor,#jc span.vote-none{float: left;}
+/* BBCode */
+#jc .bbcode a, #jc .bbcode a:focus, #jc .bbcode a:active, #jc .bbcode a:hover{text-align: right; float: right;}
+#comments .comments-buttons {float: left;}
+#jc .custombbcode {margin: 0 0 0 2px;}
+/* Rounded comments */
+#jc .rbox div {text-align: right;}

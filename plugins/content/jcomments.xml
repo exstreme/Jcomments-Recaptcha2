@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5" type="plugin" group="content" method="upgrade">
+	<name>plg_content_jcomments</name>
+	<creationDate>01/08/2014</creationDate>
+	<author>smart</author>
+	<copyright>Copyright 2006-2014 JoomlaTune.ru All rights reserved!</copyright>
+	<authorEmail>smart@joomlatune.ru</authorEmail>
+	<authorUrl>http://www.joomlatune.ru</authorUrl>
+	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+	<version>1.0</version>
+	<description>PLG_CONTENT_JCOMMENTS_XML_DESCRIPTION</description>
+	<files>
+		<filename plugin="jcomments">jcomments.php</filename>
+	</files>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="show_frontpage" type="radio" default="1" label="PLG_CONTENT_JCOMMENTS_FIELD_COMMENTSFORFEATURED_LABEL" description="PLG_CONTENT_JCOMMENTS_FIELD_COMMENTSFORFEATURED_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="enable_for_archived" type="radio" default="0" label="PLG_CONTENT_JCOMMENTS_FIELD_COMMENTSFORARCHIVED_LABEL" description="PLG_CONTENT_JCOMMENTS_FIELD_COMMENTSFORARCHIVED_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="comments_count" type="radio" default="1" label="PLG_CONTENT_JCOMMENTS_FIELD_COMMENTSLINK_LABEL" description="PLG_CONTENT_JCOMMENTS_FIELD_COMMENTSLINK_DESC">
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+				<field name="add_comments" type="radio" default="1" label="PLG_CONTENT_JCOMMENTS_FIELD_ADDCOMMENTLINK_LABEL" description="PLG_CONTENT_JCOMMENTS_FIELD_ADDCOMMENTLINK_DESC">
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+				<field name="links_position" type="list" default="1" label="PLG_CONTENT_JCOMMENTS_FIELD_LINKSPOSITION_LABEL" description="PLG_CONTENT_JCOMMENTS_FIELD_LINKSPOSITION_DESC">
+					<option value="0">PLG_CONTENT_JCOMMENTS_VALUE_BEFORE_ARTICLE</option>
+					<option value="1">PLG_CONTENT_JCOMMENTS_VALUE_AFTER_ARTICLE</option>
+				</field>
+				<field name="readmore_link" type="list" default="1" label="PLG_CONTENT_JCOMMENTS_FIELD_READMORESTYLE_LABEL" description="PLG_CONTENT_JCOMMENTS_FIELD_READMORESTYLE_DESC">
+					<option value="0">PLG_CONTENT_JCOMMENTS_VALUE_JOOMLA</option>
+					<option value="1">PLG_CONTENT_JCOMMENTS_VALUE_JCOMMENTS</option>
+				</field>
+				<field name="readmore_css_class" type="text" default="readmore-link" label="PLG_CONTENT_JCOMMENTS_FIELD_READMORELINKCSS_LABEL" description="PLG_CONTENT_JCOMMENTS_FIELD_READMORELINKCSS_DESC" />
+				<field name="comments_css_class" type="text" default="comments-link" label="PLG_CONTENT_JCOMMENTS_FIELD_COMMENTSLINKCSS_LABEL" description="PLG_CONTENT_JCOMMENTS_FIELD_COMMENTSLINKCSS_DESC" />
+				<field name="show_hits" type="radio" default="0" label="PLG_CONTENT_JCOMMENTS_FIELD_SHOWHITS_LABEL" description="PLG_CONTENT_JCOMMENTS_FIELD_SHOWHITS_DESC">
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+				<field name="show_comments_event" type="list" default="onAfterDisplayContent" label="PLG_CONTENT_JCOMMENTS_FIELD_CONTENTEVENT_LABEL" description="PLG_CONTENT_JCOMMENTS_FIELD_CONTENTEVENT_DESC">
+					<option value="onPrepareContent">PLG_CONTENT_JCOMMENTS_VALUE_ONPREPARECONTENT</option>
+					<option value="onAfterDisplayContent">PLG_CONTENT_JCOMMENTS_VALUE_ONAFTERDISPLAYCONTENT</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

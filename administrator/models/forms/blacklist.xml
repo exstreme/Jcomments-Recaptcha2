@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset addrulepath="administrator/components/com_jcomments/models/rules">
+		<field 
+			name="ip" 
+			type="text" 
+			class="inputbox"
+			size="40" 
+			label="A_BLACKLIST_IP"
+			description=""
+			validate="ip"
+			required="true" />
+
+		<field 
+			name="reason" 
+			type="text" 
+			class="inputbox"
+			size="40" 
+			label="A_BLACKLIST_REASON"
+			description="A_BLACKLIST_REASON_DESC" 
+			filter="string"
+			required="true" />
+
+		<field 
+			name="notes" 
+			type="text" 
+			class="inputbox"
+			size="40"
+			label="A_BLACKLIST_NOTES"
+			description="A_BLACKLIST_NOTES_DESC"
+			filter="string"
+			required="false" />
+
+		<field
+			name="created"
+			type="calendar"
+			label="JGLOBAL_FIELD_CREATED_LABEL"
+			description="JGLOBAL_FIELD_CREATED_DESC"
+			size="22"
+			format="%Y-%m-%d %H:%M:%S"
+			readonly="true" 
+			class="readonly"
+			filter="user_utc" />
+
+		<field 
+			name="id" 
+			type="text" 
+			default="0"
+			readonly="true" 
+			class="readonly"
+			label="JGLOBAL_FIELD_ID_LABEL" 
+			description="JGLOBAL_FIELD_ID_DESC" />
+
+		<field 
+			name="checked_out" 
+			type="hidden" 
+			filter="unset" />
+
+		<field 
+			name="checked_out_time" 
+			type="hidden" 
+			filter="unset" />
+	</fieldset>
+</form>

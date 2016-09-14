@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_JCOMMENTS_COMMENTS_VIEW_DEFAULT_TITLE">
+		<message><![CDATA[COM_JCOMMENTS_COMMENTS_VIEW_DEFAULT_DESC]]></message>
+	</layout>
+	<fields name="params" addfieldpath="/administrator/components/com_jcomments/models/fields">
+		<fieldset name="params" label="COM_JCOMMENTS_BASIC_OPTIONS_FIELDSET_LABEL">
+			<field 
+				name="object_group" 
+				type="jcommentsobjectgroup"
+				size="1" 
+				default="com_jcomments" 
+				label="COM_JCOMMENTS_COMMENTS_VIEW_OBJECT_GROUP_LABEL" 
+				description="COM_JCOMMENTS_COMMENTS_VIEW_OBJECT_GROUP_DESC" />
+
+			<field 
+				name="object_id"
+				type="text"
+				size="25"
+				default="1"
+				label="COM_JCOMMENTS_COMMENTS_VIEW_OBJECT_ID_LABEL"
+				description="COM_JCOMMENTS_COMMENTS_VIEW_OBJECT_ID_DESC" />
+		</fieldset>
+	</fields>
+</metadata>

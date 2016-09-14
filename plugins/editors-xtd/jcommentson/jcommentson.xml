@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5" type="plugin" group="editors-xtd" method="upgrade">
+	<name>plg_editors-xtd_jcommentson</name>
+	<creationDate>01/08/2014</creationDate>
+	<author>smart</author>
+	<copyright>Copyright 2006-2014 JoomlaTune.ru All rights reserved!</copyright>
+	<authorEmail>smart@joomlatune.ru</authorEmail>
+	<authorUrl>http://www.joomlatune.ru</authorUrl>
+	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+	<version>1.0</version>
+	<description>PLG_EDITORS-XTD_JCOMMENTSON_XML_DESCRIPTION</description>
+	<files>
+		<filename plugin="jcommentson">jcommentson.php</filename>
+	</files>
+	<config />
+</extension>

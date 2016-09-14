@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="2.5" method="upgrade">
+	<name>JComments</name>
+	<creationDate>14/09/2016</creationDate>
+	<author>smart</author>
+	<authorEmail>smart@joomlatune.ru</authorEmail>
+	<authorUrl>http://www.joomlatune.ru</authorUrl>
+	<copyright>Copyright 2006-2014 JoomlaTune.ru All rights reserved!</copyright>
+	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+	<version>3.0.5.1</version>
+	<description><![CDATA[JComments lets your users comment on content items.]]></description>
+
+	<scriptfile>script.jcomments.php</scriptfile>
+
+	<install>
+		<sql>
+			<file driver="mysql" charset="utf8">install/sql/install.mysql.utf8.sql</file>
+			<file driver="mysqli" charset="utf8">install/sql/install.mysql.utf8.sql</file>
+		</sql>
+	</install>
+
+	<uninstall>
+		<queries />
+	</uninstall>
+
+	<files folder="site">
+		<filename>index.html</filename>
+		<filename>jcomments.php</filename>
+		<filename>jcomments.ajax.php</filename>
+		<filename>jcomments.captcha.php</filename>
+		<filename>jcomments.class.php</filename>
+		<filename>jcomments.legacy.php</filename>
+		<filename>jcomments.rss.php</filename>
+		<filename>jcomments.subscription.php</filename>
+		<filename>router.php</filename>
+
+		<folder>classes</folder>
+		<folder>helpers</folder>
+		<folder>images</folder>
+		<folder>js</folder>
+		<folder>languages</folder>
+		<folder>libraries</folder>
+		<folder>models</folder>
+		<folder>plugins</folder>
+		<folder>sef_ext</folder>
+		<folder>tpl</folder>
+		<folder>views</folder>
+	</files>
+ 
+	<languages folder="site/languages">
+		<language tag="ar-AA">ar-AA.com_jcomments.ini</language>
+		<language tag="ar-AA">ar-AA.plg_search_jcomments.ini</language>
+		<language tag="be-BY">be-BY.com_jcomments.ini</language>
+		<language tag="be-BY">be-BY.plg_search_jcomments.ini</language>
+		<language tag="bg-BG">bg-BG.com_jcomments.ini</language>
+		<language tag="bg-BG">bg-BG.plg_search_jcomments.ini</language>
+		<language tag="bn-BD">bn-BD.com_jcomments.ini</language>
+		<language tag="bn-BD">bn-BD.plg_search_jcomments.ini</language>
+		<language tag="bs-BA">bs-BA.com_jcomments.ini</language>
+		<language tag="bs-BA">bs-BA.plg_search_jcomments.ini</language>
+		<language tag="ca-ES">ca-ES.com_jcomments.ini</language>
+		<language tag="ca-ES">ca-ES.plg_search_jcomments.ini</language>
+		<language tag="cs-CZ">cs-CZ.com_jcomments.ini</language>
+		<language tag="cs-CZ">cs-CZ.plg_search_jcomments.ini</language>
+		<language tag="da-DK">da-DK.com_jcomments.ini</language>
+		<language tag="da-DK">da-DK.plg_search_jcomments.ini</language>
+		<language tag="de-DE">de-DE.com_jcomments.ini</language>
+		<language tag="de-DE">de-DE.plg_search_jcomments.ini</language>
+		<language tag="en-GB">en-GB.com_jcomments.ini</language>
+		<language tag="en-GB">en-GB.plg_search_jcomments.ini</language>
+		<language tag="el-GR">el-GR.com_jcomments.ini</language>
+		<language tag="el-GR">el-GR.plg_search_jcomments.ini</language>
+		<language tag="es-AR">es-AR.com_jcomments.ini</language>
+		<language tag="es-AR">es-AR.plg_search_jcomments.ini</language>
+		<language tag="es-ES">es-ES.com_jcomments.ini</language>
+		<language tag="es-ES">es-ES.plg_search_jcomments.ini</language>
+		<language tag="et-EE">et-EE.com_jcomments.ini</language>
+		<language tag="et-EE">et-EE.plg_search_jcomments.ini</language>
+		<language tag="fa-IR">fa-IR.com_jcomments.ini</language>
+		<language tag="fa-IR">fa-IR.plg_search_jcomments.ini</language>
+		<language tag="fi-FI">fi-FI.com_jcomments.ini</language>
+		<language tag="fi-FI">fi-FI.plg_search_jcomments.ini</language>
+		<language tag="fr-FR">fr-FR.com_jcomments.ini</language>
+		<language tag="fr-FR">fr-FR.plg_search_jcomments.ini</language>
+		<language tag="gl-ES">gl-ES.com_jcomments.ini</language>
+		<language tag="gl-ES">gl-ES.plg_search_jcomments.ini</language>
+		<language tag="he-IL">he-IL.com_jcomments.ini</language>
+		<language tag="he-IL">he-IL.plg_search_jcomments.ini</language>
+		<language tag="hr-HR">hr-HR.com_jcomments.ini</language>
+		<language tag="hr-HR">hr-HR.plg_search_jcomments.ini</language>
+		<language tag="hu-HU">hu-HU.com_jcomments.ini</language>
+		<language tag="hu-HU">hu-HU.plg_search_jcomments.ini</language>
+		<language tag="it-IT">it-IT.com_jcomments.ini</language>
+		<language tag="it-IT">it-IT.plg_search_jcomments.ini</language>
+		<language tag="ja-JP">ja-JP.com_jcomments.ini</language>
+		<language tag="ja-JP">ja-JP.plg_search_jcomments.ini</language>
+		<language tag="lt-LT">lt-LT.com_jcomments.ini</language>
+		<language tag="lt-LT">lt-LT.plg_search_jcomments.ini</language>
+		<language tag="km-KH">km-KH.com_jcomments.ini</language>
+		<language tag="km-KH">km-KH.plg_search_jcomments.ini</language>
+		<language tag="lv-LV">lv-LV.com_jcomments.ini</language>
+		<language tag="lv-LV">lv-LV.plg_search_jcomments.ini</language>
+		<language tag="nb-NO">nb-NO.com_jcomments.ini</language>
+		<language tag="nb-NO">nb-NO.plg_search_jcomments.ini</language>
+		<language tag="nl-NL">nl-NL.com_jcomments.ini</language>
+		<language tag="nl-NL">nl-NL.plg_search_jcomments.ini</language>
+		<language tag="pl-PL">pl-PL.com_jcomments.ini</language>
+		<language tag="pl-PL">pl-PL.plg_search_jcomments.ini</language>
+		<language tag="pt-PT">pt-PT.com_jcomments.ini</language>
+		<language tag="pt-PT">pt-PT.plg_search_jcomments.ini</language>
+		<language tag="pt-BR">pt-BR.com_jcomments.ini</language>
+		<language tag="pt-BR">pt-BR.plg_search_jcomments.ini</language>
+		<language tag="ro-RO">ro-RO.com_jcomments.ini</language>
+		<language tag="ro-RO">ro-RO.plg_search_jcomments.ini</language>
+		<language tag="ru-RU">ru-RU.com_jcomments.ini</language>
+		<language tag="ru-RU">ru-RU.plg_search_jcomments.ini</language>
+		<language tag="sk-SK">sk-SK.com_jcomments.ini</language>
+		<language tag="sk-SK">sk-SK.plg_search_jcomments.ini</language>
+		<language tag="sl-SI">sl-SI.com_jcomments.ini</language>
+		<language tag="sl-SI">sl-SI.plg_search_jcomments.ini</language>
+		<language tag="sr-YU">sr-YU.com_jcomments.ini</language>
+		<language tag="sr-YU">sr-YU.plg_search_jcomments.ini</language>
+		<language tag="sv-SE">sv-SE.com_jcomments.ini</language>
+		<language tag="sv-SE">sv-SE.plg_search_jcomments.ini</language>
+		<language tag="th-TH">th-TH.com_jcomments.ini</language>
+		<language tag="th-TH">th-TH.plg_search_jcomments.ini</language>
+		<language tag="tr-TR">tr-TR.com_jcomments.ini</language>
+		<language tag="tr-TR">tr-TR.plg_search_jcomments.ini</language>
+		<language tag="uk-UA">uk-UA.com_jcomments.ini</language>
+		<language tag="uk-UA">uk-UA.plg_search_jcomments.ini</language>
+		<language tag="vi-VN">vi-VN.com_jcomments.ini</language>
+		<language tag="vi-VN">vi-VN.plg_search_jcomments.ini</language>
+		<language tag="zh-CN">zh-CN.com_jcomments.ini</language>
+		<language tag="zh-CN">zh-CN.plg_search_jcomments.ini</language>
+	</languages>
+
+	<administration>
+		<menu img="components/com_jcomments/assets/images/icon-16-jcomments.png" view="comments">COM_JCOMMENTS</menu>
+		<submenu>
+			<menu view="comments" img="class:jcomments-comments" link="option=com_jcomments&amp;view=comments">COM_JCOMMENTS_COMMENTS</menu>
+			<menu view="settings" img="class:jcomments-settings" link="option=com_jcomments&amp;view=settings">COM_JCOMMENTS_SETTINGS</menu>
+			<menu view="smilies" img="class:jcomments-smilies" link="option=com_jcomments&amp;view=smilies">COM_JCOMMENTS_SMILIES</menu>
+			<menu view="subscriptions" img="class:jcomments-subscriptions" link="option=com_jcomments&amp;view=subscriptions">COM_JCOMMENTS_SUBSCRIPTIONS</menu>
+			<menu view="custombbcodes" img="class:jcomments-custombbcodes" link="option=com_jcomments&amp;view=custombbcodes">COM_JCOMMENTS_CUSTOM_BBCODE</menu>
+			<menu view="blacklists" img="class:jcomments-blacklist" link="option=com_jcomments&amp;view=blacklists">COM_JCOMMENTS_BLACKLIST</menu>
+			<menu view="mailq" img="class:jcomments-mailq" link="option=com_jcomments&amp;view=mailq">COM_JCOMMENTS_MAILQ</menu>
+			<menu view="import" img="class:jcomments-import" link="option=com_jcomments&amp;view=import">COM_JCOMMENTS_IMPORT</menu>
+			<menu view="about" img="class:jcomments-about" link="option=com_jcomments&amp;view=about">COM_JCOMMENTS_ABOUT</menu>
+		</submenu>
+
+		<files folder="administrator">
+			<folder>assets</folder>
+			<folder>controllers</folder>
+			<folder>classes</folder>
+			<folder>helpers</folder>
+			<folder>install</folder>
+			<folder>models</folder>
+			<folder>tables</folder>
+			<folder>views</folder>
+			<filename>controller.php</filename>
+			<filename>jcomments.php</filename>
+			<filename>access.xml</filename>
+			<filename>config.xml</filename>
+			<filename>version.php</filename>
+		</files>
+	
+		<languages folder="administrator/language">
+			<language tag="en-GB">en-GB/en-GB.com_jcomments.ini</language>
+			<language tag="en-GB">en-GB/en-GB.com_jcomments.sys.ini</language>
+			<language tag="en-GB">en-GB/en-GB.plg_content_jcomments.ini</language>
+			<language tag="en-GB">en-GB/en-GB.plg_content_jcomments.sys.ini</language>
+			<language tag="en-GB">en-GB/en-GB.plg_editors-xtd_jcommentsoff.ini</language>
+			<language tag="en-GB">en-GB/en-GB.plg_editors-xtd_jcommentsoff.sys.ini</language>
+			<language tag="en-GB">en-GB/en-GB.plg_editors-xtd_jcommentson.ini</language>
+			<language tag="en-GB">en-GB/en-GB.plg_editors-xtd_jcommentson.sys.ini</language>
+			<language tag="en-GB">en-GB/en-GB.plg_quickicon_jcomments.ini</language>
+			<language tag="en-GB">en-GB/en-GB.plg_quickicon_jcomments.sys.ini</language>
+			<language tag="en-GB">en-GB/en-GB.plg_search_jcomments.ini</language>
+			<language tag="en-GB">en-GB/en-GB.plg_search_jcomments.sys.ini</language>
+			<language tag="en-GB">en-GB/en-GB.plg_system_jcomments.ini</language>
+			<language tag="en-GB">en-GB/en-GB.plg_system_jcomments.sys.ini</language>
+			<language tag="en-GB">en-GB/en-GB.plg_user_jcomments.ini</language>
+			<language tag="en-GB">en-GB/en-GB.plg_user_jcomments.sys.ini</language>
+			
+			<language tag="ru-RU">ru-RU/ru-RU.com_jcomments.ini</language>
+			<language tag="ru-RU">ru-RU/ru-RU.com_jcomments.sys.ini</language>
+			<language tag="ru-RU">ru-RU/ru-RU.plg_content_jcomments.ini</language>
+			<language tag="ru-RU">ru-RU/ru-RU.plg_content_jcomments.sys.ini</language>
+			<language tag="ru-RU">ru-RU/ru-RU.plg_editors-xtd_jcommentsoff.ini</language>
+			<language tag="ru-RU">ru-RU/ru-RU.plg_editors-xtd_jcommentsoff.sys.ini</language>
+			<language tag="ru-RU">ru-RU/ru-RU.plg_editors-xtd_jcommentson.ini</language>
+			<language tag="ru-RU">ru-RU/ru-RU.plg_editors-xtd_jcommentson.sys.ini</language>
+			<language tag="ru-RU">ru-RU/ru-RU.plg_quickicon_jcomments.ini</language>
+			<language tag="ru-RU">ru-RU/ru-RU.plg_quickicon_jcomments.sys.ini</language>
+			<language tag="ru-RU">ru-RU/ru-RU.plg_search_jcomments.ini</language>
+			<language tag="ru-RU">ru-RU/ru-RU.plg_search_jcomments.sys.ini</language>
+			<language tag="ru-RU">ru-RU/ru-RU.plg_system_jcomments.ini</language>
+			<language tag="ru-RU">ru-RU/ru-RU.plg_system_jcomments.sys.ini</language>
+			<language tag="ru-RU">ru-RU/ru-RU.plg_user_jcomments.ini</language>
+			<language tag="ru-RU">ru-RU/ru-RU.plg_user_jcomments.sys.ini</language>
+		</languages>
+	</administration>
+	
+	<plugins>
+		<plugin plugin="jcomments" group="content" />
+		<plugin plugin="jcommentson" group="editors-xtd" />
+		<plugin plugin="jcommentsoff" group="editors-xtd" />
+		<plugin plugin="jcomments" group="search" />
+		<plugin plugin="jcomments" group="system" />
+		<plugin plugin="jcomments" group="user" />
+		<plugin plugin="jcomments" group="quickicon" />
+	</plugins>
+
+	<updateservers>
+		<server type="extension" priority="1" name="JComments Update Site">http://www.joomlatune.ru/updates/jcomments.xml</server>
+	</updateservers>
+</extension>
