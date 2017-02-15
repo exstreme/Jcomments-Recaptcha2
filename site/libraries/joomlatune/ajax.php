@@ -22,7 +22,7 @@ if (!defined ('JOOMLATUNE_AJAX'))
 		var $xml;
 		var $sEncoding;
 
-		function JoomlaTuneAjaxResponse($sEncoding='utf-8')
+		function __construct($sEncoding='utf-8')
 		{
 			$this->aCommands = array();
 			$this->sEncoding = $sEncoding;
@@ -152,7 +152,7 @@ if (!defined ('JOOMLATUNE_AJAX'))
 		var $sRequestURI;
 		var $sEncoding;
 
-		function JoomlaTuneAjax($sRequestURI="",$sEncoding='utf-8')
+		function __construct($sRequestURI="",$sEncoding='utf-8')
 		{
 			$this->aFunctions = array();
 			$this->aFunctionRequestTypes = array();
