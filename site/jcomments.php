@@ -122,10 +122,10 @@ switch (trim($jc_task)) {
 
 					echo JComments::show($object_id, $object_group);
 				} else {
-					JFactory::getApplication()->redirect(JRoute::_('index.php'));
+					JFactory::getApplication()->redirect(JRoute::_('/index.php'));
 				}
 			} else {
-				JFactory::getApplication()->redirect(JRoute::_('index.php'));
+				JFactory::getApplication()->redirect(JRoute::_('/index.php'));
 			}
 		}
 		break;
