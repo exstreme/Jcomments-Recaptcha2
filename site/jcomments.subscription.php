@@ -20,7 +20,7 @@ class JCommentsSubscriptionManager
 	 */
 	var $_errors = null;
 
-	function JCommentsSubscriptionManager()
+	function __construct()
 	{
 		$this->_errors = array();
 	}
