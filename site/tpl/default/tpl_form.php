@@ -192,22 +192,25 @@ function JCommentsInitializeForm()
 		}
 
 		$customBBCodes = $this->getVar('comments-form-custombbcodes');
-		if (count($customBBCodes)) {
-			foreach($customBBCodes as $code) {
-				if ($code->button_enabled) {
-					$k = 'custombbcode' . $code->id;
-					$title = trim(JCommentsText::jsEscape($code->button_title));
-					$text = empty($code->button_prompt) ? JText::_('BBCODE_HINT_ENTER_TEXT') : JText::_($code->button_prompt);
-					$open_tag = $code->button_open_tag;
-					$close_tag = $code->button_close_tag;
-					$icon = $code->button_image;
-					$css = $code->button_css;
-?>
-	jcEditor.addButton('<?php echo $k; ?>','<?php echo $title; ?>','<?php echo $text; ?>','<?php echo $open_tag; ?>','<?php echo $close_tag; ?>','<?php echo $css; ?>','<?php echo $icon; ?>');
-<?php
-				}
-			}
-		}
+        if ( is_array($customBBCodes) ) {
+            if (count($customBBCodes)) {
+                foreach($customBBCodes as $code) {
+                    if ($code->button_enabled) {
+                        $k = 'custombbcode' . $code->id;
+                        $title = trim(JCommentsText::jsEscape($code->button_title));
+                        $text = empty($code->button_prompt) ? JText::_('BBCODE_HINT_ENTER_TEXT') : JText::_($code->button_prompt);
+                        $open_tag = $code->button_open_tag;
+                        $close_tag = $code->button_close_tag;
+                        $icon = $code->button_image;
+                        $css = $code->button_css;
+    ?>
+        jcEditor.addButton('<?php echo $k; ?>','<?php echo $title; ?>','<?php echo $text; ?>','<?php echo $open_tag; ?>','<?php echo $close_tag; ?>','<?php echo $css; ?>','<?php echo $icon; ?>');
+    <?php
+                    }
+                }
+            }
+        }
+
 
 		$smiles = $this->getVar( 'comment-form-smiles' );
 
