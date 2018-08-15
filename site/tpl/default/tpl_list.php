@@ -95,7 +95,7 @@ class jtt_tpl_list extends JoomlaTuneTemplate
 			}
 		}
 ?>
-<h4><?php echo JText::_('COMMENTS_LIST_HEADER'); ?> <?php echo $btnRSS; ?><?php echo $btnRefresh; ?></h4>
+<span><?php echo JText::_('COMMENTS_LIST_HEADER'); ?> <?php echo $btnRSS; ?><?php echo $btnRefresh; ?></span>
 <?php
 	}
 

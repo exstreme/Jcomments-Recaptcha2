@@ -17,8 +17,8 @@ require_once(dirname(__FILE__) . '/jcomments.legacy.php');
 
 // regular expression for links
 DEFINE('_JC_REGEXP_LINK', '#(^|\s|\>|\()((http://|https://|news://|ftp://|www.)\w+[^\s\<\>\"\'\)]+)#iu');
-DEFINE('_JC_REGEXP_EMAIL', '#([\w\.\-]+)@(\w+[\w\.\-]*\.\w{2,4})#iu');
-DEFINE('_JC_REGEXP_EMAIL2', '#^([_a-z0-9-]+)(\.[_a-z0-9-]+)*@([a-z0-9-]+)(\.[a-z0-9-]+)*(\.[a-z]{2,4})$#iu');
+DEFINE('_JC_REGEXP_EMAIL', '#([\w\.\-]+)@(\w+[\w\.\-]*\.\w{2,6})#iu');
+DEFINE('_JC_REGEXP_EMAIL2', '#^([_a-z0-9-]+)(\.[_a-z0-9-]+)*@([a-z0-9-]+)(\.[a-z0-9-]+)*(\.[a-z]{2,6})$#iu');
 
 require_once(JCOMMENTS_SITE . '/jcomments.class.php');
 require_once(JCOMMENTS_MODELS . '/jcomments.php');
@@ -35,7 +35,8 @@ switch (trim($jc_task)) {
 		if ($captchaEngine == 'kcaptcha' || $config->getInt('enable_plugins') == 0) {
 			require_once(JCOMMENTS_SITE . '/jcomments.captcha.php');
 			JCommentsCaptcha::image();
-		} else {
+		}
+		else {
 			if ($config->getInt('enable_plugins') == 1) {
 				JCommentsEventHelper::trigger('onJCommentsCaptchaImage');
 			}
@@ -443,7 +444,11 @@ class JComments
 				$captchaEngine = $config->get('captcha_engine', 'kcaptcha');
 				if ($captchaEngine == 'kcaptcha') {
 					// TODO
-				} else {
+				}
+                elseif ($captchaEngine == 'recaptcha'){
+                    $tmpl->addVar('tpl_form', 'comments-form-captcha-html', 'recaptcha');
+                }
+				else {
 					if ($config->getInt('enable_plugins') == 1) {
 						$captchaHTML = JCommentsEventHelper::trigger('onJCommentsCaptchaDisplay');
 						$tmpl->addVar('tpl_form', 'comments-form-captcha-html', implode("\n", $captchaHTML));

@@ -399,10 +399,11 @@
                 name="captcha_engine"
                 type="jcommentscaptcha"
                 class="inputbox"
-                default="kcaptcha"
+                default="recaptcha"
                 label="AP_FORM_FIELD_CAPTCHA"
                 description="">
-			<option value="kcaptcha">KCAPTCHA (JComments)</option>
+            <option value="kcaptcha">KCAPTCHA</option>
+			<option value="recaptcha">RECAPTCHA</option>
         </field>
 
     </fieldset>

@@ -48,7 +48,7 @@ class jtt_tpl_form extends JoomlaTuneTemplate
 		$htmlFormAppend = $this->getVar('comments-form-html-append');
 
 ?>
-<h4><?php echo JText::_('FORM_HEADER'); ?></h4>
+<span><?php echo JText::_('FORM_HEADER'); ?></span>
 <?php
 		if ($this->getVar( 'comments-form-policy', 0) == 1) {
 ?>
@@ -127,13 +127,19 @@ class jtt_tpl_form extends JoomlaTuneTemplate
 
 		if ($this->getVar('comments-form-captcha', 0) == 1) {
 			$html = $this->getVar('comments-form-captcha-html');
-			if ($html != '') {
+            if ($html == 'recaptcha') {
+                    // Recaptcha
+                $recaptcha = JCaptcha::getInstance('recaptcha', array('namespace' => 'anything'));
+                echo $recaptcha->display('recaptcha', 'dynamic_recaptcha_1','g-recaptcha');
+            }
+			elseif ($html != '') {
 ?>
 <p>
 		<?php echo $html; ?>
 </p>
 <?php
-			} else {
+			}
+            else {
 				$link = JCommentsFactory::getLink('captcha');
 ?>
 <p>

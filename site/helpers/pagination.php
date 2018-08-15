@@ -25,7 +25,7 @@ class JCommentsPagination {
 	var $limitStart = 0;
 	var $currentPage = 0;
 
-	public function JCommentsPagination($object_id, $object_group)
+	public function __construct($object_id, $object_group)
 	{
 		$config = JCommentsFactory::getConfig();
 

@@ -238,7 +238,16 @@ class JCommentsAJAX
 							$response->addScript("jcomments.clear('captcha');");
 							return $response;
 						}
-					} else {
+                    } elseif ($captchaEngine == 'recaptcha') {
+                        $recaptcha = JCaptcha::getInstance('recaptcha', array('namespace' => 'anything'));
+                        $answer = $recaptcha->checkAnswer('anything');
+                        if(!$answer){
+                            //	die('Invalid Captcha');
+                            self::showErrorMessage(JText::_('ERROR_CAPTCHA'), 'captcha');
+                            $response->addScript("grecaptcha.reset()");
+                            return $response;
+                        }
+                    } else {
 						$result = JCommentsEventHelper::trigger('onJCommentsCaptchaVerify', array($values['captcha_refid'], &$response));
 						// if all plugins returns false
 						if (!in_array(true, $result, true)) {
@@ -468,7 +477,9 @@ class JCommentsAJAX
 							}
 						}
 						self::showInfoMessage(JText::_('THANK_YOU_FOR_YOUR_SUBMISSION'));
-					} else {
+					}
+
+                    else {
 						self::showInfoMessage(JText::_('THANK_YOU_YOUR_COMMENT_WILL_BE_PUBLISHED_ONCE_REVIEWED'));
 					}
 
@@ -480,7 +491,11 @@ class JCommentsAJAX
 						JCommentsCaptcha::destroy();
 						$response->addScript("jcomments.clear('captcha');");
 					}
-				} else {
+				}
+                elseif ($acl->check('enable_captcha') == 1 && $config->get('captcha_engine', 'kcaptcha') == 'recaptcha') {
+                    $response->addScript("grecaptcha.reset();");
+                }
+                else {
 					self::showErrorMessage(JText::_('ERROR_DUPLICATE_COMMENT'), 'comment');
 				}
 			}

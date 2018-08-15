@@ -16,7 +16,7 @@ class jtt_tpl_report_form extends JoomlaTuneTemplate
 	function render() 
 	{
 ?>
-<h4><?php echo JText::_('REPORT_TO_ADMINISTRATOR'); ?></h4>
+<span><?php echo JText::_('REPORT_TO_ADMINISTRATOR'); ?></span>
 <form id="comments-report-form" name="comments-report-form" action="javascript:void(null);">
 <?php
 		if ($this->getVar('isGuest', 1) == 1) {

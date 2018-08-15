@@ -24,7 +24,7 @@ jimport('joomla.plugin.plugin');
  */
 class plgContentJComments extends JPlugin
 {
-	function plgContentJComments(&$subject, $config)
+	function __construct(&$subject, $config)
 	{
 		parent::__construct($subject, $config);
 	}
