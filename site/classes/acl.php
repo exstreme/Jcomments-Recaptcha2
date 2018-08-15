@@ -38,7 +38,7 @@ class JCommentsACL
 	var $deleteMode = 0;
 	var $userBlocked = 0;
 
-	function __construct()
+	function JCommentsACL()
 	{
 		$user = JFactory::getUser();
 		$config = JCommentsFactory::getConfig();

@@ -124,7 +124,7 @@ class jtt_tpl_tree extends JoomlaTuneTemplate
 			}
 		}
 ?>
-<span><?php echo JText::_('COMMENTS_LIST_HEADER'); ?> <?php echo $btnRSS; ?><?php echo $btnRefresh; ?></span>
+<h4><?php echo JText::_('COMMENTS_LIST_HEADER'); ?> <?php echo $btnRSS; ?><?php echo $btnRefresh; ?></h4>
 <?php
 	}
 

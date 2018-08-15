@@ -21,7 +21,7 @@ defined('_JEXEC') or die;
 class KCAPTCHA{
 
 	// generates keystring and image
-	function __construct(){
+	function KCAPTCHA(){
 
 		require(dirname(__FILE__).'/kcaptcha_config.php');
 		$fonts=array();

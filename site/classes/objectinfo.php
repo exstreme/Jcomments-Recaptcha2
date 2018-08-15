@@ -39,7 +39,7 @@ class JCommentsObjectInfo
 	/** @var datetime */
 	var $modified = null;
 
-	function __construct($src = null)
+	function JCommentsObjectInfo($src = null)
 	{
 		if ($src !== null && is_object($src)) {
 			$vars = get_object_vars($this);

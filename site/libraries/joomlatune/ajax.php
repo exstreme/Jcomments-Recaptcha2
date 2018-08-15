@@ -22,7 +22,7 @@ if (!defined ('JOOMLATUNE_AJAX'))
 		var $xml;
 		var $sEncoding;
 
-		function __construct($sEncoding='utf-8')
+		function JoomlaTuneAjaxResponse($sEncoding='utf-8')
 		{
 			$this->aCommands = array();
 			$this->sEncoding = $sEncoding;
@@ -152,7 +152,7 @@ if (!defined ('JOOMLATUNE_AJAX'))
 		var $sRequestURI;
 		var $sEncoding;
 
-		function __construct($sRequestURI="",$sEncoding='utf-8')
+		function JoomlaTuneAjax($sRequestURI="",$sEncoding='utf-8')
 		{
 			$this->aFunctions = array();
 			$this->aFunctionRequestTypes = array();
@@ -198,7 +198,7 @@ if (!defined ('JOOMLATUNE_AJAX'))
 		{
 			if ($this->_isObjectCallback($sFunction)) {
 				$mReturn = call_user_func_array($this->aObjects[$sFunction], $aArgs);
-			} else {
+			} else if (array_key_exists($sFunction, $this->aFunctions)) {
 				$mReturn = call_user_func_array($sFunction, $aArgs);
 			}
 			return $mReturn;

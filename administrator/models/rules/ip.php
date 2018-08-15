@@ -21,6 +21,8 @@ class JFormRuleIp extends JFormRule
 			return true;
 		}
 
+		$value = str_replace('*', '1', $value);
+
 		if (function_exists('filter_var')) {
 			return (filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)
 				|| filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6));

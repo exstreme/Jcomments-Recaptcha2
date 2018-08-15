@@ -21,7 +21,6 @@ class JCommentsPluginHelper
 	 *
 	 * @param string $pluginName The plugin name
 	 * @param string $type The plugin type, relates to the sub-directory in the plugins directory
-	 * @return JParameter A JParameter object
 	 */
 	public static function getParams($pluginName, $type = 'content')
 	{

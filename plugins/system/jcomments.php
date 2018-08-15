@@ -43,7 +43,7 @@ class plgSystemJComments extends JPlugin
 		if (isset($_REQUEST['jtxf'])) {
 			if ($this->params->get('disable_error_reporting', 0) == 1) {
 				// turn off all error reporting for AJAX call
-				@error_reporting(0);
+				@error_reporting(E_NONE);
 			}
 		}
 	}
@@ -122,7 +122,7 @@ class plgSystemJComments extends JPlugin
 
 				// remove comments if content item deleted from trash
 				if ($option == 'com_trash' && $task == 'delete' && $type == 'content') {
-					$cid = JRequest::getVar('cid', array(0), 'post', 'array');
+					$cid = $app->input->post->get('cid', array(), 'array');
 					JArrayHelper::toInteger($cid, array(0));
 					include_once(JPATH_ROOT . '/components/com_jcomments/jcomments.php');
 					JCommentsModel::deleteComments($cid, 'com_content');

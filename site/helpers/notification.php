@@ -161,7 +161,7 @@ class JCommentsNotificationHelper
 			$data['comment']->comment = JCommentsFactory::getCustomBBCode()->replace($data['comment']->comment, true);
 		}
 
-		$data['comment']->comment = trim(preg_replace('/(\s){2,}/i', '\\1', $data['comment']->comment));
+		$data['comment']->comment = trim(preg_replace('/(\s){2,}/iu', '\\1', $data['comment']->comment));
 
 		return $data;
 	}

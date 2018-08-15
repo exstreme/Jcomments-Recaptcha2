@@ -11,9 +11,6 @@
 
 defined('_JEXEC') or die;
 
-JHtml::_('behavior.keepalive');
-JHtml::_('behavior.formvalidator');
-
 /**
  * Comments form template
  */
@@ -51,7 +48,7 @@ class jtt_tpl_form extends JoomlaTuneTemplate
 		$htmlFormAppend = $this->getVar('comments-form-html-append');
 
 ?>
-<span><?php echo JText::_('FORM_HEADER'); ?></span>
+<h4><?php echo JText::_('FORM_HEADER'); ?></h4>
 <?php
 		if ($this->getVar( 'comments-form-policy', 0) == 1) {
 ?>
@@ -129,10 +126,15 @@ class jtt_tpl_form extends JoomlaTuneTemplate
 		}
 
 		if ($this->getVar('comments-form-captcha', 0) == 1) {
-			$html = $this->getVar('comments-form-captcha-html','kcaptcha');
-			if ($html == 'kcaptcha') {
+			$html = $this->getVar('comments-form-captcha-html');
+			if ($html != '') {
+?>
+<p>
+		<?php echo $html; ?>
+</p>
+<?php
+			} else {
 				$link = JCommentsFactory::getLink('captcha');
-
 ?>
 <p>
 	<span>
@@ -142,10 +144,6 @@ class jtt_tpl_form extends JoomlaTuneTemplate
 	</span>
 </p>
 <?php
-			} else {
-			// Recaptcha
-$recaptcha = JCaptcha::getInstance('recaptcha', array('namespace' => 'anything'));
-echo $recaptcha->display('recaptcha', 'dynamic_recaptcha_1','g-recaptcha');
 			}
 		}
 ?>
@@ -192,25 +190,22 @@ function JCommentsInitializeForm()
 		}
 
 		$customBBCodes = $this->getVar('comments-form-custombbcodes');
-        if ( is_array($customBBCodes) ) {
-            if (count($customBBCodes)) {
-                foreach($customBBCodes as $code) {
-                    if ($code->button_enabled) {
-                        $k = 'custombbcode' . $code->id;
-                        $title = trim(JCommentsText::jsEscape($code->button_title));
-                        $text = empty($code->button_prompt) ? JText::_('BBCODE_HINT_ENTER_TEXT') : JText::_($code->button_prompt);
-                        $open_tag = $code->button_open_tag;
-                        $close_tag = $code->button_close_tag;
-                        $icon = $code->button_image;
-                        $css = $code->button_css;
-    ?>
-        jcEditor.addButton('<?php echo $k; ?>','<?php echo $title; ?>','<?php echo $text; ?>','<?php echo $open_tag; ?>','<?php echo $close_tag; ?>','<?php echo $css; ?>','<?php echo $icon; ?>');
-    <?php
-                    }
-                }
-            }
-        }
-
+		if (count($customBBCodes)) {
+			foreach($customBBCodes as $code) {
+				if ($code->button_enabled) {
+					$k = 'custombbcode' . $code->id;
+					$title = trim(JCommentsText::jsEscape($code->button_title));
+					$text = empty($code->button_prompt) ? JText::_('BBCODE_HINT_ENTER_TEXT') : JText::_($code->button_prompt);
+					$open_tag = $code->button_open_tag;
+					$close_tag = $code->button_close_tag;
+					$icon = $code->button_image;
+					$css = $code->button_css;
+?>
+	jcEditor.addButton('<?php echo $k; ?>','<?php echo $title; ?>','<?php echo $text; ?>','<?php echo $open_tag; ?>','<?php echo $close_tag; ?>','<?php echo $css; ?>','<?php echo $icon; ?>');
+<?php
+				}
+			}
+		}
 
 		$smiles = $this->getVar( 'comment-form-smiles' );
 
@@ -280,12 +275,21 @@ else {if (typeof window.onload=='function'){var oldload=window.onload;window.onl
 	 */
 	function getMessage( $text )
 	{
-		if ($text != '') {
+		$htmlBeforeForm = $this->getVar('comments-html-before-form');
+		$htmlAfterForm = $this->getVar('comments-html-after-form');
+
 ?>
 <a id="addcomments" href="#addcomments"></a>
+<?php
+		echo $htmlBeforeForm;
+
+		if ($text != '') {
+?>
 <p class="message"><?php echo $text; ?></p>
 <?php
 		}
+
+		echo $htmlAfterForm;
 	}
 
 	function getFormFields($fields)

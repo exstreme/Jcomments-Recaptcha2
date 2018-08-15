@@ -105,6 +105,7 @@ class JCommentsAJAX
 		}
 
 		$response = JCommentsFactory::getAjaxResponse();
+		$object_group = JCommentsSecurity::clearObjectGroup($object_group);
 
 		$form = JComments::getCommentsForm($object_id, $object_group);
 		$response->addAssign($target, 'innerHTML', $form);
@@ -119,7 +120,7 @@ class JCommentsAJAX
 
 		$config = JCommentsFactory::getConfig();
 		if ($config->getInt('report_reason_required') == 0) {
-			$_POST['commentid'] = (int) $id;
+			JFactory::getApplication()->input->post->set('commentid', (int) $id);
 			$response = JCommentsFactory::getAjaxResponse();
 			$response->addAssign($target, 'innerHTML', '<div id="comments-report-form"></div>');
 			return self::reportComment();
@@ -147,7 +148,7 @@ class JCommentsAJAX
 		$response = JCommentsFactory::getAjaxResponse();
 
 		if ($acl->canComment()) {
-			$values = self::prepareValues( $_POST );
+			$values = self::prepareValues($_POST);
 
 			$object_group = isset($values['object_group']) ? JCommentsSecurity::clearObjectGroup($values['object_group']) : '';
 			$object_id = isset($values['object_id']) ? intval($values['object_id']) : '';
@@ -235,15 +236,6 @@ class JCommentsAJAX
 							self::showErrorMessage(JText::_('ERROR_CAPTCHA'), 'captcha');
 							JCommentsCaptcha::destroy();
 							$response->addScript("jcomments.clear('captcha');");
-							return $response;
-						}
-					} else if ($captchaEngine == 'recaptcha') {
-					$recaptcha = JCaptcha::getInstance('recaptcha', array('namespace' => 'anything'));
-						$answer = $recaptcha->checkAnswer('anything');
-						if(!$answer){
-						//	die('Invalid Captcha');
-							self::showErrorMessage(JText::_('ERROR_CAPTCHA'), 'captcha');
-							$response->addScript("grecaptcha.reset()");
 							return $response;
 						}
 					} else {
@@ -405,13 +397,10 @@ class JCommentsAJAX
 					// save new comment to database
 					if (!$comment->store()) {
 						$response->addScript("jcomments.clear('comment');");
-var_dump($config->get('captcha_engine', 'kcaptcha'));
+
 						if ($acl->check('enable_captcha') == 1 && $config->get('captcha_engine', 'kcaptcha') == 'kcaptcha') {
 							JCommentsCaptcha::destroy();
 							$response->addScript("jcomments.clear('captcha');");
-						}
-						else if ($acl->check('enable_captcha') == 1 && $config->get('captcha_engine', 'kcaptcha') == 'recaptcha') {
-													$response->addScript("grecaptcha.reset();");
 						}
 						return $response;
 					}
@@ -491,9 +480,6 @@ var_dump($config->get('captcha_engine', 'kcaptcha'));
 						JCommentsCaptcha::destroy();
 						$response->addScript("jcomments.clear('captcha');");
 					}
-					else if ($acl->check('enable_captcha') == 1 && $config->get('captcha_engine', 'kcaptcha') == 'recaptcha') {
-													$response->addScript("grecaptcha.reset();");
-						}
 				} else {
 					self::showErrorMessage(JText::_('ERROR_DUPLICATE_COMMENT'), 'comment');
 				}
@@ -617,7 +603,7 @@ var_dump($config->get('captcha_engine', 'kcaptcha'));
 		return $response;
 	}
 
-	public static function cancelComment( $id )
+	public static function cancelComment($id)
 	{
 		if (JCommentsSecurity::badRequest() == 1) {
 			JCommentsSecurity::notAuth();
@@ -815,6 +801,7 @@ var_dump($config->get('captcha_engine', 'kcaptcha'));
 
 		$object_id = (int) $object_id;
 		$object_group = strip_tags($object_group);
+		$object_group = JCommentsSecurity::clearObjectGroup($object_group);
 		$page = (int) $page;
 
 		self::updateCommentsList($response, $object_id, $object_group, $page);
@@ -887,6 +874,7 @@ var_dump($config->get('captcha_engine', 'kcaptcha'));
 	{
 		$user = JFactory::getUser();
 		$response = JCommentsFactory::getAjaxResponse();
+		$object_group = JCommentsSecurity::clearObjectGroup($object_group);
 
 		if ($user->id) {
 			require_once (JCOMMENTS_SITE.'/jcomments.subscription.php');
@@ -981,7 +969,7 @@ var_dump($config->get('captcha_engine', 'kcaptcha'));
 		$db = JFactory::getDbo();
 		$config = JCommentsFactory::getConfig();
 		$response = JCommentsFactory::getAjaxResponse();
-		$values = self::prepareValues( $_POST );
+		$values = self::prepareValues($_POST);
 
 		$id = (int) $values['commentid'];
 		$reason = trim(strip_tags($values['reason']));

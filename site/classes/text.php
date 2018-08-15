@@ -38,7 +38,7 @@ class JCommentsText
 	 */
 	public static function nl2br($text)
 	{
-		$text = preg_replace(array('/\r/', '/^\n+/', '/\n+$/'), '', $text);
+		$text = preg_replace(array('/\r/u', '/^\n+/u', '/\n+$/u'), '', $text);
 		$text = str_replace("\n", '<br />', $text);
 
 		return $text;
@@ -128,8 +128,8 @@ class JCommentsText
 			$plainText = preg_replace('#<br\s?/?>#isu', '', $plainText);
 			$plainText = preg_replace('#<img[^\>]+/>#isu', '', $plainText);
 			$plainText = preg_replace('#<a.*?>(.*?)</a>#isu', '', $plainText);
-			$plainText = preg_replace('#<span class="quote">(.*?)</span>#is', '', $plainText);
-			$plainText = preg_replace('#<span[^\>]*?>(.*?)</span>#is', '\\1', $plainText);
+			$plainText = preg_replace('#<span class="quote">(.*?)</span>#isu', '', $plainText);
+			$plainText = preg_replace('#<span[^\>]*?>(.*?)</span>#isu', '\\1', $plainText);
 			$plainText = preg_replace('#<pre.*?>(.*?)</pre>#isUu', '', $plainText);
 			$plainText = preg_replace('#<blockquote.*?>(.*?)</blockquote>#isUu', '\\1 ', $plainText);
 			$plainText = preg_replace('#<code.*?>(.*?)</code>#isUu', '', $plainText);

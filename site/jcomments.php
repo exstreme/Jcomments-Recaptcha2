@@ -17,8 +17,8 @@ require_once(dirname(__FILE__) . '/jcomments.legacy.php');
 
 // regular expression for links
 DEFINE('_JC_REGEXP_LINK', '#(^|\s|\>|\()((http://|https://|news://|ftp://|www.)\w+[^\s\<\>\"\'\)]+)#iu');
-DEFINE('_JC_REGEXP_EMAIL', '#([\w\.\-]+)@(\w+[\w\.\-]*\.\w{2,6})#iu');
-DEFINE('_JC_REGEXP_EMAIL2', '#^([_a-z0-9-]+)(\.[_a-z0-9-]+)*@([a-z0-9-]+)(\.[a-z0-9-]+)*(\.[a-z]{2,6})$#iu');
+DEFINE('_JC_REGEXP_EMAIL', '#([\w\.\-]+)@(\w+[\w\.\-]*\.\w{2,4})#iu');
+DEFINE('_JC_REGEXP_EMAIL2', '#^([_a-z0-9-]+)(\.[_a-z0-9-]+)*@([a-z0-9-]+)(\.[a-z0-9-]+)*(\.[a-z]{2,4})$#iu');
 
 require_once(JCOMMENTS_SITE . '/jcomments.class.php');
 require_once(JCOMMENTS_MODELS . '/jcomments.php');
@@ -88,6 +88,8 @@ switch (trim($jc_task)) {
 				$params = $app->getParams();
 
 				$object_group = $params->get('object_group');
+				$object_group = JCommentsSecurity::clearObjectGroup($object_group);
+
 				$object_id = (int)$params->get('object_id', 0);
 
 				if ($object_id != 0 && $object_group != '') {
@@ -122,10 +124,10 @@ switch (trim($jc_task)) {
 
 					echo JComments::show($object_id, $object_group);
 				} else {
-					JFactory::getApplication()->redirect(JRoute::_('/index.php'));
+					JFactory::getApplication()->redirect(JRoute::_('index.php'));
 				}
 			} else {
-				JFactory::getApplication()->redirect(JRoute::_('/index.php'));
+				JFactory::getApplication()->redirect(JRoute::_('index.php'));
 			}
 		}
 		break;
@@ -310,7 +312,7 @@ class JComments
 	public static function getCommentsForm($object_id, $object_group, $showForm = true)
 	{
 		$object_id = (int)$object_id;
-		$object_group = trim($object_group);
+		$object_group = JCommentsSecurity::clearObjectGroup($object_group);
 
 		$tmpl = JCommentsFactory::getTemplate($object_id, $object_group);
 		$tmpl->load('tpl_form');
@@ -600,6 +602,7 @@ class JComments
 	public static function getCommentsReportForm($id, $object_id, $object_group)
 	{
 		$id = (int)$id;
+		$object_group = JCommentsSecurity::clearObjectGroup($object_group);
 
 		$user = JFactory::getUser();
 		$tmpl = JCommentsFactory::getTemplate($object_id, $object_group);
@@ -614,7 +617,7 @@ class JComments
 	public static function getCommentsList($object_id, $object_group = 'com_content', $page = 0)
 	{
 		$object_id = (int)$object_id;
-		$object_group = trim($object_group);
+		$object_group = JCommentsSecurity::clearObjectGroup($object_group);
 
 		$user = JFactory::getUser();
 		$acl = JCommentsFactory::getACL();
@@ -767,7 +770,7 @@ class JComments
 	public static function getCommentsTree($object_id, $object_group = 'com_content', $page = 0)
 	{
 		$object_id = (int)$object_id;
-		$object_group = trim($object_group);
+		$object_group = JCommentsSecurity::clearObjectGroup($object_group);
 
 		$user = JFactory::getUser();
 		$acl = JCommentsFactory::getACL();
@@ -1142,6 +1145,8 @@ class JComments
 	public static function getCommentPage($object_id, $object_group, $comment_id)
 	{
 		$config = JCommentsFactory::getConfig();
+		$object_group = JCommentsSecurity::clearObjectGroup($object_group);
+
 		if ($config->getInt('comments_per_page') > 0) {
 			require_once(JCOMMENTS_HELPERS . '/pagination.php');
 			$pagination = new JCommentsPagination($object_id, $object_group);
@@ -1290,6 +1295,7 @@ class JComments
 	public static function getCommentsCount($object_id, $object_group = 'com_content', $filter = '')
 	{
 		$acl = JCommentsFactory::getACL();
+		$object_group = JCommentsSecurity::clearObjectGroup($object_group);
 
 		$options = array();
 		$options['object_id'] = (int)$object_id;
@@ -1306,6 +1312,7 @@ class JComments
 	 */
 	public static function showComments($object_id, $object_group = 'com_content', $object_title = '')
 	{
+		$object_group = JCommentsSecurity::clearObjectGroup($object_group);
 		return JComments::show($object_id, $object_group, $object_title);
 	}
 }

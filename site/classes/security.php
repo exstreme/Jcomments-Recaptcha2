@@ -53,9 +53,9 @@ class JCommentsSecurity
 		$names = JCommentsFactory::getConfig()->get('forbidden_names');
 
 		if (!empty($names) && !empty($str)) {
-			$str = trim(strtolower($str));
+			$str = trim(JString::strtolower($str));
 
-			$names = strtolower(preg_replace("#,+#", ',', preg_replace("#[\n|\r]+#", ',', $names)));
+			$names = JString::strtolower(preg_replace("#,+#u", ',', preg_replace("#[\n|\r]+#u", ',', $names)));
 			$names = explode(",", $names);
 
 			foreach ($names as $name) {
@@ -73,13 +73,14 @@ class JCommentsSecurity
 		$config = JCommentsFactory::getConfig();
 
 		if ($config->getInt('enable_username_check') == 1) {
+			$name = JString::strtolower($name);	
 			$db = JFactory::getDbo();
 
 			$query = $db->getQuery(true);
 			$query->select('COUNT(*)');
 			$query->from($db->quoteName('#__users'));
-			$query->where($db->quoteName('name') . ' = ' . $db->Quote($db->escape($name, true)), 'OR');
-			$query->where($db->quoteName('username') . ' = ' . $db->Quote($db->escape($name, true)), 'OR');
+			$query->where('LOWER(name) = ' . $db->Quote($db->escape($name, true)), 'OR');
+			$query->where('LOWER(username) = ' . $db->Quote($db->escape($name, true)), 'OR');
 			$db->setQuery($query);
 
 			return ($db->loadResult() == 0) ? 0 : 1;
@@ -93,12 +94,13 @@ class JCommentsSecurity
 		$config = JCommentsFactory::getConfig();
 
 		if ($config->getInt('enable_username_check') == 1) {
+			$email = JString::strtolower($email);	
 			$db = JFactory::getDbo();
 
 			$query = $db->getQuery(true);
 			$query->select('COUNT(*)');
 			$query->from($db->quoteName('#__users'));
-			$query->where($db->quoteName('email') . ' = ' . $db->Quote($db->escape($email, true)));
+			$query->where('LOWER(email) = ' . $db->Quote($db->escape($email, true)));
 			$db->setQuery($query);
 
 			return ($db->loadResult() == 0) ? 0 : 1;
@@ -132,7 +134,18 @@ class JCommentsSecurity
 				$query->where($db->quoteName('userid') . ' = ' . (int)$userid);
 			} else {
 				if (!empty($ip)) {
-					$query->where($db->quoteName('ip') . ' = ' . $db->Quote($ip));
+					$parts = explode('.', $ip);
+					if (count($parts) == 4) {
+						$conditions = array();
+						$conditions[] = $db->quoteName('ip') . ' = ' . $db->Quote($ip);
+						$conditions[] = $db->quoteName('ip') . ' = ' . $db->Quote(sprintf('%s.%s.%s.*', $parts[0], $parts[1], $parts[2]));
+						$conditions[] = $db->quoteName('ip') . ' = ' . $db->Quote(sprintf('%s.%s.*.*', $parts[0], $parts[1]));
+						$conditions[] = $db->quoteName('ip') . ' = ' . $db->Quote(sprintf('%s.*.*.*', $parts[0]));
+
+						$query->where($conditions, 'OR');
+					} else {
+						$query->where($db->quoteName('ip') . ' = ' . $db->Quote($ip));
+					}
 				}
 			}
 
@@ -146,6 +159,6 @@ class JCommentsSecurity
 
 	public static function clearObjectGroup($str)
 	{
-		return trim(preg_replace('#[^0-9A-Za-z\-\_]#is', '', strip_tags($str)));
+		return trim(preg_replace('#[^0-9A-Za-z\-\_\,\.]#is', '', strip_tags($str)));
 	}
 }

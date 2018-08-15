@@ -209,6 +209,13 @@ class JCommentsModelSettings extends JCommentsModelForm
 				}
 			}
 
+			if ($data['captcha_engine'] != 'kcaptcha') {
+				$plugin = $data['captcha_engine'] == 'joomladefault' ? JFactory::getConfig()->get('captcha') : $data['captcha_engine'];
+				if (($captcha = JCaptcha::getInstance($plugin, array('namespace' => 'jcomments'))) == null) {
+					return false;
+				}
+			}
+
 			if (isset($data['forbidden_names'])) {
 				$data['forbidden_names'] = preg_replace("#[\n|\r]+#", ',', $data['forbidden_names']);
 				$data['forbidden_names'] = preg_replace("#,+#", ',', $data['forbidden_names']);

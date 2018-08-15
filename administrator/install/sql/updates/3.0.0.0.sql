@@ -13,6 +13,7 @@ KEY `idx_priority` (`priority`),
 KEY `idx_attempts` (`attempts`)
 ) DEFAULT CHARSET=utf8;
 
+ALTER IGNORE TABLE `#__jcomments_mailq` ADD `session_id` VARCHAR(200) DEFAULT NULL;
 ALTER IGNORE TABLE `#__jcomments_objects` CHANGE `link` `link` TEXT NOT NULL DEFAULT '';
 ALTER IGNORE TABLE `#__jcomments_objects` ADD `category_id` INT(11) UNSIGNED NOT NULL DEFAULT '0' AFTER `object_group`;
 ALTER IGNORE TABLE `#__jcomments_subscriptions` ADD `checked_out` INT(11) UNSIGNED NOT NULL DEFAULT '0';

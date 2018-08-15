@@ -369,8 +369,7 @@ class JCommentsBBCode
 
 	function removeQuotes($text)
 	{
-		$text = preg_replace(array('#\n?\[quote.*?\].+?\[\/quote\]\n?#isu', '#\[\/quote\]#is'), '',
-			$text);
+		$text = preg_replace(array('#\n?\[quote.*?\].+?\[\/quote\]\n?#isu', '#\[\/quote\]#isu'), '', $text);
 		$text = preg_replace('#<br />+#is', '', $text);
 
 		return $text;

@@ -209,8 +209,7 @@ class JCommentsRSS
 
 			$app = JFactory::getApplication('site');
 			$acl = JCommentsFactory::getACL();
-			$object_group = trim(strip_tags($app->input->get('object_group', '')));
-			$object_group = preg_replace('#[^0-9A-Za-z\-\_\,\.]#is', '', $object_group);
+			$object_group = JCommentsSecurity::clearObjectGroup($app->input->get('object_group', 'com_content'));
 			$limit = $app->input->getInt('limit', $config->getInt('feed_limit', 100));
 
 			$og = $object_group ? ('&amp;object_group=' . $object_group) : '';

@@ -73,6 +73,7 @@ class JCommentsObjectHelper
 	protected static function _loadObjectInfo($object_id, $object_group = 'com_content', $language = null)
 	{
 		static $plugins = array();
+		$object_group = JCommentsSecurity::clearObjectGroup($object_group);
 
 		// get object information via plugins
 		if (!isset($plugins[$object_group])) {

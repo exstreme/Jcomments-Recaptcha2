@@ -59,9 +59,9 @@ class JCommentsControllerSettings extends JCommentsControllerLegacy
 			$this->getModel('smiley')->saveLegacy();
 		}
 
-		if (!extension_loaded('gd') || !function_exists('imagecreatefrompng')) {
-			$config = JCommentsFactory::getConfig();
-			if ($config->get('captcha_engine', 'kcaptcha') != 'recaptcha') {
+		$captchaEngine = JCommentsFactory::getConfig()->get('captcha_engine', 'kcaptcha');
+		if ($captchaEngine == 'kcaptcha') {
+			if (!extension_loaded('gd') || !function_exists('imagecreatefrompng')) {
 				JFactory::getApplication()->enqueueMessage(JText::_('A_WARNINGS_PHP_GD'), 'warning');
 			}
 		}

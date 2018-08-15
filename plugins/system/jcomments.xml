@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="2.5" type="plugin" group="system" method="upgrade">
 	<name>plg_system_jcomments</name>
-	<creationDate>01/08/2014</creationDate>
+	<creationDate>15/08/2018</creationDate>
 	<author>smart</author>
-	<copyright>Copyright 2006-2014 JoomlaTune.ru All rights reserved!</copyright>
+	<copyright>Copyright 2006-2018 JoomlaTune.ru All rights reserved!</copyright>
 	<authorEmail>smart@joomlatune.ru</authorEmail>
 	<authorUrl>http://www.joomlatune.ru</authorUrl>
 	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>

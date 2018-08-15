@@ -10,7 +10,7 @@
 #jc .clear {clear: both; height: 1px; overflow: hidden}
 #jc .busy { display:none; margin: 3px auto; padding: 0; width: 16px; height: 16px; background: url(images/jc_busy.gif) no-repeat; }
 
-#jc span {color: #555;background-color: inherit;font-weight: bold;text-align: left;border-bottom: 1px solid #D2DADB;padding: 0 0 2px 0;margin-bottom: 10px}
+#jc h4 {color: #555;background-color: inherit;font-weight: bold;text-align: left;border-bottom: 1px solid #D2DADB;padding: 0 0 2px 0;margin-bottom: 10px}
 
 #jc p.message {color: #777;background-color: inherit; background-image: none; text-align: center;text-decoration: none;text-transform: none;text-indent: 0;padding: 5px 0 0 0;border-top: 1px solid #D2DADB}
 

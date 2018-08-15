@@ -402,8 +402,7 @@
                 default="kcaptcha"
                 label="AP_FORM_FIELD_CAPTCHA"
                 description="">
-            <option value="kcaptcha">KCAPTCHA</option>
-			<option value="recaptcha">RECAPTCHA</option>
+			<option value="kcaptcha">KCAPTCHA (JComments)</option>
         </field>
 
     </fieldset>
