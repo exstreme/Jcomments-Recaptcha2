@@ -473,6 +473,9 @@ class JCommentsAJAX
 								// scroll to first comment
 								if ($config->get('comments_list_order') == 'DESC') {
 									$response->addScript("jcomments.scrollToList();");
+                                    if ($acl->check('enable_captcha') == 1 && $config->get('captcha_engine', 'kcaptcha') == 'recaptcha') {
+                                        $response->addScript("grecaptcha.reset();");
+                                    }
 								}
 							}
 						}
