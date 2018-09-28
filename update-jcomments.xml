@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<updates>
+	<update>
+		<name>JComments</name>
+		<description>JComments lets your users comment on content items</description>
+		<element>com_jcomments</element>
+		<type>component</type>
+		<version>2.3.0</version>
+		<infourl title="JComments">http://www.joomlatune.com/jcomments.html</infourl>
+		<downloads>
+			<downloadurl type="full" format="zip">http://www.joomlatune.ru/downloads/jcomments/com_jcomments_v2.3.0.zip</downloadurl>
+		</downloads>
+		<tags>
+			<tag>Stable</tag>
+		</tags>
+		<maintainer>smart</maintainer>
+		<maintainerurl>http://www.joomlatune.ru</maintainerurl>
+		<section></section>
+		<client_id>1</client_id>
+		<targetplatform name="joomla" version="2.5"/>
+	</update>				
+	<update>
+		<name>JComments</name>
+		<description>JComments lets your users comment on content items</description>
+		<element>com_jcomments</element>
+		<type>component</type>
+		<version>3.0.7.2</version>
+		<infourl title="JComments">https://github.com/exstreme/Jcomments-Recaptcha2</infourl>
+		<downloads>
+			<downloadurl type="full" format="zip">https://github.com/exstreme/Jcomments-Recaptcha2/blob/Develop/jcomments.xml/com_jcomments_v3.0.7.2.zip</downloadurl>
+		</downloads>
+		<tags>
+			<tag>Stable</tag>
+		</tags>
+		<maintainer>smart</maintainer>
+		<maintainerurl>http://www.joomlatune.ru</maintainerurl>
+		<section></section>
+		<client_id>1</client_id>
+		<targetplatform name="joomla" version="3.[0123456789]"/>
+	</update>				
+</updates>

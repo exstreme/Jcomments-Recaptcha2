@@ -212,6 +212,6 @@
 	</plugins>
 
 	<updateservers>
-		<server type="extension" priority="1" name="JComments Update Site">http://www.joomlatune.ru/updates/jcomments.xml</server>
+		<server type="extension" priority="1" name="JComments Update Site">https://github.com/exstreme/Jcomments-Recaptcha2/blob/Develop/update-jcomments.xml</server>
 	</updateservers>
 </extension>
