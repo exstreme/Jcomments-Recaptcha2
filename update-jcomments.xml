@@ -24,10 +24,10 @@
 		<description>JComments lets your users comment on content items</description>
 		<element>com_jcomments</element>
 		<type>component</type>
-		<version>3.0.7.2</version>
+		<version>3.0.7.3</version>
 		<infourl title="JComments">https://github.com/exstreme/Jcomments-Recaptcha2</infourl>
 		<downloads>
-			<downloadurl type="full" format="zip">https://github.com/exstreme/Jcomments-Recaptcha2/raw/Develop/com_jcomments_v3.0.7.2.zip</downloadurl>
+			<downloadurl type="full" format="zip">https://github.com/exstreme/Jcomments-Recaptcha2/raw/Develop/com_jcomments_v3.0.7.3.zip</downloadurl>
 		</downloads>
 		<tags>
 			<tag>Stable</tag>

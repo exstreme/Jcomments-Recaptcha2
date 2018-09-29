@@ -243,7 +243,7 @@ class JCommentsAJAX
                         $answer = $recaptcha->checkAnswer('anything');
                         if(!$answer){
                             //	die('Invalid Captcha');
-                            self::showErrorMessage(JText::_('ERROR_CAPTCHA'), 'captcha');
+                            self::showErrorMessage(JText::_('ERROR_RECAPTCHA'), 'captcha');
                             $response->addScript("grecaptcha.reset()");
                             return $response;
                         }
