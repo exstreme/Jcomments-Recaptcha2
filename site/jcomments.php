@@ -35,8 +35,7 @@ switch (trim($jc_task)) {
 		if ($captchaEngine == 'kcaptcha' || $config->getInt('enable_plugins') == 0) {
 			require_once(JCOMMENTS_SITE . '/jcomments.captcha.php');
 			JCommentsCaptcha::image();
-		}
-		else {
+		} else {
 			if ($config->getInt('enable_plugins') == 1) {
 				JCommentsEventHelper::trigger('onJCommentsCaptchaImage');
 			}
@@ -90,7 +89,7 @@ switch (trim($jc_task)) {
 
 				$object_group = $params->get('object_group');
 				$object_group = JCommentsSecurity::clearObjectGroup($object_group);
-
+				
 				$object_id = (int)$params->get('object_id', 0);
 
 				if ($object_id != 0 && $object_group != '') {
@@ -442,17 +441,14 @@ class JComments
 				$tmpl->addVar('tpl_form', 'comments-form-captcha', 1);
 
 				$captchaEngine = $config->get('captcha_engine', 'kcaptcha');
-				if ($captchaEngine == 'kcaptcha') {
-					// TODO
+				if ( ($captchaEngine == 'kcaptcha') || ($captchaEngine == 'recaptcha') || ($captchaEngine == 'recaptcha_invisible') )
+				{
+					$tmpl->addVar('tpl_form', 'comments-form-captcha-html', $captchaEngine);
 				}
-                elseif ($captchaEngine == 'recaptcha'){
-                    $tmpl->addVar('tpl_form', 'comments-form-captcha-html', 'recaptcha');
-                }
-				else {
-					if ($config->getInt('enable_plugins') == 1) {
-						$captchaHTML = JCommentsEventHelper::trigger('onJCommentsCaptchaDisplay');
-						$tmpl->addVar('tpl_form', 'comments-form-captcha-html', implode("\n", $captchaHTML));
-					}
+				else
+				{
+					$captchaHTML = JCommentsEventHelper::trigger('onJCommentsCaptchaDisplay');
+					$tmpl->addVar('tpl_form', 'comments-form-captcha-html', implode("\n", $captchaHTML));
 				}
 			}
 
@@ -1151,7 +1147,7 @@ class JComments
 	{
 		$config = JCommentsFactory::getConfig();
 		$object_group = JCommentsSecurity::clearObjectGroup($object_group);
-
+		
 		if ($config->getInt('comments_per_page') > 0) {
 			require_once(JCOMMENTS_HELPERS . '/pagination.php');
 			$pagination = new JCommentsPagination($object_id, $object_group);
