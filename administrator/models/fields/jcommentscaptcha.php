@@ -53,7 +53,7 @@ class JFormFieldJCommentsCaptcha extends JFormFieldList
 			$options[$i]->text = sprintf($this->format, JText::_($item->text));
 		}
 
-		$options[] = JHtml::_('select.option', 'joomladefault', sprintf($this->format, JText::_('JOPTION_USE_DEFAULT')));
+		//$options[] = JHtml::_('select.option', 'joomladefault', sprintf($this->format, JText::_('JOPTION_USE_DEFAULT')));
 
 		$options = array_merge(parent::getOptions(), $options);
 

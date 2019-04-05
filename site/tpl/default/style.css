@@ -133,6 +133,8 @@ div.comments-policy ol li, div.comments-policy ul li {font: normal 1em Verdana, 
 #comments-footer {display: block;height: 14px;border-top: 1px solid #ccc;padding-top: 1px;margin-top: 4px;text-align: right}
 #comments-footer a {text-decoration: none !important;text-transform: none;padding: 0;margin: 0;border: none !important;float: right; background: none !important}
 
+#dynamic_recaptcha_1 {padding: 5px 5px 5px 25px;margin-right: 5px;display: block}
+
 /* Pagination */
 body #jc #nav-bottom, body #jc #nav-top {line-height: 19px !important;line-height: 17px;height: auto !important;text-align: center; margin: 0 auto;}
 #jc #nav-bottom span.page, #jc #nav-top span.page {color: #777;background-color: #eee;border: 1px solid #d6dadd}
