@@ -58,7 +58,7 @@ $containerClass = empty($this->sidebar) ? '' : 'span10';
 
 		function toggleListLayout(val) {
 			var controls = {};
-			controls['tree'] = ['jform[comments_tree_order]'];
+            controls['tree'] = ['jform[comments_tree_order]', 'jform[comments_per_page]', 'jform[comments_page_limit]', 'jform[comments_pagination]'];
 			controls['list'] = ['jform[comments_list_order]', 'jform[comments_per_page]', 'jform[comments_page_limit]', 'jform[comments_pagination]'];
 
 			var selected = jQuery('select[name="jform[template_view]"]').find(':selected').first();
