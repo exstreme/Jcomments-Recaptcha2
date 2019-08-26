@@ -1051,7 +1051,7 @@ class JComments
 		$comment->gravatar = md5(strtolower($comment->email));
 
 		if (empty($comment->avatar)) {
-			$comment->avatar = '<img src="http://www.gravatar.com/avatar/' . $comment->gravatar . '?d=' . urlencode(JCommentsFactory::getLink('noavatar')) . '" alt="' . htmlspecialchars($comment->author) . '" />';
+			$comment->avatar = '<img src="https://www.gravatar.com/avatar/' . $comment->gravatar . '?d=' . urlencode(JCommentsFactory::getLink('noavatar')) . '" alt="' . htmlspecialchars($comment->author) . '" />';
 		}
 
 		JCommentsEventHelper::trigger('onJCommentsCommentAfterPrepare', array(&$comment));
