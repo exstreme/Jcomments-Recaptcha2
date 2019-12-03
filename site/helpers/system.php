@@ -56,4 +56,19 @@ class JCommentsSystemPluginHelper
 
 		return $cssUrl;
 	}
+	
+	public static function isAdmin($app) {
+		if (version_compare(JVERSION, '4.0', 'lt')){
+			return $app->isAdmin();
+		} else {
+			return $app->isClient('administrator');
+		}
+	}
+	public static function isSite($app) {
+		if (version_compare(JVERSION, '4.0', 'lt')){
+			return $app->isSite();
+		} else {
+			return $app->isClient('site');
+		}
+	}
 }

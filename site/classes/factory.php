@@ -330,7 +330,7 @@ class JCommentsFactory
 		switch ($type) {
 			case 'rss':
 				$link = 'index.php?option=com_jcomments&amp;task=rss&amp;object_id=' . $object_id . '&amp;object_group=' . $object_group . '&amp;format=raw';
-				if ($app->isAdmin()) {
+				if (JCommentsSystemPluginHelper::isAdmin($app)) {
 					$link = JURI::root(true) . '/' . $link;
 				} else {
 					$link = JRoute::_($link);
@@ -396,7 +396,12 @@ class JCommentsFactory
 	 */
 	public static function getAbsLink($link)
 	{
-		$uri = JFactory::getURI();
+		if (version_compare(JVERSION, '4.0', 'ge')) {
+			$uri = JUri::getInstance();
+		} else {
+			$uri = JFactory::getURI();
+		}
+
 		$url = $uri->toString(array('scheme', 'user', 'pass', 'host', 'port'));
 
 		if (strpos($link, $url) === false) {

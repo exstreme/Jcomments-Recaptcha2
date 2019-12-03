@@ -29,8 +29,10 @@ class JCommentsViewComment extends JCommentsViewLegacy
 
 		JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 
-		JHtml::_('behavior.tooltip');
-		JHtml::_('behavior.formvalidation');
+		//JHtml::_('behavior.tooltip');
+		if (version_compare(JVERSION, '4.0', 'lt')) {
+			JHtml::_('behavior.formvalidation');
+		}
 
 		if (version_compare(JVERSION, '3.0', 'ge')) {
 			JHtml::_('formbehavior.chosen', 'select');

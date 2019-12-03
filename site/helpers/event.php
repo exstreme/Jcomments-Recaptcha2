@@ -10,7 +10,7 @@
  */
 
 defined('_JEXEC') or die;
-
+use Joomla\CMS\Factory;
 /**
  * JComments Event Helper
  */
@@ -36,13 +36,22 @@ class JCommentsEventHelper
 				$initialised = true;
 			}
 
-			if (version_compare(JVERSION, '3.0', 'ge')) {
+			if (version_compare(JVERSION, '4.0', 'lt')) {
 				$dispatcher = JEventDispatcher::getInstance();
+				if (is_array($args)) {
+					$result = $dispatcher->trigger($event, $args);
+				} else {
+					$result = $dispatcher->trigger($event);
+				}
 			} else {
-				$dispatcher = JDispatcher::getInstance();
+				if (is_array($args)) {
+					$result = Factory::getApplication()->triggerEvent($event, $args);
+				} else {
+					$result = Factory::getApplication()->triggerEvent($event);
+				}
 			}
+	
 
-			$result = $dispatcher->trigger($event, $args);
 		}
 		return $result;
 	}

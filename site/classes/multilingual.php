@@ -23,11 +23,11 @@ class JCommentsMultilingual
 		if (!isset($enabled)) {
 			$app = JFactory::getApplication();
 
-			if ($app->isSite()) {
+			if (JCommentsSystemPluginHelper::isSite($app)) { 
 				$enabled = $app->getLanguageFilter();
-			} else {
+			}
+			 else {
 				$db = JFactory::getDBO();
-
 				$query = $db->getQuery(true);
 				$query->select('enabled');
 				$query->from($db->quoteName('#__extensions'));

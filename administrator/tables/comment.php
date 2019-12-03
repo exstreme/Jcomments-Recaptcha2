@@ -103,7 +103,7 @@ class JCommentsTableComment extends JTable
 		$config = JCommentsFactory::getConfig();
 		$app = JFactory::getApplication();
 
-		if ($app->isAdmin()) {
+		if (JCommentsSystemPluginHelper::isAdmin($app)) {
 			$language = JFactory::getLanguage();
 			$language->load('com_jcomments', JPATH_SITE);
 
@@ -198,7 +198,7 @@ class JCommentsTableComment extends JTable
 				// delete comment's vote info
 				$query = "DELETE FROM #__jcomments_votes WHERE commentid = " . $id;
 				$this->_db->setQuery($query);
-				$this->_db->excute();
+				$this->_db->execute();
 
 				// delete comment's reports info
 				$query = "DELETE FROM #__jcomments_reports WHERE commentid = " . $id;

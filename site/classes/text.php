@@ -91,7 +91,7 @@ class JCommentsText
 		while ($i < $j) {
 			preg_match($regexp, $str, $matches);
 			$return .= $matches[0] . $break;
-			$str = JString::substr($str, JCommentsText::strlen($matches[0]));
+			$str = substr($str, JCommentsText::strlen($matches[0]));
 			$i++;
 		}
 
@@ -240,6 +240,6 @@ class JCommentsText
 
 	public static function substr($text, $length = 0)
 	{
-		return JString::substr($text, 0, $length);
+		return substr($text, 0, $length);
 	}
 }

@@ -10,7 +10,7 @@
  */
 
 defined('_JEXEC') or die;
-
+use Joomla\Utilities\ArrayHelper; 
 abstract class JCommentsModelForm extends JCommentsModelLegacy
 {
 	protected $_forms = array();
@@ -31,7 +31,11 @@ abstract class JCommentsModelForm extends JCommentsModelLegacy
 		}
 
 		$properties = $table->getProperties(1);
-		$item = JArrayHelper::toObject($properties, 'JObject');
+		if (version_compare(JVERSION, '4.0', '<')){
+			$item = JArrayHelper::toObject($properties, 'JObject');
+		} else {
+			$item = ArrayHelper::toObject($properties, 'JObject');
+		}
 
 		return $item;
 	}
@@ -40,8 +44,11 @@ abstract class JCommentsModelForm extends JCommentsModelLegacy
 
 	protected function loadForm($name, $source = null, $options = array(), $clear = false, $xpath = false)
 	{
-		$options['control'] = JArrayHelper::getValue($options, 'control', false);
-
+		if (version_compare(JVERSION, '4.0', '<')){
+			$options['control'] = JArrayHelper::getValue($options, 'control', false);
+		} else {
+			$options['control'] = ArrayHelper::getValue($options, 'control', false);
+		}
 		$hash = md5($source . serialize($options));
 
 		if (isset($this->_forms[$hash]) && !$clear) {

@@ -16,18 +16,13 @@ class jc_com_zoo extends JCommentsPlugin
 	function getObjectInfo($id, $language = null)
 	{
 		$info = new JCommentsObjectInfo();
-
 		$app = JFactory::getApplication();
-		if (!$app->isAdmin()) {
-
+		if (!JCommentsSystemPluginHelper::isAdmin($app)) {
 			$zooConfig = JPATH_ADMINISTRATOR.'/components/com_zoo/config.php';
-		
 			if (is_file($zooConfig)) {
 				require_once($zooConfig);
-
 				$zooApp = App::getInstance('zoo');
 				$item = $zooApp->table->item->get($id);
-			
 				if (!empty($item)) {
 					$info->title = $item->name;
 					$info->access = $item->access;
@@ -36,7 +31,6 @@ class jc_com_zoo extends JCommentsPlugin
 				}
 			}
 		}
-
 		return $info;
 	}
 }

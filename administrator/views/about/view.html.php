@@ -23,7 +23,9 @@ class JCommentsViewAbout extends JCommentsViewLegacy
 		JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 
 		JHtml::_('jcomments.stylesheet');
-		JHtml::_('behavior.framework');
+		if (version_compare(JVERSION, '4.0', 'lt')) {
+			JHtml::_('behavior.framework');
+		}
 
 		if (version_compare(JVERSION, '3.0', 'ge')) {
 			JCommentsHelper::addSubmenu('about');

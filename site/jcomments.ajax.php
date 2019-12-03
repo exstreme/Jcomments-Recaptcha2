@@ -10,8 +10,15 @@
  */
 
 defined('_JEXEC') or die;
-
+use Joomla\CMS\Factory;
 ob_start();
+
+function my_log($msg)
+{	
+	$fp = fopen("F:\\sites\\site OVH JLT local\\joomla_4.0\\logs/log.txt", "a");
+	fwrite($fp, "[JCOMMENTS]" . " " . date("H:i:s", $_SERVER['REQUEST_TIME']) . ":" . $msg ."\n");
+	fclose($fp);
+}
 
 if (!defined('JOOMLATUNE_AJAX')) {
 	require_once (JCOMMENTS_LIBRARIES.'/joomlatune/ajax.php');
@@ -100,6 +107,7 @@ class JCommentsAJAX
 
 	public static function showForm( $object_id, $object_group, $target )
 	{
+		my_log("showForm");
 		if (JCommentsSecurity::badRequest() == 1) {
 			JCommentsSecurity::notAuth();
 		}
@@ -138,6 +146,7 @@ class JCommentsAJAX
 
 	public static function addComment($values = array())
 	{
+		my_log("addComment");
 		if (JCommentsSecurity::badRequest() == 1) {
 			JCommentsSecurity::notAuth();
 		}
@@ -241,11 +250,16 @@ class JCommentsAJAX
 							break;
 
 						case 'recaptcha':
+							//JLog::addLogger(array(['text_file' => 'recaptcha.log']), JLog::ALL, array('recaptcha'));
+							//JLog::add('onInit pubkey is null', JLog::ERROR, 'recaptcha');
+							my_log("import recaptcha");
 							JPluginHelper::importPlugin('captcha', "recaptcha");
-							$dispatcher = JEventDispatcher::getInstance();
+							
+
 							//Check if the installed version of Joomla is less than 3.9
 							if (version_compare(JVERSION, '3.9', '<' ) == 1)
 							{
+								$dispatcher = JEventDispatcher::getInstance();
 								$res = $dispatcher->trigger('onCheckAnswer');
 								if(!$res[0])
 								{
@@ -258,7 +272,7 @@ class JCommentsAJAX
 							{
 								try
 								{
-									$dispatcher->trigger('onCheckAnswer');
+									Factory::getApplication()->triggerEvent('onCheckAnswer');
 								}
 								catch (Exception $e)
 								{

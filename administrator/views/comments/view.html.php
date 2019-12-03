@@ -54,7 +54,7 @@ class JCommentsViewComments extends JCommentsViewLegacy
 		JHtml::_('jcomments.stylesheet');
 
 		if (version_compare(JVERSION, '3.0', 'ge')) {
-			JHtml::_('bootstrap.tooltip');
+			//JHtml::_('bootstrap.tooltip');
 			JHtml::_('formbehavior.chosen', 'select');
 
 			JCommentsHelper::addSubmenu('comments');

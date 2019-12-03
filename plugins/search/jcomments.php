@@ -52,7 +52,7 @@ class plgSearchJComments extends JPlugin
 	 */
 	function onContentSearch($text, $phrase = '', $ordering = '', $areas = null)
 	{
-		$text = JString::strtolower(trim($text));
+		$text = strtolower(trim($text));
 		$result = array();
 
 		if ($text == '' || !defined('JCOMMENTS_JVERSION')) {

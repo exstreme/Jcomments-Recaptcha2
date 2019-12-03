@@ -85,10 +85,10 @@ class JCommentsModelComments extends JCommentsModelList
 			if (stripos($search, 'id:') === 0) {
 				$query->where('jc.id = ' . (int)substr($search, 3));
 			} else if (stripos($search, 'user:') === 0) {
-				$escaped = $this->_db->Quote('%' . $this->_db->escape(JString::substr($search, 5), true) . '%');
+				$escaped = $this->_db->Quote('%' . $this->_db->escape(substr($search, 5), true) . '%');
 				$query->where('(jc.email LIKE ' . $escaped . ' OR jc.name LIKE ' . $escaped . ' OR jc.username LIKE ' . $escaped . ')');
 			} else if (stripos($search, 'object:') === 0) {
-				$escaped = $this->_db->Quote('%' . $this->_db->escape(JString::substr($search, 7), true) . '%');
+				$escaped = $this->_db->Quote('%' . $this->_db->escape(substr($search, 7), true) . '%');
 				$query->where('jo.title LIKE ' . $escaped);
 			} else {
 				$search = $this->_db->Quote('%' . $this->_db->escape($search, true) . '%');

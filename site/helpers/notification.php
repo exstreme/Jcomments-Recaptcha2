@@ -299,8 +299,8 @@ class JCommentsNotificationHelper
 	public static function getUnsubscribeLink($hash)
 	{
 		$link = 'index.php?option=com_jcomments&amp;task=unsubscribe&amp;hash=' . $hash . '&amp;format=raw';
-
-		if (JFactory::getApplication()->isAdmin()) {
+		$app = JFactory::getApplication();
+		if (JCommentsSystemPluginHelper::isAdmin($app)) {
 			$link = trim(str_replace('/administrator', '', JURI::root()), '/') . '/' . $link;
 		} else {
 			$liveSite = trim(str_replace(JURI::root(true), '', str_replace('/administrator', '', JURI::root())), '/');

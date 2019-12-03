@@ -143,7 +143,13 @@ class jtt_tpl_form extends JoomlaTuneTemplate
 </p>
 <?php
 			} else {
-				$recaptcha = JCaptcha::getInstance($html, array('namespace' => 'jcomments'));
+				//echo "captcha:". print_r($html, true) . ":";
+				try {
+					$recaptcha = JCaptcha::getInstance($html, array('namespace' => 'jcomments'));
+				}
+				catch(Exception $e) {
+					echo "exception" . print_r($e, true);
+				}
 				echo $recaptcha->display('recaptcha', 'dynamic_recaptcha_1','g-recaptcha');
 ?>
 <?php

@@ -53,9 +53,9 @@ class JCommentsSecurity
 		$names = JCommentsFactory::getConfig()->get('forbidden_names');
 
 		if (!empty($names) && !empty($str)) {
-			$str = trim(JString::strtolower($str));
+			$str = trim(strtolower($str));
 
-			$names = JString::strtolower(preg_replace("#,+#u", ',', preg_replace("#[\n|\r]+#u", ',', $names)));
+			$names = strtolower(preg_replace("#,+#u", ',', preg_replace("#[\n|\r]+#u", ',', $names)));
 			$names = explode(",", $names);
 
 			foreach ($names as $name) {
@@ -73,7 +73,7 @@ class JCommentsSecurity
 		$config = JCommentsFactory::getConfig();
 
 		if ($config->getInt('enable_username_check') == 1) {
-			$name = JString::strtolower($name);	
+			$name = strtolower($name);
 			$db = JFactory::getDbo();
 
 			$query = $db->getQuery(true);
@@ -94,7 +94,7 @@ class JCommentsSecurity
 		$config = JCommentsFactory::getConfig();
 
 		if ($config->getInt('enable_username_check') == 1) {
-			$email = JString::strtolower($email);	
+			$email = strtolower($email);
 			$db = JFactory::getDbo();
 
 			$query = $db->getQuery(true);

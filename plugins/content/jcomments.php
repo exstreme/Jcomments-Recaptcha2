@@ -88,8 +88,9 @@ class plgContentJComments extends JPlugin
 
 			$slug = isset($article->slug) ? $article->slug : $article->id;
 			$language = isset($article->language) ? $article->language : 0;
-
-			require_once(JPATH_ROOT . '/components/com_content/helpers/route.php');
+			if (version_compare(JVERSION, '4.0', 'lt')) {
+				require_once(JPATH_ROOT . '/components/com_content/helpers/route.php');
+			}
 			if ($checkAccess) {
 				$readmore_link = JRoute::_(ContentHelperRoute::getArticleRoute($slug, $article->catid, $language));
 				$readmore_register = 0;

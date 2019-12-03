@@ -92,7 +92,7 @@ $containerClass = empty($this->sidebar) ? '' : 'span10';
 						$title = JText::_('A_COMMENT_TITLE_RE') . ' ' . $item->object_title;
 					} else {
 						$title = JCommentsText::cleanText(strip_tags($item->comment));
-						$title = JString::substr($title, 0, 200);
+						$title = substr($title, 0, 200);
 					}
 				}
 				?>

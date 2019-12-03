@@ -15,6 +15,7 @@ ob_start();
 
 require_once(dirname(__FILE__) . '/jcomments.legacy.php');
 
+use Joomla\CMS\Log\Log;
 // regular expression for links
 DEFINE('_JC_REGEXP_LINK', '#(^|\s|\>|\()((http://|https://|news://|ftp://|www.)\w+[^\s\<\>\"\'\)]+)#iu');
 DEFINE('_JC_REGEXP_EMAIL', '#([\w\.\-]+)@(\w+[\w\.\-]*\.\w{2,6})#iu');
@@ -27,9 +28,18 @@ ob_end_clean();
 $app = JFactory::getApplication();
 
 $jc_task = $app->input->get('task', '');
-
+function my_log($msg)
+{	
+	$fp = fopen("F:\\sites\\site OVH JLT local\\joomla_4.0\\logs\\log.txt", "a");
+	fwrite($fp, "[JCOMMENTS]" . " " . date("H:i:s", $_SERVER['REQUEST_TIME']) . ":" . $msg ."\n");
+	fclose($fp);
+}
+my_log($jc_task);
+JLog::addLogger(array(['text_file' => 'recaptcha.log']), JLog::ALL, array('recaptcha'));
+JLog::add('onInit pubkey is null', JLog::ERROR, 'recaptcha');
 switch (trim($jc_task)) {
 	case 'captcha':
+		my_log("captcha");
 		$config = JCommentsFactory::getConfig();
 		$captchaEngine = $config->get('captcha_engine', 'kcaptcha');
 		if ($captchaEngine == 'kcaptcha' || $config->getInt('enable_plugins') == 0) {
@@ -75,10 +85,11 @@ switch (trim($jc_task)) {
 		break;
 
 	default:
+		my_log("default");
 		$jc_option = $app->input->get('option', '');
 		$jc_ajax = $app->input->get('jtxf', '');
 
-		if ($jc_option == 'com_jcomments' && $jc_ajax == '' && !$app->isAdmin()) {
+		if ($jc_option == 'com_jcomments' && $jc_ajax == '' && ! JCommentsSystemPluginHelper::isAdmin($app)) {
 
 			$_Itemid = $app->input->getInt('Itemid');
 			$_tmpl = $app->input->get('tmpl');
@@ -196,7 +207,7 @@ class JComments
 
 		if (!defined('JCOMMENTS_CSS')) {
 			include_once(JCOMMENTS_HELPERS . '/system.php');
-			if ($app->isAdmin()) {
+			if (JCommentsSystemPluginHelper::isAdmin($app)) {
 				$tmpl->addVar('tpl_index', 'comments-css', 1);
 			} else {
 				$document->addStyleSheet(JCommentsSystemPluginHelper::getCSS());

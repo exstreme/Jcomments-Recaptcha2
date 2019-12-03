@@ -24,7 +24,10 @@ class JCommentsViewImport extends JCommentsViewLegacy
 		$this->state = $this->get('State');
 
 		JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
-		JHTML::_('behavior.modal');
+		if (version_compare(JVERSION, '4.0', 'lt')) {
+			JHTML::_('behavior.modal');
+		}
+		
 		JHtml::_('jcomments.stylesheet');
 
 		if (version_compare(JVERSION, '3.0', 'ge')) {
