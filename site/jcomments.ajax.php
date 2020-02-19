@@ -242,7 +242,11 @@ class JCommentsAJAX
 
 						case 'recaptcha':
 							JPluginHelper::importPlugin('captcha', "recaptcha");
-							$dispatcher = JEventDispatcher::getInstance();
+							if (version_compare(JVERSION, '3.0', 'ge')) {
+                                				$dispatcher = JEventDispatcher::getInstance();
+                            				} else {
+                                				$dispatcher = JDispatcher::getInstance();
+                           				}
 							//Check if the installed version of Joomla is less than 3.9
 							if (version_compare(JVERSION, '3.9', '<' ) == 1)
 							{
@@ -272,7 +276,11 @@ class JCommentsAJAX
 						//Since Joomla v3.9, reCaptcha invisible is implemented
 						case 'recaptcha_invisible':
 							JPluginHelper::importPlugin('captcha', "recaptcha_invisible");
-							$dispatcher = JEventDispatcher::getInstance();
+							if (version_compare(JVERSION, '3.0', 'ge')) {
+                                				$dispatcher = JEventDispatcher::getInstance();
+                            					} else {
+                                				$dispatcher = JDispatcher::getInstance();
+                            					}
 							try
 							{
 								$dispatcher->trigger('onCheckAnswer');
