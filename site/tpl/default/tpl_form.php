@@ -12,7 +12,10 @@
 defined('_JEXEC') or die;
 
 JHtml::_('behavior.keepalive');
-JHtml::_('behavior.formvalidator');
+if (version_compare(JVERSION, '3.4', 'ge')) {
+    JHtml::_('behavior.formvalidator');
+} else {
+JHtml::_('behavior.formvalidation'); }
 
 /**
  * Comments form template
