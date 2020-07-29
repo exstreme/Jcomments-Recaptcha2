@@ -11,6 +11,10 @@
 
 defined('_JEXEC') or die;
 
+ini_set('display_errors', 0);
+ini_set('display_startup_errors', 0);
+error_reporting(0);
+
 ob_start();
 
 if (!defined('JOOMLATUNE_AJAX')) {
