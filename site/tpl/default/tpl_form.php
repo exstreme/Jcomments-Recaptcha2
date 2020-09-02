@@ -306,7 +306,7 @@ $script.="
     }
 		if ($text != '') {
 ?>
-<a id="addcomments" href="#addcomments"></a>
+
 <p class="message"><?php echo $text; ?></p>
 <?php
 		}
