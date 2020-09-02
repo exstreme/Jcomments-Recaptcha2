@@ -17,6 +17,8 @@ if (version_compare(JVERSION, '3.4', 'ge')) {
 } else {
     JHtml::_('behavior.formvalidation'); }
 
+
+
 /**
  * Comments form template
  */
