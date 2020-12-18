@@ -375,3 +375,28 @@ JComments.prototype = {
 	updateSubscription: function(m,t){var e=this.$('comments-subscription');if(e){var jc=this;e.innerHTML=t;e.onclick=m?function(){jc.unsubscribe(jc.oi,jc.og);return false;}:function(){jc.subscribe(jc.oi,jc.og);return false;};e.blur();}},
 	go: function(l){window.open(l);return false;}
 };
+
+document.addEventListener("DOMContentLoaded", function() {
+	if (document.getElementById('comments-form-captcha-image'))
+	document.getElementById('comments-form-captcha-image').addEventListener('click',function () {
+		jcomments.clear('captcha');
+	});
+	if (document.getElementById('captcha-span-jc'))
+	document.getElementById('captcha-span-jc').addEventListener('click',function () {
+		jcomments.clear('captcha');
+	});
+	if (document.getElementById('comments-form-send'))
+	document.getElementById('comments-form-send').addEventListener('click',function () {
+		jcomments.saveComment();return false;
+	});
+	if (document.getElementById('comments-form-cancel'))
+	document.getElementById('comments-form-cancel').addEventListener('click',function () {
+		return false;
+	});
+	if (document.getElementById('addcomments'))
+	document.getElementById('addcomments').addEventListener('click',function () {
+		jcomments.showForm(this.dataset.object_id,this.dataset.object_group, 'comments-form-link'); return false;
+	});
+
+})
+

@@ -247,7 +247,7 @@ class JCommentsFactory
 		$lang = $language->getTag();
 		$domain = ($lang == 'ru-RU' || $lang == 'uk-UA' || $lang == 'be-BY') ? 'ru' : 'com';
 
-		$tmpl->addGlobalVar('support', '<a href="http://www.joomlatune.' . $domain . '" title="JComments" target="_blank">JComments</a>');
+		$tmpl->addGlobalVar('support', '<a href="http://www.joomlatune.' . $domain . '" title="JComments" target="_blank" rel="noopener">JComments</a>');
 		$tmpl->addGlobalVar('comment-object_id', $object_id);
 		$tmpl->addGlobalVar('comment-object_group', $object_group);
 

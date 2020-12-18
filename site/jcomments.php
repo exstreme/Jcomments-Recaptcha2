@@ -28,13 +28,13 @@ ob_end_clean();
 $app = JFactory::getApplication();
 
 $jc_task = $app->input->get('task', '');
-function my_log($msg)
+/*function my_log($msg)
 {	
 	$fp = fopen("F:\\sites\\site OVH JLT local\\joomla_4.0\\logs\\log.txt", "a");
 	fwrite($fp, "[JCOMMENTS]" . " " . date("H:i:s", $_SERVER['REQUEST_TIME']) . ":" . $msg ."\n");
 	fclose($fp);
 }
-my_log($jc_task);
+my_log($jc_task);*/
 JLog::addLogger(array(['text_file' => 'recaptcha.log']), JLog::ALL, array('recaptcha'));
 JLog::add('onInit pubkey is null', JLog::ERROR, 'recaptcha');
 switch (trim($jc_task)) {
@@ -85,7 +85,7 @@ switch (trim($jc_task)) {
 		break;
 
 	default:
-		my_log("default");
+		//my_log("default");
 		$jc_option = $app->input->get('option', '');
 		$jc_ajax = $app->input->get('jtxf', '');
 
