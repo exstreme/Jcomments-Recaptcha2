@@ -394,18 +394,6 @@
             <option value="1">JYES</option>
             <option value="0">JNO</option>
         </field>
-        
-        <field
- 					name="show_checkbox_terms_of_use"
- 					type="radio"
- 					class="inputbox btn-group"
- 					default="0"
- 					filter="integer"
- 					label="AP_ENABLE_ACCEPT_TERMS_OF_USE"
- 					description="AP_ENABLE_ACCEPT_TERMS_OF_USE_DESC">
- 				<option value="1">JYES</option>
- 				<option value="0">JNO</option>
-			</field>
 
         <field
                 name="captcha_engine"
@@ -415,6 +403,7 @@
                 label="AP_FORM_FIELD_CAPTCHA"
                 description="">
             <option value="kcaptcha">KCAPTCHA</option>
+			<option value="recaptcha">RECAPTCHA</option>
         </field>
 
     </fieldset>

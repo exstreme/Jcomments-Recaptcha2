@@ -36,11 +36,6 @@
                 type="permission"
                 label="AP_ENABLE_SUBSCRIBE"
                 description="AP_ENABLE_SUBSCRIBE_DESC"/>
-			<field
-                name="enable_permission_show_checkbox_terms_of_use"
-                type="permission"
-                label="AP_ENABLE_ACCEPT_TERMS_OF_USE"
-                description="AP_ENABLE_ACCEPT_TERMS_OF_USE_DESC"/>
     </fieldset>
 
     <fieldset name="bbcodes">

@@ -256,8 +256,6 @@ AP_COMMENT_MINLENGTH="Минимальная длина комментария"
 AP_COMMENT_MINLENGTH_DESC="Если длина комментария меньше данного значения, пользователю будет выдано предупреждение."
 AP_SHOW_COMMENTLENGTH="Счетчик символов"
 AP_SHOW_COMMENTLENGTH_DESC="Показывает оставшееся количество символов, которое может ввести в форму пользователь, исходя из ограничений, установленных администратором."
-AP_ENABLE_ACCEPT_TERMS_OF_USE="Показать флажок, чтобы принять условия использования."
-AP_ENABLE_ACCEPT_TERMS_OF_USE_DESC="Показать или скрыть флажок, чтобы принять условия использования"
 AP_WORD_MAXLENGTH="Разбивать длинные слова"
 AP_WORD_MAXLENGTH_DESC="Разрешить автоматически разбивать слова на несколько частей, если количество символов превышает разрешенную длину. Не рекомендуется устанавливать значение меньше 15 символов."
 AP_LINK_MAXLENGTH="Сокращать ссылки"
@@ -340,8 +338,6 @@ A_ABOUT_COPYRIGHT="Все права защищены!"
 A_ABOUT_LOGO_DESIGN="Разработка логотипа"
 A_ABOUT_TESTERS="Команда бета-тестеров"
 A_ABOUT_TRANSLATORS="Переводчики"
-A_ABOUT_JCOMMENTS_GITHUB_PROJECT="JComments v3.0.7.X - это модифицированная версия исходной версии Jcomments v3.0.7. <a href="https://github.com/exstreme/Jcomments-Recaptcha2">Ссылка на проект Github</a>. <ul><li>Совместимость с PHP 7.2</li><li>Проверено на Joomla v3.9.24</li><li>Recaptcha v2 и v3 (невидимый)</li><li>флажок 'Примите условия использования'</li><li>И больше...</li></ul>"
-
 
 ; submenu
 A_SUBMENU_COMMENTS="Комментарии"
