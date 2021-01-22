@@ -10,7 +10,7 @@
 #jc .clear {clear: both; height: 1px; overflow: hidden}
 #jc .busy { display:none; margin: 3px auto; padding: 0; width: 16px; height: 16px; background: url(images/jc_busy.gif) no-repeat; }
 
-#jc span {color: #555;background-color: inherit;font-weight: bold;text-align: left;padding: 0 0 2px 0;margin-bottom: 10px}
+#jc span {color: #555;background-color: inherit;font-weight: bold;text-align: left;border-bottom: 1px solid #D2DADB;padding: 0 0 2px 0;margin-bottom: 10px}
 
 #jc p.message {color: #777;background-color: inherit; background-image: none; text-align: center;text-decoration: none;text-transform: none;text-indent: 0;padding: 5px 0 0 0;border-top: 1px solid #D2DADB}
 
@@ -87,13 +87,13 @@
 #comments-list .comments-inline-edit {padding: 5px; margin: 5px 0; color: inherit;background-color: #fff;border: 1px solid #ccc}
 
 /* Comment form */
-div.comments-policy {color: #777; text-align: left;text-decoration: none;text-transform: none;text-indent: 0; background-color: inherit; border: 1px dotted #ccc; padding: 5px;}
+div.comments-policy {color: #777; text-align: left;text-decoration: none;text-transform: none;text-indent: 0; background-color: inherit; border: 1px dotted #ccc; padding: 5px; margin: 5px 0 5px 20px; margin-left: 20px !important;}
 div.comments-policy ol, div.comments-policy ul {margin: 0;padding: 5px 0 0 20px;}
 div.comments-policy ol li, div.comments-policy ul li {font: normal 1em Verdana, Arial, Sans-Serif; margin: 0;padding: 0;border: none;line-height:  1em;}
 
 #comments-form, #comments-form p, #comments-report-form, #comments-report-form p, #comments-form span, #comments-form .counter {text-align: left;text-decoration: none;text-transform: none;text-indent: 0}
 #comments-form p, #comments-report-form p, #comments-form span, #comments-form .counter {color: #777;font: normal 1em Verdana, Arial, Sans-Serif}
-#comments-form p, #comments-form #comments-form-buttons, #comments-form #comments-form-error, #comments-form #comments-form-captcha-holder {font: normal 1em Verdana, Arial, Sans-Serif;margin-top: 10px;margin-bottom: 8px;overflow: hidden;padding: 0}
+#comments-form p, #comments-form #comments-form-buttons, #comments-form #comments-form-error, #comments-form #comments-form-captcha-holder {font: normal 1em Verdana, Arial, Sans-Serif;margin-left: 20px !important;margin-top: 10px;margin-bottom: 8px;overflow: hidden;padding: 0}
 
 #comments-inline-edit {border: 1px solid #ccc;margin: 5px 0 0 0;background: #fff}
 #comments-inline-edit #comments-form p, #comments-inline-edit #comments-form #comments-form-buttons,
@@ -110,7 +110,7 @@ div.comments-policy ol li, div.comments-policy ul li {font: normal 1em Verdana, 
 
 #comments-form input.checkbox {width: 16px; line-height: 1.5em; padding: 0; margin: 0; vertical-align: middle; border: none}
 #comments-form input.captcha {width: 116px; margin: 3px 0 5px 0}
-#comments-form textarea {min-width: 250px !important;width: 90%;margin:0;resize: none;}
+#comments-form textarea {max-width: 400px !important;width: 350px;margin:0;resize: none;}
 
 #comments-form-message {padding: 5px 5px 5px 25px;margin-right: 5px;display: block}
 .comments-form-message-error {background: #FFD86F url(images/jc_error.gif) no-repeat 4px 50%}
@@ -118,7 +118,7 @@ div.comments-policy ol li, div.comments-policy ul li {font: normal 1em Verdana, 
 
 #comments-form .counterpanel {height:13px;display:block;overflow:hidden;color: #ccc;padding: 0;margin:0;border:1px solid #ddd;border-top-width:0;max-width: 400px !important;width: 350px;background-color: #eee}
 
-#comments-form .grippie {height:13px;display:block;overflow:hidden;color: #ccc;padding: 0;margin:0;border:1px solid #ddd;border-top-width:0;min-width: 250px !important;width: 90%;cursor:s-resize;background: #eee url(images/jc_resize.gif) no-repeat right 2px}
+#comments-form .grippie {height:13px;display:block;overflow:hidden;color: #ccc;padding: 0;margin:0;border:1px solid #ddd;border-top-width:0;max-width: 400px !important;width: 350px;cursor:s-resize;background: #eee url(images/jc_resize.gif) no-repeat right 2px}
 #comments-form .grippie .counter {font-size: 10px;padding: 0; margin: 0}
 #comments-form .grippie span {display:block;float:left}
 #comments-form .grippie span span {display:inline;float:none}

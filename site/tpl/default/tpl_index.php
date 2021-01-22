@@ -47,13 +47,12 @@ class jtt_tpl_index extends JoomlaTuneTemplate
 
 			// include JComments JavaScript initialization
 ?>
-<?php $script="
+<script type="text/javascript">
 <!--
-var jcomments=new JComments($object_id, '$object_group','".$this->getVar('ajaxurl')."');
+var jcomments=new JComments(<?php echo $object_id;?>, '<?php echo $object_group; ?>','<?php echo $this->getVar('ajaxurl'); ?>');
 jcomments.setList('comments-list');
-//-->";
-//</script>
-            JFactory::getDocument()->addScriptDeclaration($script); ?>
+//-->
+</script>
 <?php
 			// IMPORTANT: Do not rename this div's id! Some JavaScript functions references to it!
 ?>
@@ -84,13 +83,11 @@ jcomments.setList('comments-list');
 
 			if ($aca || $acp || $acf) {
 ?>
-<?php
-      $script="
+<script type="text/javascript">
 <!--
-jcomments.setAntiCache($aca,$acp,$acf);
+jcomments.setAntiCache(<?php echo $aca;?>,<?php echo $acp;?>,<?php echo $acf;?>);
 //-->
-";
-JFactory::getDocument()->addScriptDeclaration($script); ?>
+</script> 
 <?php
 			}
 ?>
