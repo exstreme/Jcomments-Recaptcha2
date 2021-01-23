@@ -87,13 +87,13 @@
 #comments-list .comments-inline-edit {padding: 5px; margin: 5px 0; color: inherit;background-color: #fff;border: 1px solid #ccc}
 
 /* Comment form */
-div.comments-policy {color: #777; text-align: left;text-decoration: none;text-transform: none;text-indent: 0; background-color: inherit; border: 1px dotted #ccc; padding: 5px;}
+div.comments-policy {color: #777; text-align: left;text-decoration: none;text-transform: none;text-indent: 0; background-color: inherit; border: 1px dotted #ccc; padding: 5px; margin: 5px 0 5px 20px; margin-left: 20px !important;}
 div.comments-policy ol, div.comments-policy ul {margin: 0;padding: 5px 0 0 20px;}
 div.comments-policy ol li, div.comments-policy ul li {font: normal 1em Verdana, Arial, Sans-Serif; margin: 0;padding: 0;border: none;line-height:  1em;}
 
 #comments-form, #comments-form p, #comments-report-form, #comments-report-form p, #comments-form span, #comments-form .counter {text-align: left;text-decoration: none;text-transform: none;text-indent: 0}
 #comments-form p, #comments-report-form p, #comments-form span, #comments-form .counter {color: #777;font: normal 1em Verdana, Arial, Sans-Serif}
-#comments-form p, #comments-form #comments-form-buttons, #comments-form #comments-form-error, #comments-form #comments-form-captcha-holder {font: normal 1em Verdana, Arial, Sans-Serif;margin-top: 10px;margin-bottom: 8px;overflow: hidden;padding: 0}
+#comments-form p, #comments-form #comments-form-buttons, #comments-form #comments-form-error, #comments-form #comments-form-captcha-holder {font: normal 1em Verdana, Arial, Sans-Serif;margin-left: 20px !important;margin-top: 10px;margin-bottom: 8px;overflow: hidden;padding: 0}
 
 #comments-inline-edit {border: 1px solid #ccc;margin: 5px 0 0 0;background: #fff}
 #comments-inline-edit #comments-form p, #comments-inline-edit #comments-form #comments-form-buttons,
