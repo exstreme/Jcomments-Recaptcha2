@@ -17,6 +17,8 @@ if (version_compare(JVERSION, '3.4', 'ge')) {
 } else {
 JHtml::_('behavior.formvalidation'); }
 
+
+
 /**
  * Comments form template
  */
@@ -144,11 +146,12 @@ class jtt_tpl_form extends JoomlaTuneTemplate
 		$html = $this->getVar('comments-form-captcha-html');
 		if ($html == 'kcaptcha') {
 		$link = JCommentsFactory::getLink('captcha');
+
 ?>
 <p>
 	<span>
-		<img class="captcha" onclick="jcomments.clear('captcha');" id="comments-form-captcha-image" src="<?php echo $link; ?>" width="121" height="60" alt="<?php echo JText::_('FORM_CAPTCHA'); ?>" /><br />
-		<span class="captcha" onclick="jcomments.clear('captcha');"><?php echo JText::_('FORM_CAPTCHA_REFRESH'); ?></span><br />
+		<img class="captcha"  id="comments-form-captcha-image" src="<?php echo $link; ?>" width="121" height="60" alt="<?php echo JText::_('FORM_CAPTCHA'); ?>" /><br />
+		<span class="captcha" id="captcha-span-jc" ><?php echo JText::_('FORM_CAPTCHA_REFRESH'); ?></span><br />
 		<input class="captcha" id="comments-form-captcha" type="text" name="captcha_refid" value="" size="5" tabindex="6" /><br />
 	</span>
 </p>
@@ -165,8 +168,8 @@ class jtt_tpl_form extends JoomlaTuneTemplate
 		$this->getFormFields($htmlFormAppend);
 ?>
 <div id="comments-form-buttons">
-	<div class="btn" id="comments-form-send"><div><a href="#" tabindex="7" onclick="jcomments.saveComment();return false;" title="<?php echo JText::_('FORM_SEND_HINT'); ?>"><?php echo JText::_('FORM_SEND'); ?></a></div></div>
-	<div class="btn" id="comments-form-cancel" style="display:none;"><div><a href="#" tabindex="8" onclick="return false;" title="<?php echo JText::_('FORM_CANCEL'); ?>"><?php echo JText::_('FORM_CANCEL'); ?></a></div></div>
+                <div class="btn" id="comments-form-send"><div><a href="#" tabindex="7"  title="<?php echo JText::_('FORM_SEND_HINT'); ?>"><?php echo JText::_('FORM_SEND'); ?></a></div></div>
+                <div class="btn" id="comments-form-cancel" style="display:none;"><div><a href="#" tabindex="8" title="<?php echo JText::_('FORM_CANCEL'); ?>"><?php echo JText::_('FORM_CANCEL'); ?></a></div></div>
 	<div style="clear:both;"></div>
 </div>
 <div>
@@ -174,12 +177,13 @@ class jtt_tpl_form extends JoomlaTuneTemplate
 	<input type="hidden" name="object_group" value="<?php echo $object_group; ?>" />
 </div>
 </form>
-<script type="text/javascript">
-<!--
+        <!--<script type="text/javascript">-->
+        <?php
+        $script="
 function JCommentsInitializeForm()
 {
 	var jcEditor = new JCommentsEditor('comments-form-comment', true);
-<?php
+";
 		if ($this->getVar('comments-form-bbcode', 0) == 1) {
 			$bbcodes = array( 'b'=> array(0 => JText::_('FORM_BBCODE_B'), 1 => JText::_('BBCODE_HINT_ENTER_TEXT'))
 					, 'i'=> array(0 => JText::_('FORM_BBCODE_I'), 1 => JText::_('BBCODE_HINT_ENTER_TEXT'))
@@ -196,15 +200,15 @@ function JCommentsInitializeForm()
 				if ($this->getVar('comments-form-bbcode-' . $k , 0) == 1) {
 					$title = trim(JCommentsText::jsEscape($v[0]));
 					$text = trim(JCommentsText::jsEscape($v[1]));
-?>
-	jcEditor.addButton('<?php echo $k; ?>','<?php echo $title; ?>','<?php echo $text; ?>');
-<?php
+                    $script.="
+	jcEditor.addButton('$k','$title','$text');
+";
 				}
 			}
 		}
 
 		$customBBCodes = $this->getVar('comments-form-custombbcodes');
-		if (!empty($customBBCodes)) {
+        if (count($customBBCodes)) {
 			foreach($customBBCodes as $code) {
 				if ($code->button_enabled) {
 					$k = 'custombbcode' . $code->id;
@@ -214,9 +218,9 @@ function JCommentsInitializeForm()
 					$close_tag = $code->button_close_tag;
 					$icon = $code->button_image;
 					$css = $code->button_css;
-?>
-	jcEditor.addButton('<?php echo $k; ?>','<?php echo $title; ?>','<?php echo $text; ?>','<?php echo $open_tag; ?>','<?php echo $close_tag; ?>','<?php echo $css; ?>','<?php echo $icon; ?>');
-<?php
+                    $script.="
+	jcEditor.addButton('$k','$title','$text','$open_tag','$close_tag','$css','$icon');
+";
 				}
 			}
 		}
@@ -225,43 +229,44 @@ function JCommentsInitializeForm()
 
 		if (isset($smiles)) {
 			if (is_array($smiles)&&count($smiles) > 0) {
-?>
-	jcEditor.initSmiles('<?php echo $this->getVar( "smilesurl" ); ?>');
-<?php
+                $script.="
+	jcEditor.initSmiles('".$this->getVar( "smilesurl" )."');
+";
 				foreach ($smiles as $code => $icon) {
 					$code = trim(JCommentsText::jsEscape($code));
 					$icon = trim(JCommentsText::jsEscape($icon));
-?>
-	jcEditor.addSmile('<?php echo $code; ?>','<?php echo $icon; ?>');
-<?php
+                    $script.="
+	jcEditor.addSmile('$code','$icon');
+";
 				}
 			}
 		}
 		if ($this->getVar( 'comments-form-showlength-counter', 0) == 1) {
-?>
-	jcEditor.addCounter(<?php echo $this->getVar('comment-maxlength'); ?>, '<?php echo JText::_('FORM_CHARSLEFT_PREFIX'); ?>', '<?php echo JText::_('FORM_CHARSLEFT_SUFFIX'); ?>', 'counter');
-<?php
+            $script.="
+	jcEditor.addCounter(".$this->getVar('comment-maxlength').", '".JText::_('FORM_CHARSLEFT_PREFIX')."', '".JText::_('FORM_CHARSLEFT_SUFFIX')."', 'counter');
+";
 		}
-?>
-	jcomments.setForm(new JCommentsForm('comments-form', jcEditor));
+        $script.="	jcomments.setForm(new JCommentsForm('comments-form', jcEditor));
 }
 
-<?php
+";
 	if ($this->getVar('comments-form-ajax', 0) == 1) {
-?>
+            $script.="
 setTimeout(JCommentsInitializeForm, 100);
-<?php
+";
 	} else {
-?>
+            $script.="
 if (window.addEventListener) {window.addEventListener('load',JCommentsInitializeForm,false);}
 else if (document.addEventListener){document.addEventListener('load',JCommentsInitializeForm,false);}
 else if (window.attachEvent){window.attachEvent('onload',JCommentsInitializeForm);}
 else {if (typeof window.onload=='function'){var oldload=window.onload;window.onload=function(){oldload();JCommentsInitializeForm();}} else window.onload=JCommentsInitializeForm;} 
-<?php
+";
 	}
+        $script.="
+//-->";
+//</script>
+        JFactory::getDocument()->addScriptDeclaration($script);
 ?>
-//-->
-</script>
 <?php echo $htmlAfterForm; ?>
 <?php
 	}
@@ -277,7 +282,7 @@ else {if (typeof window.onload=='function'){var oldload=window.onload;window.onl
 		$object_group = $this->getVar('comment-object_group');
 ?>
 <div id="comments-form-link">
-<a id="addcomments" class="showform" href="#addcomments" onclick="jcomments.showForm(<?php echo $object_id; ?>,'<?php echo $object_group; ?>', 'comments-form-link'); return false;"><?php echo JText::_('FORM_HEADER'); ?></a>
+            <a id="addcomments" href="#addcomments"  class="showform" data-object_id="<?php echo $object_id; ?>" data-object_group"<?php echo $object_group; ?>" href="#addcomments"  ><?php echo JText::_('FORM_HEADER'); ?></a>
 </div>
 <?php
 	}
