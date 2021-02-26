@@ -295,20 +295,34 @@ class JCommentsAJAX
 						//Since Joomla v3.9, reCaptcha invisible is implemented
 						case 'recaptcha_invisible':
 							JPluginHelper::importPlugin('captcha', "recaptcha_invisible");
-							if (version_compare(JVERSION, '3.0', 'ge')) {
-                                				$dispatcher = JEventDispatcher::getInstance();
-                            					} else {
-                                				$dispatcher = JDispatcher::getInstance();
-                            					}
-							try
+							if (version_compare(JVERSION, '3.9', '<' ) == 1)
 							{
-								$dispatcher->trigger('onCheckAnswer');
-							}
-							catch (Exception $e)
-							{
-								self::showErrorMessage($e->getMessage());
-								$response->addScript("grecaptcha.reset()");
-								return $response;
+								if (version_compare(JVERSION, '3.0', 'ge')) {
+													$dispatcher = JEventDispatcher::getInstance();
+													} else {
+													$dispatcher = JDispatcher::getInstance();
+													}
+								try
+								{
+									$dispatcher->trigger('onCheckAnswer');
+								}
+								catch (Exception $e)
+								{
+									self::showErrorMessage($e->getMessage());
+									$response->addScript("grecaptcha.reset()");
+									return $response;
+								}
+							} else {
+								try
+								{
+									Factory::getApplication()->triggerEvent('onCheckAnswer');
+								}
+								catch (Exception $e)
+								{
+									self::showErrorMessage($e->getMessage());
+									$response->addScript("grecaptcha.reset()");
+									return $response;
+								}
 							}
 							break;
 

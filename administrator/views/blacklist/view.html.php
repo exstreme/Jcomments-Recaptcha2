@@ -10,7 +10,7 @@
  */
 
 defined('_JEXEC') or die;
-
+use Joomla\CMS\HTML\HTMLHelper;
 class JCommentsViewBlacklist extends JCommentsViewLegacy
 {
 	protected $item;
@@ -24,16 +24,27 @@ class JCommentsViewBlacklist extends JCommentsViewLegacy
 		$this->state = $this->get('State');
 
 		JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
-
-		JHtml::_('behavior.tooltip');
-		JHtml::_('behavior.formvalidation');
-
-		if (version_compare(JVERSION, '3.0', 'ge')) {
-			JHtml::_('formbehavior.chosen', 'select');
-			$this->bootstrap = true;
+		if (version_compare(JVERSION, '4.0', '<')){
+			JHtml::_('behavior.tooltip');
+			JHtml::_('behavior.formvalidation');
 		} else {
-			JHtml::_('jcomments.bootstrap');
+			HTMLHelper::_('jquery.framework');
+			HTMLHelper::_('bootstrap.tooltip');
+			HTMLHelper::_('behavior.formvalidator');
+			HTMLHelper::_('bootstrap.tab');
 		}
+
+		if (version_compare(JVERSION, '4.0', '<')){
+			if (version_compare(JVERSION, '3.0', 'ge')) {
+				JHtml::_('formbehavior.chosen', 'select');
+				$this->bootstrap = true;
+			} else {
+				JHtml::_('jcomments.bootstrap');
+			}
+		} else {
+			HTMLHelper::_('formbehavior.chosen', 'select');
+		}
+
 
 		JHtml::_('jcomments.stylesheet');
 
