@@ -33,6 +33,8 @@ defined('_JEXEC') or die;
 						<div>
 							<span class="extension-name"><?php echo $this->version->getLongVersion(); ?></span>
 							<span class="extension-date">[<?php echo $this->version->getReleaseDate(); ?>]</span>
+							<br ><br >
+							<span><?php echo JText::_('A_ABOUT_JCOMMENTS_GITHUB_PROJECT'); ?></span>
 						</div>
 
 						<div class="extension-copyright">

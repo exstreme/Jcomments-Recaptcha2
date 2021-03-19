@@ -216,9 +216,15 @@ class JCommentsAJAX
 					return $response;
 				}
 			}
-
+			
+			$values['name_checkbox_terms_of_use'] = isset($values['name_checkbox_terms_of_use']) ? (int) $values['name_checkbox_terms_of_use'] : 0;
+			
 			if (($acl->check('floodprotection') == 1) && (JCommentsSecurity::checkFlood($userIP))) {
 				self::showErrorMessage(JText::_('ERROR_TOO_QUICK'));
+			} else if (($config->getInt('show_checkbox_terms_of_use') == 1)					// Is checkbox enabled from backend (tab Layout)?
+				&& ($values['name_checkbox_terms_of_use'] == 0)									// Is checkbox selected?
+				&& ($acl->check('enable_permission_show_checkbox_terms_of_use') == 1)) {	// Is checkbox enabled from backend (tab Permissions)?				
+				self::showErrorMessage(JText::_('ERROR_CHECKBOX_TERMS_OF_USE_NO_SELECTED'), 'name_checkbox_terms_of_use');
 			} else if (empty($values['homepage']) && ($config->get('author_homepage') == 3)) {
 				self::showErrorMessage(JText::_('ERROR_EMPTY_HOMEPAGE'), 'homepage');
 			} else if (empty($values['title']) && ($config->get('comment_title') == 3)) {
@@ -713,7 +719,6 @@ class JCommentsAJAX
 		$user = JFactory::getUser();
 		$response = JCommentsFactory::getAjaxResponse();
 		$comment = JTable::getInstance('Comment', 'JCommentsTable');
-
 		if ($comment->load((int) $id)) {
 			$acl = JCommentsFactory::getACL();
 
@@ -756,9 +761,15 @@ class JCommentsAJAX
 		if ($comment->load($id)) {
 			$acl = JCommentsFactory::getACL();
 
+			$values['name_checkbox_terms_of_use'] = isset($values['name_checkbox_terms_of_use']) ? (int) $values['name_checkbox_terms_of_use'] : 0;
+						
 			if ($acl->canEdit($comment)) {
 				if ($values['comment'] == '') {
 					self::showErrorMessage(JText::_('ERROR_EMPTY_COMMENT'), 'comment');
+				} else if (($config->getInt('show_checkbox_terms_of_use') == 1)					// Is checkbox enabled from backend (tab Layout)?
+				    && ($values['name_checkbox_terms_of_use'] == 0)									// Is checkbox selected?
+				    && ($acl->check('enable_permission_show_checkbox_terms_of_use') == 1)) {	// Is checkbox enabled from backend (tab Permissions)?
+				        self::showErrorMessage(JText::_('ERROR_CHECKBOX_TERMS_OF_USE_NO_SELECTED'), 'name_checkbox_terms_of_use');
 				} else if (($config->getInt('comment_maxlength') != 0)
 					&& ($acl->check('enable_comment_length_check') == 1)
 					&& (JCommentsText::strlen($values['comment']) > $config->getInt('comment_maxlength'))) {

@@ -135,10 +135,10 @@ switch (trim($jc_task)) {
 
 					echo JComments::show($object_id, $object_group);
 				} else {
-					JFactory::getApplication()->redirect(JRoute::_('/index.php'));
+					JFactory::getApplication()->redirect(JRoute::_(rtrim(JURI::base(), '/')));
 				}
 			} else {
-				JFactory::getApplication()->redirect(JRoute::_('/index.php'));
+				JFactory::getApplication()->redirect(JRoute::_(rtrim(JURI::base(), '/')));
 			}
 		}
 		break;
@@ -394,7 +394,13 @@ class JComments
 				$tmpl->addVar('tpl_form', 'comments-form-html-prepend', $htmlFormPrepend);
 				$tmpl->addVar('tpl_form', 'comments-form-html-append', $htmlFormAppend);
 			}
-
+			
+			$show_checkbox_terms_of_use = $config->get('show_checkbox_terms_of_use');
+			if (($show_checkbox_terms_of_use == 1) && ($acl->check('enable_permission_show_checkbox_terms_of_use') == 1))
+			{
+ 				$tmpl->addVar('tpl_form', 'var_show_checkbox_terms_of_use', 1);
+			}
+			
 			$policy = $config->get('message_policy_post');
 			if (($policy != '') && ($acl->check('show_policy'))) {
 				$policy = stripslashes($policy);

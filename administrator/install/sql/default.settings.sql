@@ -81,5 +81,7 @@ INSERT INTO `#__jcomments_settings` VALUES
 ('', '', 'enable_blacklist', '0'),
 ('', '', 'smilies_path', '/components/com_jcomments/images/smilies/'),
 ('', '', 'feed_limit', '100'),
-('', '', 'report_reason_required', '1')
+('', '', 'report_reason_required', '1'),
+('', '', 'show_checkbox_terms_of_use', '0'),
+('', '', 'enable_permission_show_checkbox_terms_of_use', 'Registered,Author,Editor,Publisher,Manager,Administrator,Super Users'),
 ;

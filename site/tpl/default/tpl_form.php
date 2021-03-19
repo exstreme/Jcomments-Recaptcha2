@@ -129,17 +129,25 @@ class jtt_tpl_form extends JoomlaTuneTemplate
 		<input class="checkbox" id="comments-form-subscribe" type="checkbox" name="subscribe" value="1" tabindex="5" />
 		<label for="comments-form-subscribe"><?php echo JText::_('FORM_SUBSCRIBE'); ?></label><br />
 	</span>
-                </p>
-                <?php
-            }
-
-            if ($this->getVar('comments-form-captcha', 0) == 1) {
-                $html = $this->getVar('comments-form-captcha-html');
-                if ($html == 'kcaptcha') {
-                    $link = JCommentsFactory::getLink('captcha');
-
-                    ?>
-                    <p>
+</p>
+<?php
+ }
+	if ($this->getVar('var_show_checkbox_terms_of_use',0) == 1) {
+?>
+<p id="checkbox_terms_of_use_css">
+	<span>
+		<input class="checkbox" id="show_checkbox_terms_of_use" type="checkbox" name="name_checkbox_terms_of_use" value="1" tabindex="5" />
+		<label for="show_checkbox_terms_of_use"><?php echo JText::_('FORM_ACCEPT_TERMS_OF_USE'); ?></label><br />
+	</span>
+</p>
+<?php
+ }
+	if ($this->getVar('comments-form-captcha', 0) == 1) {
+		$html = $this->getVar('comments-form-captcha-html');
+		if ($html == 'kcaptcha') {
+		$link = JCommentsFactory::getLink('captcha');
+?>
+<p>
 	<span>
 		<img class="captcha"  id="comments-form-captcha-image" src="<?php echo $link; ?>" width="121" height="60" alt="<?php echo JText::_('FORM_CAPTCHA'); ?>" /><br />
 		<span class="captcha" id="captcha-span-jc" ><?php echo JText::_('FORM_CAPTCHA_REFRESH'); ?></span><br />
