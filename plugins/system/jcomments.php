@@ -133,8 +133,13 @@ class plgSystemJComments extends JPlugin
 					$option = $app->findOption();
 				}
 				$task = $app->input->get('task');
-				//$type = $app->input->post('type', '', 'post');
-
+				if (version_compare(JVERSION, '4.0', 'lt')){
+					//do not work in joomla 4					
+					$type = $app->input->post('type', '', 'post');
+				} else {
+					//to do find a better solution in joomla 4.0
+					$type = 'content';
+				}	
 				// remove comments if content item deleted from trash
 				if ($option == 'com_trash' && $task == 'delete' && $type == 'content') {
 					$cid = $app->input->post->get('cid', array(), 'array');

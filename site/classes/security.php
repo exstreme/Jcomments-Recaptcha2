@@ -11,6 +11,8 @@
 
 defined('_JEXEC') or die;
 
+use Joomla\String\StringHelper;
+
 /**
  * JComments security functions
  */
@@ -53,9 +55,9 @@ class JCommentsSecurity
 		$names = JCommentsFactory::getConfig()->get('forbidden_names');
 
 		if (!empty($names) && !empty($str)) {
-			$str = trim(strtolower($str));
+			$str = trim(StringHelper::strtolower($str));
 
-			$names = strtolower(preg_replace("#,+#u", ',', preg_replace("#[\n|\r]+#u", ',', $names)));
+			$names = StringHelper::strtolower(preg_replace("#,+#u", ',', preg_replace("#[\n|\r]+#u", ',', $names)));
 			$names = explode(",", $names);
 
 			foreach ($names as $name) {
@@ -73,7 +75,7 @@ class JCommentsSecurity
 		$config = JCommentsFactory::getConfig();
 
 		if ($config->getInt('enable_username_check') == 1) {
-			$name = strtolower($name);
+			$name = StringHelper::strtolower($name);
 			$db = JFactory::getDbo();
 
 			$query = $db->getQuery(true);
@@ -94,7 +96,7 @@ class JCommentsSecurity
 		$config = JCommentsFactory::getConfig();
 
 		if ($config->getInt('enable_username_check') == 1) {
-			$email = strtolower($email);
+			$email = StringHelper::strtolower($email);
 			$db = JFactory::getDbo();
 
 			$query = $db->getQuery(true);
