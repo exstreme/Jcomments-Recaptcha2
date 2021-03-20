@@ -11,6 +11,8 @@
 
 defined('_JEXEC') or die;
 
+use Joomla\String\StringHelper;
+
 $user = JFactory::getUser();
 $userId = $user->get('id');
 $listOrder = $this->escape($this->state->get('list.ordering'));
@@ -92,7 +94,7 @@ $containerClass = empty($this->sidebar) ? '' : 'span10';
 						$title = JText::_('A_COMMENT_TITLE_RE') . ' ' . $item->object_title;
 					} else {
 						$title = JCommentsText::cleanText(strip_tags($item->comment));
-						$title = substr($title, 0, 200);
+						$title = StringHelper::substr($title, 0, 200);
 					}
 				}
 				?>

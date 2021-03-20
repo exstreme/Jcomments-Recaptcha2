@@ -63,17 +63,9 @@ class plgSystemJComments extends JPlugin
 			if ($option == 'com_content') {
 				$document = JFactory::getDocument();
 				if ($document->getType() == 'feed') {
-					if (version_compare(JVERSION, '4.0', 'lt')){
-						$buffer = JResponse::getBody();
-					} else {
-						$buffer = $app->getBody();
-					}
+					$buffer = JResponse::getBody();
 					$buffer = preg_replace('#{jcomments\s+(off|on|lock)}#is', '', $buffer);
-					if (version_compare(JVERSION, '4.0', 'lt')){
-						JResponse::setBody($buffer);
-					} else {
-						$app->setBody($buffer);
-					}
+					JResponse::setBody($buffer);
 				}
 			}
 		}

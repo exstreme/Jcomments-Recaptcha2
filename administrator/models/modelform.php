@@ -10,7 +10,9 @@
  */
 
 defined('_JEXEC') or die;
+
 use Joomla\Utilities\ArrayHelper; 
+
 abstract class JCommentsModelForm extends JCommentsModelLegacy
 {
 	protected $_forms = array();
