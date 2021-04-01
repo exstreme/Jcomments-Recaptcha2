@@ -10,7 +10,7 @@
  */
 
 defined('_JEXEC') or die;
-
+use Joomla\CMS\HTML\HTMLHelper;
 class JCommentsViewComment extends JCommentsViewLegacy
 {
 	protected $item;
@@ -29,15 +29,25 @@ class JCommentsViewComment extends JCommentsViewLegacy
 
 		JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 
-		JHtml::_('behavior.tooltip');
-		JHtml::_('behavior.formvalidation');
-
-		if (version_compare(JVERSION, '3.0', 'ge')) {
-			JHtml::_('formbehavior.chosen', 'select');
-			$this->bootstrap = true;
-		} else {
-			JHtml::_('jcomments.bootstrap');
+		//JHtml::_('behavior.tooltip');
+		if (version_compare(JVERSION, '4.0', 'lt')) {
+			JHtml::_('behavior.formvalidation');
 		}
+		else {
+			HTMLHelper::_('behavior.formvalidator');
+		}
+
+		if (version_compare(JVERSION, '4.0', '<')){
+			if (version_compare(JVERSION, '3.0', 'ge')) {
+				JHtml::_('formbehavior.chosen', 'select');
+				$this->bootstrap = true;
+			} else {
+				JHtml::_('jcomments.bootstrap');
+			}
+		} else {
+			HTMLHelper::_('formbehavior.chosen', 'select');
+		}
+
 
 		JHtml::_('jcomments.stylesheet');
 

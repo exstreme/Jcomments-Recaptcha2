@@ -11,6 +11,8 @@
 
 defined('_JEXEC') or die;
 
+use Joomla\String\StringHelper;
+
 class JCommentsModelComments extends JCommentsModelList
 {
 	public function __construct($config = array())
@@ -83,12 +85,12 @@ class JCommentsModelComments extends JCommentsModelList
 		$search = $this->getState('filter.search');
 		if (!empty($search)) {
 			if (stripos($search, 'id:') === 0) {
-				$query->where('jc.id = ' . (int)substr($search, 3));
+				$query->where('jc.id = ' . (int)StringHelper::substr($search, 3));
 			} else if (stripos($search, 'user:') === 0) {
-				$escaped = $this->_db->Quote('%' . $this->_db->escape(JString::substr($search, 5), true) . '%');
+				$escaped = $this->_db->Quote('%' . $this->_db->escape(StringHelper::substr($search, 5), true) . '%');
 				$query->where('(jc.email LIKE ' . $escaped . ' OR jc.name LIKE ' . $escaped . ' OR jc.username LIKE ' . $escaped . ')');
 			} else if (stripos($search, 'object:') === 0) {
-				$escaped = $this->_db->Quote('%' . $this->_db->escape(JString::substr($search, 7), true) . '%');
+				$escaped = $this->_db->Quote('%' . $this->_db->escape(StringHelper::substr($search, 7), true) . '%');
 				$query->where('jo.title LIKE ' . $escaped);
 			} else {
 				$search = $this->_db->Quote('%' . $this->_db->escape($search, true) . '%');

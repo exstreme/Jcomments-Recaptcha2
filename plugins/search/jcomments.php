@@ -11,6 +11,8 @@
 
 defined('_JEXEC') or die;
 
+use Joomla\String\StringHelper;
+
 jimport('joomla.plugin.plugin');
 include_once(JPATH_ROOT . '/components/com_jcomments/jcomments.legacy.php');
 
@@ -52,7 +54,7 @@ class plgSearchJComments extends JPlugin
 	 */
 	function onContentSearch($text, $phrase = '', $ordering = '', $areas = null)
 	{
-		$text = JString::strtolower(trim($text));
+		$text = StringHelper::strtolower(trim($text));
 		$result = array();
 
 		if ($text == '' || !defined('JCOMMENTS_JVERSION')) {

@@ -27,11 +27,15 @@ if (!defined('JCOMMENTS_PCRE_UTF8')) {
 	DEFINE('JCOMMENTS_PCRE_UTF8', 'u');
 }
 
-define('JCOMMENTS_SITE', JPATH_ROOT . '/components/com_jcomments');
+if (!defined('JCOMMENTS_SITE')) { 
+	define('JCOMMENTS_SITE', JPATH_ROOT . '/components/com_jcomments');
+}
 define('JCOMMENTS_ADMINISTRATOR', JPATH_ROOT . '/administrator/components/com_jcomments');
 define('JCOMMENTS_LIBRARIES', JCOMMENTS_SITE . '/libraries');
 define('JCOMMENTS_MODELS', JCOMMENTS_SITE . '/models');
-define('JCOMMENTS_HELPERS', JCOMMENTS_SITE . '/helpers');
+if (!defined('JCOMMENTS_HELPERS')) { 
+	define('JCOMMENTS_HELPERS', JCOMMENTS_SITE . '/helpers');
+}
 define('JCOMMENTS_CLASSES', JCOMMENTS_SITE . '/classes');
 define('JCOMMENTS_TABLES', JCOMMENTS_ADMINISTRATOR . '/tables');
 

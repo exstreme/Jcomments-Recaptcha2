@@ -12,6 +12,9 @@
 defined('_JEXEC') or die;
 
 jimport('joomla.plugin.plugin');
+define('JCOMMENTS_SITE', JPATH_ROOT . '/components/com_jcomments');
+define('JCOMMENTS_HELPERS', JCOMMENTS_SITE . '/helpers');
+include_once(JCOMMENTS_HELPERS . '/system.php');
 
 /**
  * System plugin for attaching JComments CSS & JavaScript to HEAD tag
@@ -48,10 +51,13 @@ class plgSystemJComments extends JPlugin
 		}
 	}
 
+
+
+
+
 	function onAfterRender()
 	{
 		$app = JFactory::getApplication();
-
 		if ($this->params->get('clear_rss', 0) == 1) {
 			$option = $app->input->get('option');
 			if ($option == 'com_content') {
@@ -66,8 +72,11 @@ class plgSystemJComments extends JPlugin
 
 		if ((defined('JCOMMENTS_CSS') || defined('JCOMMENTS_JS')) && !defined('JCOMMENTS_SHOW')) {
 			if ($app->getName() == 'site') {
-				$buffer = JResponse::getBody();
-
+				if (version_compare(JVERSION, '4.0', 'lt')){
+					$buffer = JResponse::getBody();
+				} else {
+					$buffer = $app->getBody();
+				}
 				$regexpJS = '#(\<script(\stype=\"text\/javascript\")? src="[^\"]*\/com_jcomments\/[^\>]*\>\<\/script\>[\s\r\n]*?)#ismU';
 				$regexpCSS = '#(\<link rel="stylesheet" href="[^\"]*\/com_jcomments\/[^>]*>[\s\r\n]*?)#ismU';
 
@@ -88,7 +97,11 @@ class plgSystemJComments extends JPlugin
 				}
 
 				if ($buffer != '') {
-					JResponse::setBody($buffer);
+					if (version_compare(JVERSION, '4.0', 'lt')){
+						JResponse::setBody($buffer);
+					} else {
+						$app->setBody($buffer);
+					}
 				}
 			}
 		}
@@ -111,15 +124,22 @@ class plgSystemJComments extends JPlugin
 		$document = JFactory::getDocument();
 
 		if ($document->getType() == 'html') {
-			if ($app->isAdmin()) {
+			if (JCommentsSystemPluginHelper::isAdmin($app)) {
 				$document->addStyleSheet(JURI::root(true) . '/administrator/components/com_jcomments/assets/css/icon.css?v=2');
-
 				JFactory::getLanguage()->load('com_jcomments.sys', JPATH_ROOT . '/administrator', 'en-GB', true);
-
-				$option = JAdministratorHelper::findOption();
+				if (version_compare(JVERSION, '4.0', 'lt')){
+					$option = JAdministratorHelper::findOption();
+				} else {
+					$option = $app->findOption();
+				}
 				$task = $app->input->get('task');
-				$type = $app->input->post('type', '', 'post');
-
+				if (version_compare(JVERSION, '4.0', 'lt')){
+					//do not work in joomla 4					
+					$type = $app->input->post('type', '', 'post');
+				} else {
+					//to do find a better solution in joomla 4.0
+					$type = 'content';
+				}	
 				// remove comments if content item deleted from trash
 				if ($option == 'com_trash' && $task == 'delete' && $type == 'content') {
 					$cid = $app->input->post->get('cid', array(), 'array');

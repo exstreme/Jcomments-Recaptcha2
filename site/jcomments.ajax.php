@@ -10,8 +10,9 @@
  */
 
 defined('_JEXEC') or die;
-
+use Joomla\CMS\Factory;
 ob_start();
+
 
 if (!defined('JOOMLATUNE_AJAX')) {
 	require_once (JCOMMENTS_LIBRARIES.'/joomlatune/ajax.php');
@@ -248,14 +249,15 @@ class JCommentsAJAX
 
 						case 'recaptcha':
 							JPluginHelper::importPlugin('captcha', "recaptcha");
-							if (version_compare(JVERSION, '3.0', 'ge')) {
-                                				$dispatcher = JEventDispatcher::getInstance();
-                            				} else {
-                                				$dispatcher = JDispatcher::getInstance();
-                           				}
+							
 							//Check if the installed version of Joomla is less than 3.9
 							if (version_compare(JVERSION, '3.9', '<' ) == 1)
 							{
+								if (version_compare(JVERSION, '3.0', 'ge')) {
+									$dispatcher = JEventDispatcher::getInstance();
+								} else {
+									$dispatcher = JDispatcher::getInstance();
+								}
 								$res = $dispatcher->trigger('onCheckAnswer');
 								if(!$res[0])
 								{
@@ -268,7 +270,7 @@ class JCommentsAJAX
 							{
 								try
 								{
-									$dispatcher->trigger('onCheckAnswer');
+									Factory::getApplication()->triggerEvent('onCheckAnswer');
 								}
 								catch (Exception $e)
 								{
@@ -282,20 +284,34 @@ class JCommentsAJAX
 						//Since Joomla v3.9, reCaptcha invisible is implemented
 						case 'recaptcha_invisible':
 							JPluginHelper::importPlugin('captcha', "recaptcha_invisible");
-							if (version_compare(JVERSION, '3.0', 'ge')) {
-                                				$dispatcher = JEventDispatcher::getInstance();
-                            					} else {
-                                				$dispatcher = JDispatcher::getInstance();
-                            					}
-							try
+							if (version_compare(JVERSION, '3.9', '<' ) == 1)
 							{
-								$dispatcher->trigger('onCheckAnswer');
-							}
-							catch (Exception $e)
-							{
-								self::showErrorMessage($e->getMessage());
-								$response->addScript("grecaptcha.reset()");
-								return $response;
+								if (version_compare(JVERSION, '3.0', 'ge')) {
+													$dispatcher = JEventDispatcher::getInstance();
+													} else {
+													$dispatcher = JDispatcher::getInstance();
+													}
+								try
+								{
+									$dispatcher->trigger('onCheckAnswer');
+								}
+								catch (Exception $e)
+								{
+									self::showErrorMessage($e->getMessage());
+									$response->addScript("grecaptcha.reset()");
+									return $response;
+								}
+							} else {
+								try
+								{
+									Factory::getApplication()->triggerEvent('onCheckAnswer');
+								}
+								catch (Exception $e)
+								{
+									self::showErrorMessage($e->getMessage());
+									$response->addScript("grecaptcha.reset()");
+									return $response;
+								}
 							}
 							break;
 

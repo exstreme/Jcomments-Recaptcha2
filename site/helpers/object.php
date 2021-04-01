@@ -124,7 +124,7 @@ class JCommentsObjectHelper
 			$info = self::_loadObjectInfo($object_id, $object_group, $language);
 			if (!JCommentsModelObject::IsEmpty($info)) {
 				$app = JFactory::getApplication();
-				if (!$app->isAdmin()) {
+				if (!JCommentsSystemPluginHelper::isAdmin($app)) {
 					// insert object information
 					JCommentsModelObject::setObjectInfo(0, $info);
 				}
@@ -186,7 +186,7 @@ class JCommentsObjectHelper
 		$object = JCommentsModelObject::getObjectInfo($object_id, $object_group, $language);
 		$objectId = $object === false ? 0 : $object->id;
 
-		if ($objectId == 0 && $app->isAdmin()) {
+		if ($objectId == 0 && JCommentsSystemPluginHelper::isAdmin($app)) {
 			// return empty object because we can not create link in backend
 			return new JCommentsObjectInfo();
 		}
@@ -195,7 +195,7 @@ class JCommentsObjectHelper
 		$info = self::_loadObjectInfo($object_id, $object_group, $language);
 
 		if (!JCommentsModelObject::IsEmpty($info) || $allowEmpty) {
-			if ($app->isAdmin()) {
+			if (JCommentsSystemPluginHelper::isAdmin($app)){
 				// we do not have to update object's link from backend
 				$info->link = null;
 			}

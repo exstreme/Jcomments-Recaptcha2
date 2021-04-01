@@ -78,7 +78,7 @@ switch (trim($jc_task)) {
 		$jc_option = $app->input->get('option', '');
 		$jc_ajax = $app->input->get('jtxf', '');
 
-		if ($jc_option == 'com_jcomments' && $jc_ajax == '' && !$app->isAdmin()) {
+		if ($jc_option == 'com_jcomments' && $jc_ajax == '' && ! JCommentsSystemPluginHelper::isAdmin($app)) {
 
 			$_Itemid = $app->input->getInt('Itemid');
 			$_tmpl = $app->input->get('tmpl');
@@ -196,7 +196,7 @@ class JComments
 
 		if (!defined('JCOMMENTS_CSS')) {
 			include_once(JCOMMENTS_HELPERS . '/system.php');
-			if ($app->isAdmin()) {
+			if (JCommentsSystemPluginHelper::isAdmin($app)) {
 				$tmpl->addVar('tpl_index', 'comments-css', 1);
 			} else {
 				$document->addStyleSheet(JCommentsSystemPluginHelper::getCSS());

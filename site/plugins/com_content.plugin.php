@@ -18,9 +18,9 @@ class jc_com_content extends JCommentsPlugin
 		$db = JFactory::getDBO();
 		$article = null;
 		$link = null;
-
-		require_once(JPATH_ROOT.'/components/com_content/helpers/route.php');
-
+		if (version_compare(JVERSION, '4.0', '<' )) {
+			require_once(JPATH_ROOT.'/components/com_content/helpers/route.php');
+		}
 		$query = $db->getQuery(true);
 
 		// Select the required fields from the table.

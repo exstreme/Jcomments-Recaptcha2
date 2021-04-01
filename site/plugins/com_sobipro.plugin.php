@@ -16,8 +16,8 @@ class jc_com_sobipro extends JCommentsPlugin
 	function getObjectInfo($id, $language = null)
 	{
 		$info = new JCommentsObjectInfo();
-	        $app = JFactory::getApplication();
-	        if (!$app->isAdmin()) {
+		$app = JFactory::getApplication();
+		if (JCommentsSystemPluginHelper::isAdmin($app)) {
 			$db = JFactory::getDBO();
 			$query = "SELECT o.id, o.name, o.owner, o.parent, fd.baseData"
 				. " FROM #__sobipro_object as o"

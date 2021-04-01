@@ -58,7 +58,7 @@ class jc_com_hikashop extends JCommentsPlugin
 
 		if (empty($id)) {
 			$app = JFactory::getApplication();
-			if ($app->isAdmin()) {
+			if (JCommentsSystemPluginHelper::isAdmin($app)) {
 				$user =& JFactory::getUser();
 				$id = $user->id;
 			}
