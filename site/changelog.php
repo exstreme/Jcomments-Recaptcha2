@@ -48,7 +48,7 @@ Changelog
 # Fatal error: Cannot redeclare class JCommentsControllerLegacy
 ^ Improved comments import from RSComments
 ^ Not showing IP address of authors in admin/backend
-^ Categories list does not uses Bootsrap ‘hosen behavior
+^ Categories list does not uses Bootsrap ï¿½hosen behavior
 - Removed 'All' option from language filter in Settings section
 # CustomBBCodes were not loaded
 # Refresh cache does not stop if comments list is empty
@@ -98,6 +98,10 @@ Changelog
 ^ The JComments backend now uses native Joomla's code with MVC
 ^ The JComments installer uses Joomla API to install additional plugins
 ^ Huge code improvements and optimizations
+
+3.7.6
++ adapted for joomla 4.0
++ Added "Accept terms of use" checkbox
 
 * -> Security Fix
 # -> Bug Fix

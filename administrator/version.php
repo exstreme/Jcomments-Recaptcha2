@@ -24,9 +24,9 @@ class JCommentsVersion
 	/** @var int Build Number */
 	var $BUILD = '';
 	/** @var string Date */
-	var $RELDATE = '19/01/2021';
+	var $RELDATE = '01/04/2021';
 	/** @var string Time */
-	var $RELTIME = '19:01';
+	var $RELTIME = '11:26';
 	/** @var string Timezone */
 	var $RELTZ = 'GMT+2';
 
