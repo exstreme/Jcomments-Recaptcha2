@@ -207,7 +207,7 @@ function JCommentsInitializeForm()
         }
 
         $customBBCodes = $this->getVar('comments-form-custombbcodes');
-        if (count($customBBCodes)) {
+        if (!empty($customBBCodes)) {
             foreach($customBBCodes as $code) {
                 if ($code->button_enabled) {
                     $k = 'custombbcode' . $code->id;
@@ -227,7 +227,7 @@ function JCommentsInitializeForm()
         $smiles = $this->getVar( 'comment-form-smiles' );
 
         if (isset($smiles)) {
-            if (is_array($smiles)&&count($smiles) > 0) {
+            if (!empty($smiles) > 0) {
                 $script.="
 	jcEditor.initSmiles('".$this->getVar( "smilesurl" )."');
 ";

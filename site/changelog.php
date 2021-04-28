@@ -103,6 +103,9 @@ Changelog
 + adapted for joomla 4.0
 + Added "Accept terms of use" checkbox
 
+3.7.6
+# Countable error in template
+
 * -> Security Fix
 # -> Bug Fix
 $ -> Language fix or change
