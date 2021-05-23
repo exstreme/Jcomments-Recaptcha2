@@ -12,6 +12,30 @@ defined('_JEXEC') or die;
 
 Changelog
 ------------
+3.0.7.7.2 - Unofficial version
+# Fixed when you press the send or cancel button, the website jumps to the top of the page.
+^ Updated "tpl_form.php" file. Added a missing php end-tag.
+
+3.0.7.7 - Unofficial version
+# Fix countable error in template
+
+3.0.7.6 - Unofficial version
++ Adapted for joomla 4.0
+^ Modified About JComments, it shows JComments version and link to github project
++ Added backend option to show/hide a checkbox to "Accept terms of use"
+^ Updated ALL frontend languages: added FORM_ACCEPT_TERMS_OF_USE and ERROR_CHECKBOX_TERMS_OF_USE_NO_SELECTED tags.
+^ Backend Russian and English languages updated: added AP_ENABLE_ACCEPT_TERMS_OF_USE, AP_ENABLE_ACCEPT_TERMS_OF_USE_DESC and A_ABOUT_JCOMMENTS_GITHUB_PROJECT tags.
+^ Responsive form (style.css)
+^ Redirect component from index.php to homepage
+# Fixed error in recaptcha v2. Deleted RECAPTCHA item in JComments CAPTCHA options. ERROR fixed: disable recaptcha v2 from Joomla plugins and then select RECAPTCHA option in JComments.
+
+3.0.7.1 to 3.0.7.5 - Unofficial version
+  (Modified version of official v3.0.7 (Github project: https://github.com/exstreme/Jcomments-Recaptcha2))
++ Added PHP 7.2 compatibility
++ Added reCAPTCHA v2 and invisible reCAPTCHA from Joomla! plugins
+^ Added noopener to link to joomlatune site for security
+^ Speed optimization.
+and more...
 
 3.0.6
 * Security fix (processing ajax function calls)
@@ -98,13 +122,6 @@ Changelog
 ^ The JComments backend now uses native Joomla's code with MVC
 ^ The JComments installer uses Joomla API to install additional plugins
 ^ Huge code improvements and optimizations
-
-3.7.6
-+ adapted for joomla 4.0
-+ Added "Accept terms of use" checkbox
-
-3.7.6
-# Countable error in template
 
 * -> Security Fix
 # -> Bug Fix
