@@ -7,7 +7,7 @@
 	<authorUrl>http://www.joomlatune.ru</authorUrl>
 	<copyright>Copyright 2006-2018 JoomlaTune.ru All rights reserved!</copyright>
 	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
-	<version>3.0.7.7.1</version>
+	<version>3.0.7.7.2</version>
 	<description><![CDATA[JComments lets your users comment on content items.]]></description>
 
 	<scriptfile>script.jcomments.php</scriptfile>
