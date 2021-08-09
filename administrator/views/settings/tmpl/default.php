@@ -173,6 +173,9 @@ $containerClass = empty($this->sidebar) ? '' : 'span10';
 				Joomla.submitform(task, document.getElementById('settings-form'));
 			}
 		}
+
+		// Render multi-lingual settings help.
+		Joomla.renderMessages({'notice': ['<?php echo JText::_('A_SETTINGS_MULTILANG_DESC', true); ?>']});
 	});
 </script>
 
