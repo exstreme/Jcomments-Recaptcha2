@@ -290,7 +290,7 @@ class com_jcommentsInstallerScript
 				$db = JFactory::getDBO();
 				foreach ($queries as $query) {
 					$query = trim($query);
-					if ($query != '' && $query{0} != '#') {
+					if ($query != '' && $query[0] != '#') {
 						try {
 							$db->setQuery($query);
 							$db->execute();
