@@ -133,6 +133,7 @@ class JCommentsModelComments extends JCommentsModelList
 	{
 		$pks = (array)$pks;
 		$table = $this->getTable();
+		$total = count($pks);
 
 		foreach ($pks as $i => $pk) {
 			if ($table->load($pk)) {
@@ -147,6 +148,7 @@ class JCommentsModelComments extends JCommentsModelList
 						}
 					} else {
 						$table->markAsDeleted();
+						JFactory::getApplication()->enqueueMessage(JText::plural('A_COMMENTS_HAS_BEEN_MARKED_N_DELETED', $total));
 					}
 				} else {
 					unset($pks[$i]);
