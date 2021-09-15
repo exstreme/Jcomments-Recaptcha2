@@ -10,7 +10,7 @@
  */
 
 defined('_JEXEC') or die;
-
+use Joomla\Utilities\ArrayHelper;
 class JCommentsModelCustomBBCode extends JCommentsModelForm
 {
 	public function getTable($type = 'CustomBBCode', $prefix = 'JCommentsTable', $config = array())
@@ -71,7 +71,11 @@ class JCommentsModelCustomBBCode extends JCommentsModelForm
 			}
 
 			$acl = is_array($data['button_acl']) ? $data['button_acl'] : array();
-			JArrayHelper::toInteger($acl);
+			if (version_compare(JVERSION, '4.0', 'lt')){
+				JArrayHelper::toInteger($acl);
+			}else {
+				ArrayHelper::toInteger($acl);
+			}
 			$table->button_acl = implode(',', $acl);
 
 			$table->name = trim(strip_tags($table->name));

@@ -10,7 +10,7 @@
  */
 
 defined('_JEXEC') or die;
-
+use Joomla\Utilities\ArrayHelper;
 class JCommentsControllerSmilies extends JCommentsControllerList
 {
 	public function __construct($config = array())
@@ -41,7 +41,12 @@ class JCommentsControllerSmilies extends JCommentsControllerList
 		$cid = $this->input->get('cid', array(), 'array');
 		$data = array('publish' => 1, 'unpublish' => 0);
 		$task = $this->getTask();
-		$value = JArrayHelper::getValue($data, $task, 0, 'int');
+		if (version_compare(JVERSION, '4.0', 'lt')){
+			$value = JArrayHelper::getValue($data, $task, 0, 'int');
+		}else {
+			$value = ArrayHelper::getValue($data, $task, 0, 'int');
+		}
+
 
 		if (!empty($cid)) {
 			$model = $this->getModel();
@@ -101,9 +106,14 @@ class JCommentsControllerSmilies extends JCommentsControllerList
 
 		$pks = $this->input->post->get('cid', array(), 'array');
 		$order = $this->input->post->get('order', array(), 'array');
+		if (version_compare(JVERSION, '4.0', 'lt')){
+			JArrayHelper::toInteger($pks);
+			JArrayHelper::toInteger($order);
+		}else {
+			ArrayHelper::toInteger($pks);
+			ArrayHelper::toInteger($order);
+		}
 
-		JArrayHelper::toInteger($pks);
-		JArrayHelper::toInteger($order);
 
 		$model = $this->getModel();
 
@@ -130,8 +140,14 @@ class JCommentsControllerSmilies extends JCommentsControllerList
 		$pks = $this->input->post->get('cid', array(), 'array');
 		$order = $this->input->post->get('order', array(), 'array');
 
-		JArrayHelper::toInteger($pks);
-		JArrayHelper::toInteger($order);
+		if (version_compare(JVERSION, '4.0', 'lt')){
+			JArrayHelper::toInteger($pks);
+			JArrayHelper::toInteger($order);
+		}else {
+			ArrayHelper::toInteger($pks);
+			ArrayHelper::toInteger($order);
+		}
+
 
 		$model = $this->getModel();
 

@@ -10,7 +10,7 @@
  */
 
 defined('_JEXEC') or die;
-
+use Joomla\Utilities\ArrayHelper;
 class JCommentsControllerComments extends JCommentsControllerList
 {
 	public function __construct($config = array())
@@ -41,7 +41,12 @@ class JCommentsControllerComments extends JCommentsControllerList
 		$cid = $this->input->get('cid', array(), 'array');
 		$data = array('publish' => 1, 'unpublish' => 0);
 		$task = $this->getTask();
-		$value = JArrayHelper::getValue($data, $task, 0, 'int');
+		if (version_compare(JVERSION, '4.0', 'lt')){
+			$value = JArrayHelper::getValue($data, $task, 0, 'int');
+		}else {
+			$value = ArrayHelper::getValue($data, $task, 0, 'int');
+		}
+
 
 		if (!empty($cid)) {
 			$model = $this->getModel();

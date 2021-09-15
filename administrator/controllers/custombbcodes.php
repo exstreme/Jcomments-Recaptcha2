@@ -10,7 +10,7 @@
  */
 
 defined('_JEXEC') or die;
-
+use Joomla\Utilities\ArrayHelper;
 class JCommentsControllerCustombbcodes extends JCommentsControllerList
 {
 	public function __construct($config = array())
@@ -42,7 +42,12 @@ class JCommentsControllerCustombbcodes extends JCommentsControllerList
 
 		$pks = $this->input->post->get('cid', array(), 'array');
 		
-		JArrayHelper::toInteger($pks);
+		if (version_compare(JVERSION, '4.0', 'lt')){
+			JArrayHelper::toInteger($pks);
+		}else {
+			ArrayHelper::toInteger($pks);
+		}
+
 
 		if (!empty($pks)) {
 			$model = $this->getModel();
@@ -77,8 +82,11 @@ class JCommentsControllerCustombbcodes extends JCommentsControllerList
 		$pks = $this->input->get('cid', array(), 'array');
 		$data = array('button_enable' => 1, 'button_disable' => 0);
 		$task = $this->getTask();
-
-		$value = JArrayHelper::getValue($data, $task, 0, 'int');
+		if (version_compare(JVERSION, '4.0', 'lt')){
+			$value = JArrayHelper::getValue($data, $task, 0, 'int');
+		} else {
+			$value = ArrayHelper::getValue($data, $task, 0, 'int');
+		}
 
 		if (!empty($pks)) {
 			$model = $this->getModel();
@@ -94,8 +102,11 @@ class JCommentsControllerCustombbcodes extends JCommentsControllerList
 
 		$pks = $this->input->post->get('cid', array(), 'array');
 		$inc = ($this->getTask() == 'orderup') ? -1 : +1;
-
-		JArrayHelper::toInteger($pks);
+		if (version_compare(JVERSION, '4.0', 'lt')){
+			JArrayHelper::toInteger($pks);
+		} else {
+			ArrayHelper::toInteger($pks);
+		}
 
 		$model = $this->getModel();
 		$return = $model->reorder($pks, $inc);
@@ -122,9 +133,13 @@ class JCommentsControllerCustombbcodes extends JCommentsControllerList
 
 		$pks = $this->input->post->get('cid', array(), 'array');
 		$order = $this->input->post->get('order', array(), 'array');
-
-		JArrayHelper::toInteger($pks);
-		JArrayHelper::toInteger($order);
+		if (version_compare(JVERSION, '4.0', 'lt')){
+			JArrayHelper::toInteger($pks);
+			JArrayHelper::toInteger($order);
+		} else {
+			ArrayHelper::toInteger($pks);
+			ArrayHelper::toInteger($order);
+		}
 
 		$model = $this->getModel();
 
@@ -150,9 +165,13 @@ class JCommentsControllerCustombbcodes extends JCommentsControllerList
 	{
 		$pks = $this->input->post->get('cid', array(), 'array');
 		$order = $this->input->post->get('order', array(), 'array');
-
-		JArrayHelper::toInteger($pks);
-		JArrayHelper::toInteger($order);
+		if (version_compare(JVERSION, '4.0', 'lt')){
+			JArrayHelper::toInteger($pks);
+			JArrayHelper::toInteger($order);
+		} else {
+			ArrayHelper::toInteger($pks);
+			ArrayHelper::toInteger($order);
+		}
 
 		$model = $this->getModel();
 
