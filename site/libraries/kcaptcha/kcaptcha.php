@@ -42,7 +42,7 @@ class KCAPTCHA{
 			while(true){
 				$this->keystring='';
 				for($i=0;$i<$length;$i++){
-					$this->keystring.=$allowed_symbols{mt_rand(0,strlen($allowed_symbols)-1)};
+					$this->keystring.=$allowed_symbols[mt_rand(0,strlen($allowed_symbols)-1)];
 				}
 				if(!preg_match('/cp|cb|ck|c6|c9|rn|rm|mm|co|do|cl|db|qp|qb|dp|ww/', $this->keystring)) break;
 			}
@@ -61,13 +61,13 @@ class KCAPTCHA{
 				$transparent = (imagecolorat($font, $i, 0) >> 24) == 127;
 
 				if(!$reading_symbol && !$transparent){
-					$font_metrics[$alphabet{$symbol}]=array('start'=>$i);
+					$font_metrics[$alphabet[$symbol]]=array('start'=>$i);
 					$reading_symbol=true;
 					continue;
 				}
 
 				if($reading_symbol && $transparent){
-					$font_metrics[$alphabet{$symbol}]['end']=$i;
+					$font_metrics[$alphabet[$symbol]]['end']=$i;
 					$reading_symbol=false;
 					$symbol++;
 					continue;
@@ -84,7 +84,7 @@ class KCAPTCHA{
 			// draw text
 			$x=1;
 			for($i=0;$i<$length;$i++){
-				$m=$font_metrics[$this->keystring{$i}];
+				$m=$font_metrics[$this->keystring[$i]];
 
 				$y=mt_rand(-$fluctuation_amplitude, $fluctuation_amplitude)+($height-$fontfile_height)/2+2;
 
