@@ -386,12 +386,12 @@ document.addEventListener("DOMContentLoaded", function() {
 		jcomments.clear('captcha');
 	});
 	if (document.getElementById('comments-form-send'))
-	document.getElementById('comments-form-send').addEventListener('click',function () {
-		jcomments.saveComment();return false;
+	document.getElementById('comments-form-send').addEventListener('click',function (e) {
+		e.preventDefault();jcomments.saveComment();return false;
 	});
 	if (document.getElementById('comments-form-cancel'))
-	document.getElementById('comments-form-cancel').addEventListener('click',function () {
-		return false;
+	document.getElementById('comments-form-cancel').addEventListener('click',function (e) {
+		e.preventDefault();return false;
 	});
 	if (document.getElementById('addcomments'))
 	document.getElementById('addcomments').addEventListener('click',function () {
