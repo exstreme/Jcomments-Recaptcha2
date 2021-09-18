@@ -139,8 +139,8 @@ class JCommentsCfg
 
 		$data = $db->loadObjectList();
 
-		if (count($data) == 0) {
-			$data = self::_load();
+		if (empty($data)) {
+			throw new Exception("Empty Jcomments Settings");
 		}
 
 		return $data;
