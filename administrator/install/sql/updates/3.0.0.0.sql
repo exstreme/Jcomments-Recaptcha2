@@ -13,13 +13,13 @@ KEY `idx_priority` (`priority`),
 KEY `idx_attempts` (`attempts`)
 ) DEFAULT CHARSET=utf8;
 
-ALTER IGNORE TABLE `#__jcomments_mailq` ADD `session_id` VARCHAR(200) DEFAULT NULL;
-ALTER IGNORE TABLE `#__jcomments_objects` CHANGE `link` `link` TEXT NOT NULL DEFAULT '';
-ALTER IGNORE TABLE `#__jcomments_objects` ADD `category_id` INT(11) UNSIGNED NOT NULL DEFAULT '0' AFTER `object_group`;
-ALTER IGNORE TABLE `#__jcomments_subscriptions` ADD `checked_out` INT(11) UNSIGNED NOT NULL DEFAULT '0';
-ALTER IGNORE TABLE `#__jcomments_subscriptions` ADD `checked_out_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00';
-ALTER IGNORE TABLE `#__jcomments_custom_bbcodes` ADD `checked_out` INT(11) UNSIGNED NOT NULL DEFAULT '0';
-ALTER IGNORE TABLE `#__jcomments_custom_bbcodes` ADD `checked_out_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00';
+ALTER TABLE `#__jcomments_mailq` ADD `session_id` VARCHAR(200) DEFAULT NULL;
+ALTER TABLE `#__jcomments_objects` CHANGE `link` `link` TEXT NOT NULL;
+ALTER TABLE `#__jcomments_objects` ADD `category_id` INT(11) UNSIGNED NOT NULL DEFAULT '0' AFTER `object_group`;
+ALTER TABLE `#__jcomments_subscriptions` ADD `checked_out` INT(11) UNSIGNED NOT NULL DEFAULT '0';
+ALTER TABLE `#__jcomments_subscriptions` ADD `checked_out_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00';
+ALTER TABLE `#__jcomments_custom_bbcodes` ADD `checked_out` INT(11) UNSIGNED NOT NULL DEFAULT '0';
+ALTER TABLE `#__jcomments_custom_bbcodes` ADD `checked_out_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00';
 
 CREATE TABLE IF NOT EXISTS `#__jcomments_smilies` (
 `id` int(11) unsigned NOT NULL AUTO_INCREMENT,

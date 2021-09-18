@@ -83,5 +83,4 @@ INSERT INTO `#__jcomments_settings` VALUES
 ('', '', 'feed_limit', '100'),
 ('', '', 'report_reason_required', '1'),
 ('', '', 'show_checkbox_terms_of_use', '0'),
-('', '', 'enable_permission_show_checkbox_terms_of_use', 'Registered,Author,Editor,Publisher,Manager,Administrator,Super Users'),
-;
+('', '', 'enable_permission_show_checkbox_terms_of_use', 'Registered,Author,Editor,Publisher,Manager,Administrator,Super Users');
