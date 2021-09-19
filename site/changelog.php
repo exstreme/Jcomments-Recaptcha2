@@ -103,8 +103,11 @@ Changelog
 + adapted for joomla 4.0
 + Added "Accept terms of use" checkbox
 
-3.7.6
+3.7.7
 # Countable error in template
+
+3.7.8
++ Mysql 8 and PHP 8 Improvements
 
 * -> Security Fix
 # -> Bug Fix
