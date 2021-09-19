@@ -49,13 +49,13 @@ class JCommentsAJAX
 				$v = trim(strip_tags($v));
 
 				// handle magic quotes compatibility
-				if (get_magic_quotes_gpc() == 1) {
+				if (!function_exists('get_magic_quotes_gpc') || get_magic_quotes_gpc() == 1) {
 					$v = stripslashes($v);
 				}
 				$v = JCommentsText::nl2br($v);
 
 				foreach ($tmp as $key => $code) {
-					if (get_magic_quotes_gpc() == 1) {
+					if (!function_exists('get_magic_quotes_gpc') || get_magic_quotes_gpc() == 1) {
 						$code = str_replace('\"', '"', $code);
 						$code = str_replace('\'', "'", $code);
 					}
@@ -67,7 +67,7 @@ class JCommentsAJAX
 				$values[$k] = trim(strip_tags($v));
 
 				// handle magic quotes compatibility
-				if (get_magic_quotes_gpc() == 1) {
+				if (!function_exists('get_magic_quotes_gpc') || get_magic_quotes_gpc() == 1) {
 					$values[$k] = stripslashes($values[$k]);
 				}
 

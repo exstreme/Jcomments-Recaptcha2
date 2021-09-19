@@ -104,7 +104,7 @@ class JCommentsModelComment extends JCommentsModelForm
 				$table->email = $user->email;
 			}
 
-			if (get_magic_quotes_gpc() == 1) {
+			if (!function_exists('get_magic_quotes_gpc') || get_magic_quotes_gpc() == 1) {
 				$table->title = stripslashes($table->title);
 				$table->comment = stripslashes($table->comment);
 			}

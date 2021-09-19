@@ -82,7 +82,7 @@ class JCommentsModelCustomBBCode extends JCommentsModelForm
 			$table->button_image = trim(strip_tags($table->button_image));
 			$table->button_css = trim(strip_tags($table->button_css));
 
-			if (get_magic_quotes_gpc() == 1) {
+			if (!function_exists('get_magic_quotes_gpc') || get_magic_quotes_gpc() == 1) {
 				$table->pattern = stripslashes($table->pattern);
 				$table->replacement_html = stripslashes($table->replacement_html);
 				$table->replacement_text = stripslashes($table->replacement_text);
