@@ -14,7 +14,7 @@ defined('_JEXEC') or die;
 <script type="text/javascript">
 Joomla.submitbutton = function(task)
 {
-	if (task == 'smiley.cancel' || document.formvalidator.isValid(document.id('smiley-form'))) {
+	if (task == 'smiley.cancel' || document.formvalidator.isValid(document.getElementById('smiley-form'))) {
 		Joomla.submitform(task, document.getElementById('smiley-form'));
 	}
 }

@@ -27,17 +27,17 @@ class JFormFieldSmileyImage extends JFormField
 		if (!self::$initialised) {
 			$script = array();
 			$script[] = '	function JCommentsSmileyRefreshPreview(id) {';
-			$script[] = '		var value = document.id(id).value;';
-			$script[] = '		var img = document.id(id + "_preview");';
+			$script[] = '		var value = document.getElementById(id).value;';
+			$script[] = '		var img = document.getElementById(id + "_preview");';
 			$script[] = '		if (img) {';
 			$script[] = '			if (value) {';
 			$script[] = '				img.src = "' . JURI::root() . $livePath . '" + value;';
-			$script[] = '				document.id(id + "_preview_empty").setStyle("display", "none");';
-			$script[] = '				document.id(id + "_preview_img").setStyle("display", "");';
+			$script[] = '				document.getElementById(id + "_preview_empty").setStyle("display", "none");';
+			$script[] = '				document.getElementById(id + "_preview_img").setStyle("display", "");';
 			$script[] = '			} else { ';
 			$script[] = '				img.src = ""';
-			$script[] = '				document.id(id + "_preview_empty").setStyle("display", "");';
-			$script[] = '				document.id(id + "_preview_img").setStyle("display", "none");';
+			$script[] = '				document.getElementById(id + "_preview_empty").setStyle("display", "");';
+			$script[] = '				document.getElementById(id + "_preview_img").setStyle("display", "none");';
 			$script[] = '			} ';
 			$script[] = '		} ';
 			$script[] = '	}';

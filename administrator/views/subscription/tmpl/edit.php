@@ -14,7 +14,7 @@ defined('_JEXEC') or die;
 <script type="text/javascript">
 Joomla.submitbutton = function(task)
 {
-	if (task == 'subscription.cancel' || document.formvalidator.isValid(document.id('subscription-form'))) {
+	if (task == 'subscription.cancel' || document.formvalidator.isValid(document.getElementById('subscription-form'))) {
 		Joomla.submitform(task, document.getElementById('subscription-form'));
 	}
 }

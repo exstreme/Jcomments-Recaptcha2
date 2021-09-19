@@ -14,7 +14,7 @@ defined('_JEXEC') or die;
 <script type="text/javascript">
 Joomla.submitbutton = function(task)
 {
-	if (task == 'blacklist.cancel' || document.formvalidator.isValid(document.id('blacklist-form'))) {
+	if (task == 'blacklist.cancel' || document.formvalidator.isValid(document.getElementById('blacklist-form'))) {
 		Joomla.submitform(task, document.getElementById('blacklist-form'));
 	}
 }

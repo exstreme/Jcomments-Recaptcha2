@@ -101,7 +101,7 @@ $containerClass = empty($this->sidebar) ? '' : 'span10';
 		Joomla.submitbutton = function (task) {
 			if (task == 'settings.cancel') {
 				Joomla.submitform(task, document.getElementById('settings-form'));
-			} else if (document.formvalidator.isValid(document.id('settings-form'))) {
+			} else if (document.formvalidator.isValid(document.getElementById('settings-form'))) {
 				var base64 = '';
 				try {
 					var query = [];

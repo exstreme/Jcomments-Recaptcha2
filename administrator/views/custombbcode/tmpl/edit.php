@@ -13,7 +13,7 @@ defined('_JEXEC') or die;
 ?>
 <script type="text/javascript">
 	Joomla.submitbutton = function (task) {
-		if (task == 'custombbcode.cancel' || document.formvalidator.isValid(document.id('custombbcode-form'))) {
+		if (task == 'custombbcode.cancel' || document.formvalidator.isValid(document.getElementById('custombbcode-form'))) {
 			Joomla.submitform(task, document.getElementById('custombbcode-form'));
 		}
 	}
