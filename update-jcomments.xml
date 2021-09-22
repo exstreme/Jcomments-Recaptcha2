@@ -36,6 +36,6 @@
 		<maintainerurl>http://www.joomlatune.ru</maintainerurl>
 		<section></section>
 		<client_id>1</client_id>
-		<targetplatform name="joomla" version="3"/>
+		<targetplatform name="joomla" version="(3).[0123456789]|10"/>
 	</update>
 </updates>
