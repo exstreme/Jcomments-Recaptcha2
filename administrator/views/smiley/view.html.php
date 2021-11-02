@@ -18,38 +18,39 @@ class JCommentsViewSmiley extends JCommentsViewLegacy
 	protected $state;
 
 	function display($tpl = null)
-	{
-		$this->item = $this->get('Item');
-		$this->form = $this->get('Form');
-		$this->state = $this->get('State');
+    {
+        $this->item = $this->get('Item');
+        $this->form = $this->get('Form');
+        $this->state = $this->get('State');
 
-		JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
+        JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 
-		if (version_compare(JVERSION, '4.0', '<')){
-			JHtml::_('behavior.tooltip');
-			JHtml::_('behavior.formvalidation');
-		} else {
-			HTMLHelper::_('bootstrap.tooltip');
-			HTMLHelper::_('behavior.formvalidator');
-		
+        if (version_compare(JVERSION, '4.0', '<')) {
+            JHtml::_('behavior.tooltip');
+            JHtml::_('behavior.formvalidation');
+        } else {
+            HTMLHelper::_('bootstrap.tooltip');
+            HTMLHelper::_('behavior.formvalidator');
 
-		if (version_compare(JVERSION, '3.0', 'ge')) {
-			if (version_compare(JVERSION, '4.0', '<')){
-				JHtml::_('formbehavior.chosen', 'select');
-			} else	{
-				HTMLHelper::_('formbehavior.chosen', 'select');
-			}
-			$this->bootstrap = true;
-		} else {
-			JHtml::_('jcomments.bootstrap');
-		}
 
-		JHtml::_('jcomments.stylesheet');
+            if (version_compare(JVERSION, '3.0', 'ge')) {
+                if (version_compare(JVERSION, '4.0', '<')) {
+                    JHtml::_('formbehavior.chosen', 'select');
+                } else {
+                    HTMLHelper::_('formbehavior.chosen', 'select');
+                }
+                $this->bootstrap = true;
+            } else {
+                JHtml::_('jcomments.bootstrap');
+            }
 
-		$this->addToolbar();
+            JHtml::_('jcomments.stylesheet');
 
-		parent::display($tpl);
-	}
+            $this->addToolbar();
+
+            parent::display($tpl);
+        }
+    }
 
 	protected function addToolbar()
 	{
