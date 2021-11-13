@@ -109,6 +109,10 @@ Changelog
 3.7.8
 + Mysql 8 and PHP 8 Improvements
 
+3.7.9
+# fix smilies
+# fix bb codes
+
 * -> Security Fix
 # -> Bug Fix
 $ -> Language fix or change
