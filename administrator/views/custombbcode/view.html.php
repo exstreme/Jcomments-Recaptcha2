@@ -31,20 +31,21 @@ class JCommentsViewCustombbcode extends JCommentsViewLegacy
 			JHtml::_('behavior.tooltip');
 			JHtml::_('behavior.formvalidation');
 		} else {
-			HTMLHelper::_('bootstrap.tooltip');
-			HTMLHelper::_('behavior.formvalidator');
-		
+            HTMLHelper::_('bootstrap.tooltip');
+            HTMLHelper::_('behavior.formvalidator');
 
-		if (version_compare(JVERSION, '4.0', '<')){
-			if (version_compare(JVERSION, '3.0', 'ge')) {
-				JHtml::_('formbehavior.chosen', 'select');
-				$this->bootstrap = true;
-			} else {
-				JHtml::_('jcomments.bootstrap');
-			}
-		} else {
-			HTMLHelper::_('formbehavior.chosen', 'select');
-		}
+
+            if (version_compare(JVERSION, '4.0', '<')) {
+                if (version_compare(JVERSION, '3.0', 'ge')) {
+                    JHtml::_('formbehavior.chosen', 'select');
+                    $this->bootstrap = true;
+                } else {
+                    JHtml::_('jcomments.bootstrap');
+                }
+            } else {
+                HTMLHelper::_('formbehavior.chosen', 'select');
+            }
+        }
 
 
 		JHtml::_('jcomments.stylesheet');
