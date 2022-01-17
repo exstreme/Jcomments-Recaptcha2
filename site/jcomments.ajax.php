@@ -1271,7 +1271,7 @@ class JCommentsAJAX
 			// count objects without information
 			$query
 				->clear()
-				->select('COUNT(DISTINCT ' . $db->quoteName(array('c.object_id','c.object_group','c.lang')) . ')')
+				->select('COUNT(DISTINCT c.object_id,c.object_group,c.lang)')
 				->from($db->quoteName('#__jcomments','c'));
 			if(count($where)) {
 				$query->where(implode(' AND ', $where));
@@ -1289,11 +1289,10 @@ class JCommentsAJAX
 						$db->quoteName('o.lang') . ' = ' . $db->quoteName('c.lang') . ')';
 
 				// get list of first objects without information
-				$query = "SELECT DISTINCT " . $db->quoteName(array('c.object_id', 'c.object_group', 'c.lang'))	
+				$query = "SELECT DISTINCT c.object_id,c.object_group,c.lang"
 					. " FROM " . $db->quoteName('#__jcomments','c')
 					. (count($where) ? ("\nWHERE " . implode(' AND ', $where)) : "")
-					. " ORDER BY " . $db->quoteName(array('c.object_group', 'c.lang'))
-					;
+					. " ORDER BY c.object_group, c.lang";
 
 				$db->setQuery($query, 0, $count);
 				$rows = $db->loadObjectList();
