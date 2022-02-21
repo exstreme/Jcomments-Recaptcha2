@@ -111,7 +111,8 @@ class jtt_tpl_tree extends JoomlaTuneTemplate
 		$object_group = $this->getVar('comment-object_group');
 
 		$btnRSS = '';
-		$btnRefresh = '';
+        $btnRefresh = '';
+        $btnsPagination = '';
 		
 		if ($this->getVar('comments-refresh', 1) == 1) {
 			$btnRefresh = '<a class="refresh" href="#" title="'.JText::_('BUTTON_REFRESH').'" onclick="jcomments.showPage('.$object_id.',\''. $object_group . '\',0);return false;">&nbsp;</a>';
@@ -122,10 +123,14 @@ class jtt_tpl_tree extends JoomlaTuneTemplate
 			if (!empty($link)) {
 				$btnRSS = '<a class="rss" href="'.$link.'" title="'.JText::_('BUTTON_RSS').'" target="_blank">&nbsp;</a>';
 			}
-		}
+        }
+        if ($this->getVar('comments-nav-top') == 1) {
+            $btnsPagination = '<div id="nav-top">'.$this->getNavigation().'</div>';
+        }
 ?>
 <span><?php echo JText::_('COMMENTS_LIST_HEADER'); ?> <?php echo $btnRSS; ?><?php echo $btnRefresh; ?></span>
 <?php
+    echo $btnsPagination;
 	}
 
 	/*
@@ -167,5 +172,63 @@ class jtt_tpl_tree extends JoomlaTuneTemplate
 		}
 
 		return $footer;
+    }
+    
+    /*
+	 *
+	 * Display comments pagination
+	 *
+	 */
+	function getNavigation()
+	{
+		if ($this->getVar('comments-nav-top') == 1 
+		||  $this->getVar('comments-nav-bottom') == 1) {
+			$active_page = $this->getVar('comments-nav-active', 1);
+			$first_page = $this->getVar('comments-nav-first', 0);
+			$total_page = $this->getVar('comments-nav-total', 0);
+
+			if ($first_page != 0 && $total_page != 0) {
+				$object_id = $this->getVar('comment-object_id');
+				$object_group = $this->getVar('comment-object_group');
+
+				$content = '';
+
+				// number of visible pages
+				$pp = 10;
+
+				$fp = $active_page - $pp/2;
+				if ($fp <= 0) {
+					$fp = 1;
+				}
+
+				$lp = $fp + $pp;
+				if ($lp > $total_page) {
+					$lp = $total_page;
+				}
+
+				if ($lp - $fp < $pp && $pp < $total_page) {
+					$fp = $lp - $pp;
+				}
+
+				if ($fp > 1) {
+					$content .= '<span onclick="jcomments.showPage('.$object_id.', \''.$object_group.'\', '.($active_page-1).');" class="page" onmouseover="this.className=\'hoverpage\';" onmouseout="this.className=\'page\';" >&laquo;</span>';
+				}
+
+				for ($i=$fp; $i <= $lp; $i++) {
+					if ($i == $active_page) {
+						$content .= '<span class="activepage"><b>'.$i.'</b></span>';
+					} else {
+						$content .= '<span onclick="jcomments.showPage('.$object_id.', \''.$object_group.'\', '.$i.');" class="page" onmouseover="this.className=\'hoverpage\';" onmouseout="this.className=\'page\';" >'.$i.'</span>';
+					}
+				}
+
+				if ($lp < $total_page) {
+					$content .= '<span onclick="jcomments.showPage('.$object_id.', \''.$object_group.'\', '.($lp+1).');" class="page" onmouseover="this.className=\'hoverpage\';" onmouseout="this.className=\'page\';" >&raquo;</span>';
+				}
+
+				return $content;
+			}
+		}
+		return '';
 	}
 }
